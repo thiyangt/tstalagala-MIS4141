@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  title: "Text Book for Statistical Consulting"
+  author: "Thiyanga S. Talagala"
+  date: ""
+  chapters:
+    - index.qmd
+    - ch1.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

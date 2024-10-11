@@ -1,0 +1,3 @@
+# Preface {.unnumbered}
+
+This is a textbook manual for teaching and learning in the Statistical Consulting course. Students should complete the exercises and fill in the blanks following the lectures.
