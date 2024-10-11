@@ -1,2 +1,53 @@
 # Introduction to Statistical Consulting
 
+## What is statistical consulting?
+
+Statistical consulting is the process of providing expert guidance and support to individuals, organizations, researchers ,(1).............or (2)......... in the application of statistical methods to solve practical challenges.
+
+
+In statistical consulting, communication occurs between two key parties: the (3)............ and the (4)..............
+
+## Role of Client and Statistical Consultant
+
+### Clients:
+
+1. Clients provide the context, data, (1).................., relying on the statistical consultant to (2)........ of the data and (3)....... the analysis process.
+
+### Statistical Consultant:
+
+2. The statistical consultant is a trained professional who applies statistical methods to help solve the client's problem. The statistical consultant's role is to (1)..........
+
+## Why Statistical consulting?
+
+In today's data-driven world, statistical consulting plays a vital role. There are many reasons why statistical consulting is vital.
+
+1.   Many clients (from healthcare and engineering to business and social sciences, etc.)lack the expertise in statistics necessary to analyze data effectively. Statistical consultants provide this expertise, guiding clients to make data-driven decisions.
+
+2. Plays a vital role in advancing science by applying rigorous statistical methods to solve various problems.
+
+3.
+
+4.
+
+5.
+
+6.
+
+
+
+
+## The goal of teaching/learning statistical consulting
+
+The goal of teaching/learning statistical consulting is to train you as statistical consultants. The following are the goals to achieve during the the learning process.
+
+- Learn to communicate with non-statisticians.
+
+- Learn to formulate the statistical aspect of others researchers' problems.
+
+- Learn to write statistical consultancy reports.
+
+- Gain experience and understanding of the process of statistical consulting.
+
+- Develop the skills needed to be an effective statistical consultant.
+
+## 
