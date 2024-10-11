@@ -78,17 +78,15 @@ The goal of teaching/learning statistical consulting is to train you as statisti
 
 4.  Difficulty in understanding the main components of the dataset: variables, observations, values.
 
-5.  Client's statistical knowledge
+5.  Data quality
 
-6.  Data quality:
+6.  Time constraints
 
-7.  Time constraints
+7.  Clients may have different expectations regarding the outcomes of the consulting process, leading to potential dissatisfaction with the statistical consulting results.
 
-8.  Clients may have different expectations regarding the outcomes of the consulting process, leading to potential dissatisfaction with the statistical consulting results.
+8.  Availability of resources to the clients and consultants
 
-9.  Availability of resources to the clients and consultants
-
-10. Interpersonal factors
+9. Interpersonal factors
 
 ## Data Quality Aspects
 
