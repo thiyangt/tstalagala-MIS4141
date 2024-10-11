@@ -82,11 +82,11 @@
   {
     "objectID": "ch2.html",
     "href": "ch2.html",
-    "title": "2  Communication with Data",
+    "title": "2  Data Quality Analysis",
     "section": "",
-    "text": "2.1 Grammar of Graphics",
+    "text": "2.1 Required software and packages",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Communication with Data</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
     ]
   },
   {
@@ -107,6 +107,26 @@
     "text": "1.9 Exercise\nWhat strategies would you use to manage a statistical consulting project efficiently from start to finish, ensuring that both the timeline and client expectations are met?",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistical Consulting</span>"
+    ]
+  },
+  {
+    "objectID": "ch2.html#requirements",
+    "href": "ch2.html#requirements",
+    "title": "2  Data Quality Analysis",
+    "section": "",
+    "text": "R Software\nRStudio\nFollowing packages:\n\n\ntidyverse\nrmarkdown\ndata.validator\ndlookr\ndenguedatahub\nDSjobtracker",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "ch2.html#required-software-and-packages",
+    "href": "ch2.html#required-software-and-packages",
+    "title": "2  Data Quality Analysis",
+    "section": "",
+    "text": "R Software\nRStudio\nFollowing packages:\n\ntidyverse\nrmarkdown\nknitr\ndata.validator\ndlookr\ndenguedatahub\nDSjobtracker",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
     ]
   }
 ]

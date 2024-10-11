@@ -1,5 +1,23 @@
-# Communication with Data
+# Data Quality Analysis
 
-## Grammar of Graphics
+## Required software and packages
 
+1. R Software
 
+2. RStudio
+
+3. Following packages:
+
+    - tidyverse
+  
+    - rmarkdown
+    
+    - knitr
+  
+    - data.validator
+  
+    - dlookr
+  
+    - denguedatahub
+  
+    - DSjobtracker
