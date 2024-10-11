@@ -129,3 +129,9 @@ The goal of teaching/learning statistical consulting is to train you as statisti
 5.  Document everything
 
 > Your turn: Add more points to the list as you progress through your journey in statistical consulting.
+
+## Exercise
+
+What strategies would you use to manage a statistical consulting project efficiently from start to finish, ensuring that both the timeline and client expectations are met?
+
+
