@@ -54,7 +54,7 @@
     "href": "ch1.html#why-statistical-consulting",
     "title": "1  Introduction to Statistical Consulting",
     "section": "1.3 Why Statistical consulting?",
-    "text": "1.3 Why Statistical consulting?\nIn today’s data-driven world, statistical consulting plays a vital role. There are many reasons why statistical consulting is vital.\n\nMany clients (from healthcare and engineering to business and social sciences, etc.)lack the expertise in statistics necessary to analyze data effectively. Statistical consultants provide this expertise, guiding clients to make data-driven decisions.\nPlays a vital role in advancing science by applying rigorous statistical methods to solve various problems.",
+    "text": "1.3 Why Statistical consulting?\nIn today’s data-driven world, statistical consulting plays a vital role. There are many reasons why statistical consulting is vital.\n\nMany clients (from healthcare and engineering to business and social sciences, etc.)lack the expertise in statistics necessary to analyze data effectively. Statistical consultants provide this expertise, guiding clients to make data-driven decisions.\nPlays a vital role in advancing science by applying rigorous statistical methods to solve various problems.\n……………………..\n……………………..\n………………………\n………………………",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistical Consulting</span>"
     ]
@@ -95,6 +95,46 @@
     "title": "1  Introduction to Statistical Consulting",
     "section": "1.2 Role of Client and Statistical Consultant",
     "text": "1.2 Role of Client and Statistical Consultant\n\n1.2.1 Clients:\n\nClients provide the context, data, (1)………………, relying on the statistical consultant to (2)…….. of the data and (3)……. the analysis process.\n\n\n\n1.2.2 Statistical Consultant:\n\nThe statistical consultant is a trained professional who applies statistical methods to help solve the client’s problem. The statistical consultant’s role is to (1)……….",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistical Consulting</span>"
+    ]
+  },
+  {
+    "objectID": "ch1.html#role-of-client-and-statistical-consultant-what-they-do-and-their-responsibilities",
+    "href": "ch1.html#role-of-client-and-statistical-consultant-what-they-do-and-their-responsibilities",
+    "title": "1  Introduction to Statistical Consulting",
+    "section": "1.2 Role of Client and Statistical Consultant: What they do and their responsibilities",
+    "text": "1.2 Role of Client and Statistical Consultant: What they do and their responsibilities\n\n1.2.1 Clients:\nClients provide the context, data, (1)………………, relying on the statistical consultant to (2)…….. of the data and (3)……. the analysis process.\n\nYour turn: What do you consider the responsibilities of a client in statistical consulting?\n\n\n\n1.2.2 Statistical Consultant:\nThe statistical consultant is a trained professional who applies statistical methods to help solve the client’s problem. The statistical consultant’s role and responsibilities are to:\n\nunderstand the research question\nhelp the client define his or her problem\ntranslate research questions into problems that can be analysed with data\ndetermine the appropriate type of data collection method, statistical analysis, etc.\ntranslate findings back to the clients\nkeep records of what you do\n\n\nYour turn: Add more points to the list as you progress through your journey in statistical consulting.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistical Consulting</span>"
+    ]
+  },
+  {
+    "objectID": "ch1.html#factors-that-make-the-consulting-process-complicated",
+    "href": "ch1.html#factors-that-make-the-consulting-process-complicated",
+    "title": "1  Introduction to Statistical Consulting",
+    "section": "1.5 Factors that make the consulting process complicated",
+    "text": "1.5 Factors that make the consulting process complicated\n\nDifficulty in identifying client Objectives, data, etc.\nClient’s Statistical Knowledge\nConsultant’s ability to grasp the background information relevant to the client’s problem context\nDifficulty in understanding the main components of the dataset: variables, observations, values.\nClient’s statistical knowledge\nData quality:\nTime constraints\nClients may have different expectations regarding the outcomes of the consulting process, leading to potential dissatisfaction with the statistical consulting results.\nAvailability of resources to the clients and consultants\nInterpersonal factors",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistical Consulting</span>"
+    ]
+  },
+  {
+    "objectID": "ch1.html#data-quality-aspects",
+    "href": "ch1.html#data-quality-aspects",
+    "title": "1  Introduction to Statistical Consulting",
+    "section": "1.6 Data Quality Aspects",
+    "text": "1.6 Data Quality Aspects\n\nCompleteness\nAccuracy\nUniqueness\nRelevance\nValidity\n…..\n….",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistical Consulting</span>"
+    ]
+  },
+  {
+    "objectID": "ch1.html#how-can-the-consulting-process-be-streamlined-to-avoid-complications",
+    "href": "ch1.html#how-can-the-consulting-process-be-streamlined-to-avoid-complications",
+    "title": "1  Introduction to Statistical Consulting",
+    "section": "1.7 How can the consulting process be streamlined to avoid complications?",
+    "text": "1.7 How can the consulting process be streamlined to avoid complications?\n\nClear communication\nSet realistic timelines\nUnderstanding the context can help prevent misunderstandings and misinterpretations\nRegular check-ins and updates\nDocument everything\n\n\nYour turn: Add more points to the list as you progress through your journey in statistical consulting.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistical Consulting</span>"
     ]

@@ -7,15 +7,30 @@ Statistical consulting is the process of providing expert guidance and support t
 
 In statistical consulting, communication occurs between two key parties: the (3)............ and the (4)..............
 
-## Role of Client and Statistical Consultant
+## Role of Client and Statistical Consultant: What they do and their responsibilities
 
 ### Clients:
 
-1. Clients provide the context, data, (1).................., relying on the statistical consultant to (2)........ of the data and (3)....... the analysis process.
+Clients provide the context, data, (1).................., relying on the statistical consultant to (2)........ of the data and (3)....... the analysis process.
+
+> Your turn: What do you consider the responsibilities of a client in statistical consulting?
 
 ### Statistical Consultant:
 
-2. The statistical consultant is a trained professional who applies statistical methods to help solve the client's problem. The statistical consultant's role is to (1)..........
+The statistical consultant is a trained professional who applies statistical methods to help solve the client's problem. The statistical consultant's role and responsibilities  are to: 
+
+- understand the research question
+
+- help the client define his or her problem
+
+- translate research questions into problems that can be analysed with data
+
+- determine the appropriate type of data collection method, statistical analysis, etc.
+
+- translate findings back to the clients 
+- keep records of what you do
+
+> Your turn: Add more points to the list as you progress through your journey in statistical consulting.
 
 ## Why Statistical consulting?
 
@@ -25,13 +40,13 @@ In today's data-driven world, statistical consulting plays a vital role. There a
 
 2. Plays a vital role in advancing science by applying rigorous statistical methods to solve various problems.
 
-3.
+3. ..........................
 
-4.
+4. ..........................
 
-5.
+5. ...........................
 
-6.
+6. ...........................
 
 
 
@@ -50,4 +65,54 @@ The goal of teaching/learning statistical consulting is to train you as statisti
 
 - Develop the skills needed to be an effective statistical consultant.
 
-## 
+## Factors that make the consulting process complicated
+
+1. Difficulty in identifying client Objectives, data, etc.
+
+2. Client's Statistical Knowledge
+
+3. Consultant's ability to grasp the background information relevant to the client's problem context
+
+4. Difficulty in understanding the main components of the dataset: variables, observations, values.
+
+5. Client's statistical knowledge
+
+6. Data quality: 
+
+7. Time constraints
+
+8. Clients may have different expectations regarding the outcomes of the consulting process, leading to potential dissatisfaction with the statistical consulting results.
+
+9. Availability of resources to the clients and consultants
+
+10. Interpersonal factors
+
+## Data Quality Aspects
+
+1. Completeness
+
+2. Accuracy
+
+3. Uniqueness
+
+4. Relevance
+
+5. Validity
+
+6. .....
+
+7. ....
+
+## How can the consulting process be streamlined to avoid complications?
+
+1. Clear communication
+
+2. Set realistic timelines
+
+3. Understanding the context can help prevent misunderstandings and misinterpretations
+
+4. Regular check-ins and updates
+
+5. Document everything
+
+> Your turn: Add more points to the list as you progress through your journey in statistical consulting.
