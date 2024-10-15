@@ -19,8 +19,8 @@
     -   dlookr
 
     -   skimr
-    
-    - naniar
+
+    -   naniar
 
     -   visdat
 
@@ -62,6 +62,22 @@ status(srilanka_weekly_data)
 data_integrity(srilanka_weekly_data)
 ```
 
+```{r, message=FALSE, warning=FALSE}
+profiling_num(srilanka_weekly_data)
+```
+
+Distribution of Numeric Variables
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+plot_num(srilanka_weekly_data)
+```
+
+Distribution of Categorical Variables
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+freq(srilanka_weekly_data)
+```
+
 ### Data Description: `denguedatahub::world_annual`
 
 ```{r, echo=FALSE}
@@ -77,6 +93,22 @@ status(world_annual)
 
 ```{r}
 data_integrity(world_annual)
+```
+
+```{r, message=FALSE, warning=FALSE}
+profiling_num(world_annual)
+```
+
+Distribution of Numeric Variables
+
+```{r}
+plot_num(world_annual)
+```
+
+Distribution of Categorical Variables
+
+```{r,  warning=FALSE, message=FALSE}
+freq(world_annual)
 ```
 
 
@@ -122,7 +154,6 @@ world_annual |>
 
 ## Arrange Data Before Plotting Numeric Variables
 
-
 ### `denguedatahub::srilanka_weekly_data`
 
 ```{r, echo=FALSE}
@@ -160,7 +191,7 @@ df2
 vis_dat(df2)
 ```
 
-###  Cell Identification Challenge: Guess the Function of Each Cell
+### Cell Identification Challenge: Guess the Function of Each Cell
 
 ```{r}
 vis_guess(df2)

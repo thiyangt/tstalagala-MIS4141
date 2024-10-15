@@ -516,6 +516,68 @@ $vars_other
 [1] "start.date" "end.date"  </code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">profiling_num</span>(srilanka_weekly_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  variable       mean   std_dev variation_coef p_01 p_05 p_25 p_50 p_75    p_95
+1     year 2015.29051  5.086737    0.002524072 2007 2007 2011 2015 2020 2023.00
+2     week   26.30437 15.053717    0.572289560    1    3   13   26   39   50.00
+3    cases   31.21108 81.997804    2.627201806    0    0    2    8   28  128.95
+     p_99     skewness   kurtosis iqr              range_98     range_80
+1 2024.00  0.006609632   1.803220   9          [2007, 2024] [2008, 2022]
+2   52.00  0.032334528   1.809499  26               [1, 52]      [6, 47]
+3  358.38 10.286018979 192.982559  26 [0, 358.379999999997]      [0, 73]</code></pre>
+</div>
+</div>
+<p>Distribution of Numeric Variables</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Distribution of Categorical Variables</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       district frequency percentage cumulative_perc
+1        Ampara       920       3.85            3.85
+2  Anuradhapura       920       3.85            7.70
+3       Badulla       920       3.85           11.55
+4    Batticaloa       920       3.85           15.40
+5       Colombo       920       3.85           19.25
+6         Galle       920       3.85           23.10
+7       Gampaha       920       3.85           26.95
+8   Hambanthota       920       3.85           30.80
+9        Jaffna       920       3.85           34.65
+10     Kalutara       920       3.85           38.50
+11        Kandy       920       3.85           42.35
+12      Kegalle       920       3.85           46.20
+13  Kilinochchi       920       3.85           50.05
+14   Kurunegala       920       3.85           53.90
+15       Mannar       920       3.85           57.75
+16       Matale       920       3.85           61.60
+17       Matara       920       3.85           65.45
+18   Monaragala       920       3.85           69.30
+19   Mullaitivu       920       3.85           73.15
+20  Polonnaruwa       920       3.85           77.00
+21     Puttalam       920       3.85           80.85
+22    Ratnapura       920       3.85           84.70
+23  Trincomalee       920       3.85           88.55
+24     Vavuniya       920       3.85           92.40
+25  NuwaraEliya       911       3.81           96.21
+26      Kalmune       891       3.73          100.00</code></pre>
+</div>
+</div>
 </section>
 <section id="data-description-denguedatahubworld_annual" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="data-description-denguedatahubworld_annual"><span class="header-section-number">2.2.2</span> Data Description: <code>denguedatahub::world_annual</code></h3>
@@ -744,7 +806,7 @@ $vars_other
 </div>
 <p>Method 2:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">status</span>(world_annual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">status</span>(world_annual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     variable q_zeros      p_zeros    q_na        p_na q_inf
 long                     long     721 0.0002599806     900 0.000324525     0
@@ -771,7 +833,7 @@ dengue.present     0 character      2</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_integrity</span>(world_annual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_integrity</span>(world_annual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$vars_num_with_NA
            variable q_na        p_na
@@ -816,6 +878,1634 @@ $vars_other
 character(0)</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">profiling_num</span>(world_annual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   variable         mean      std_dev variation_coef      p_01       p_05
+1      long     12.63966 8.543838e+01    6.759545411 -164.0733 -125.18413
+2       lat     30.24176 3.265450e+01    1.079781713  -51.7249  -29.59932
+3     group    834.10077 4.577919e+02    0.548844831   10.0000  184.00000
+4     order  52582.04712 2.814260e+04    0.535213158  949.0000 9447.00000
+5      year   2004.50000 8.655443e+00    0.004318006 1990.0000 1991.00000
+6 incidence 701055.45849 3.036888e+06    4.331880495    0.0000    0.00000
+          p_25        p_50        p_75         p_95         p_99    skewness
+1   -67.596336    19.09844    80.68213 1.445178e+02 1.746725e+02 -0.07340286
+2     6.946973    36.81196    55.33027 7.582597e+01 8.078438e+01 -0.51056358
+3   417.000000   847.00000  1296.00000 1.569000e+03 1.621000e+03  0.06183424
+4 28173.000000 52658.00000 77045.00000 9.621100e+04 1.000290e+05 -0.02092148
+5  1997.000000  2004.50000  2012.00000 2.018000e+03 2.019000e+03  0.00000000
+6     0.000000     0.00000 99597.00000 2.616088e+06 2.137839e+07  7.04612715
+   kurtosis        iqr                              range_98
+1  2.091961   148.2785 [-164.073287963867, 174.672546386719]
+2  2.553684    48.3833 [-51.7249031066895, 80.7843780517578]
+3  1.727049   879.0000                            [10, 1621]
+4  1.826357 48872.0000                         [949, 100029]
+5  1.797330    15.0000                          [1990, 2019]
+6 55.475409 99597.0000                         [0, 21378391]
+                              range_80
+1 [-95.987060546875, 126.757331848145]
+2  [-14.16845703125, 70.2992172241211]
+3                          [242, 1441]
+4                       [14136, 91463]
+5 [1992.90000000002, 2016.10000000009]
+6                         [0, 1723528]</code></pre>
+</div>
+</div>
+<p>Distribution of Numeric Variables</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_num</span>(world_annual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Distribution of Categorical Variables</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">freq</span>(world_annual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                 region frequency percentage cumulative_perc
+1                                Canada    347190      12.52           12.52
+2                                Russia    220620       7.96           20.48
+3                                   USA    172590       6.22           26.70
+4                             Indonesia    111450       4.02           30.72
+5                                 China     81300       2.93           33.65
+6                             Greenland     67200       2.42           36.07
+7                                 Chile     60180       2.17           38.24
+8                                Norway     59550       2.15           40.39
+9                                Brazil     56550       2.04           42.43
+10                            Australia     54120       1.95           44.38
+11                                India     45540       1.64           46.02
+12                          Philippines     37140       1.34           47.36
+13                           Kazakhstan     34200       1.23           48.59
+14                                Japan     32910       1.19           49.78
+15                            Argentina     31170       1.12           50.90
+16                               Mexico     30450       1.10           52.00
+17                                   UK     29700       1.07           53.07
+18                               Greece     27690       1.00           54.07
+19                              Myanmar     25260       0.91           54.98
+20                          New Zealand     23250       0.84           55.82
+21                     Papua New Guinea     22920       0.83           56.65
+22                             Mongolia     22080       0.80           57.45
+23                              Ukraine     20340       0.73           58.18
+24                             Colombia     18690       0.67           58.85
+25                              Vietnam     18390       0.66           59.51
+26     Democratic Republic of the Congo     18270       0.66           60.17
+27                               France     18150       0.65           60.82
+28                                 Iran     18150       0.65           61.47
+29                                Italy     18030       0.65           62.12
+30                               Sweden     17790       0.64           62.76
+31                                 Peru     17670       0.64           63.40
+32                           Uzbekistan     17520       0.63           64.03
+33                             Thailand     17340       0.63           64.66
+34                              Finland     17130       0.62           65.28
+35                             Pakistan     17130       0.62           65.90
+36                              Germany     17040       0.61           66.51
+37                            Venezuela     17010       0.61           67.12
+38                               Turkey     16860       0.61           67.73
+39                             Malaysia     15270       0.55           68.28
+40                                 Mali     14280       0.51           68.79
+41                           Mozambique     14070       0.51           69.30
+42                              Iceland     13590       0.49           69.79
+43                                Spain     13440       0.48           70.27
+44                                Sudan     13410       0.48           70.75
+45                         South Africa     13260       0.48           71.23
+46                         Saudi Arabia     13080       0.47           71.70
+47                         Turkmenistan     12990       0.47           72.17
+48                              Bolivia     12540       0.45           72.62
+49                          Afghanistan     12300       0.44           73.06
+50                                 Laos     11700       0.42           73.48
+51                           Kyrgyzstan     11640       0.42           73.90
+52                           Bangladesh     11520       0.42           74.32
+53                              Algeria     11490       0.41           74.73
+54                               Zambia     11310       0.41           75.14
+55                             Tanzania     11280       0.41           75.55
+56                              Croatia     11220       0.40           75.95
+57                           Tajikistan     11070       0.40           76.35
+58                              Morocco     11040       0.40           76.75
+59                              Nigeria     10920       0.39           77.14
+60                             Cameroon     10500       0.38           77.52
+61                               Guinea     10440       0.38           77.90
+62                              Ecuador     10410       0.38           78.28
+63                               Angola     10140       0.37           78.65
+64                      Solomon Islands     10050       0.36           79.01
+65                          South Sudan      9780       0.35           79.36
+66             Central African Republic      9720       0.35           79.71
+67                    Republic of Congo      9690       0.35           80.06
+68                              Belarus      9630       0.35           80.41
+69                           Mauritania      9630       0.35           80.76
+70                               Poland      9480       0.34           81.10
+71                              Ireland      9450       0.34           81.44
+72                                 Cuba      9150       0.33           81.77
+73                             Ethiopia      9060       0.33           82.10
+74                              Denmark      8940       0.32           82.42
+75                                 Chad      8730       0.31           82.73
+76                               Guyana      8610       0.31           83.04
+77                          Netherlands      8460       0.31           83.35
+78                              Romania      8220       0.30           83.65
+79                              Austria      8160       0.29           83.94
+80                                Gabon      8130       0.29           84.23
+81                              Bahamas      8040       0.29           84.52
+82                                 Fiji      8010       0.29           84.81
+83                               Serbia      8010       0.29           85.10
+84                           Madagascar      7980       0.29           85.39
+85                           Azerbaijan      7920       0.29           85.68
+86                                Libya      7710       0.28           85.96
+87                          North Korea      7710       0.28           86.24
+88                             Paraguay      7710       0.28           86.52
+89                         Burkina Faso      7650       0.28           86.80
+90                                Niger      7650       0.28           87.08
+91                                Egypt      7590       0.27           87.35
+92                               Panama      7380       0.27           87.62
+93                               Malawi      7350       0.27           87.89
+94                                 Oman      7290       0.26           88.15
+95                              Senegal      7290       0.26           88.41
+96                       Czech Republic      7200       0.26           88.67
+97                              Namibia      7050       0.25           88.92
+98                                 Iraq      6990       0.25           89.17
+99                                Kenya      6750       0.24           89.41
+100                               Yemen      6750       0.24           89.65
+101                             Somalia      6660       0.24           89.89
+102                            Botswana      6630       0.24           90.13
+103                            Cambodia      6630       0.24           90.37
+104                               Ghana      6510       0.23           90.60
+105                             Hungary      6420       0.23           90.83
+106                            Kiribati      6360       0.23           91.06
+107                            Honduras      6210       0.22           91.28
+108                               Nepal      6060       0.22           91.50
+109                             Estonia      5850       0.21           91.71
+110                             Eritrea      5760       0.21           91.92
+111                         Switzerland      5610       0.20           92.12
+112                            Portugal      5580       0.20           92.32
+113                             Tunisia      5580       0.20           92.52
+114                             Vanuatu      5580       0.20           92.72
+115                            Suriname      5520       0.20           92.92
+116                United Arab Emirates      5490       0.20           93.12
+117                              Uganda      5400       0.19           93.31
+118                            Bulgaria      5370       0.19           93.50
+119                           Nicaragua      5280       0.19           93.69
+120                               Syria      5100       0.18           93.87
+121                            Zimbabwe      5100       0.18           94.05
+122                             Georgia      4920       0.18           94.23
+123                             Belgium      4890       0.18           94.41
+124                          Antarctica      4658       0.17           94.58
+125                       Guinea-Bissau      4650       0.17           94.75
+126                           Lithuania      4650       0.17           94.92
+127                             Moldova      4470       0.16           95.08
+128                               Benin      4410       0.16           95.24
+129                             Armenia      4380       0.16           95.40
+130              Bosnia and Herzegovina      4380       0.16           95.56
+131                            Slovakia      4350       0.16           95.72
+132                             Uruguay      4290       0.15           95.87
+133                              Latvia      4200       0.15           96.02
+134                             Liberia      4170       0.15           96.17
+135                                Togo      4020       0.14           96.31
+136                          Costa Rica      3990       0.14           96.45
+137                            Slovenia      3960       0.14           96.59
+138                        Sierra Leone      3780       0.14           96.73
+139                           Guatemala      3450       0.12           96.85
+140                             Albania      3390       0.12           96.97
+141                  Dominican Republic      3360       0.12           97.09
+142                               Haiti      3360       0.12           97.21
+143                              Israel      3150       0.11           97.32
+144                              Bhutan      3000       0.11           97.43
+145                              Cyprus      3000       0.11           97.54
+146                              Jordan      2880       0.10           97.64
+147                          Montenegro      2760       0.10           97.74
+148                           Sri Lanka      2760       0.10           97.84
+149                          Cape Verde      2610       0.09           97.93
+150                              Rwanda      2490       0.09           98.02
+151                     North Macedonia      2430       0.09           98.11
+152                             Burundi      2340       0.08           98.19
+153                             Lesotho      2310       0.08           98.27
+154                         El Salvador      2220       0.08           98.35
+155                              Gambia      2190       0.08           98.43
+156                         Timor-Leste      2100       0.08           98.51
+157                         Puerto Rico      2070       0.07           98.58
+158                              Taiwan      2040       0.07           98.65
+159                   Equatorial Guinea      2010       0.07           98.72
+160                              Kuwait      2010       0.07           98.79
+161                              Belize      1950       0.07           98.86
+162                             Lebanon      1860       0.07           98.93
+163                              Brunei      1680       0.06           98.99
+164                            Djibouti      1680       0.06           99.05
+165                           Palestine      1500       0.05           99.10
+166                          Micronesia      1470       0.05           99.15
+167                             Jamaica      1440       0.05           99.20
+168                    Marshall Islands      1410       0.05           99.25
+169                          Luxembourg      1380       0.05           99.30
+170            Northern Mariana Islands      1380       0.05           99.35
+171                      Virgin Islands      1260       0.05           99.40
+172                               Qatar      1020       0.04           99.44
+173                               Tonga       960       0.03           99.47
+174                            Trinidad       900       0.03           99.50
+175                               Samoa       810       0.03           99.53
+176                            Maldives       660       0.02           99.55
+177               Sao Tome and Principe       660       0.02           99.57
+178                               Palau       630       0.02           99.59
+179                             Andorra       570       0.02           99.61
+180                           Mauritius       570       0.02           99.63
+181                               Malta       480       0.02           99.65
+182                          San Marino       420       0.02           99.67
+183                             Bahrain       390       0.01           99.68
+184                             Antigua       360       0.01           99.69
+185                                Guam       360       0.01           99.70
+186                        Cook Islands       330       0.01           99.71
+187                            Dominica       300       0.01           99.72
+188                         Saint Lucia       300       0.01           99.73
+189                         Ivory Coast       294       0.01           99.74
+190                            Barbados       270       0.01           99.75
+191                             Grenada       270       0.01           99.76
+192                         South Korea       260       0.01           99.77
+193                      American Samoa       240       0.01           99.78
+194                             Bermuda       240       0.01           99.79
+195                               Nauru       240       0.01           99.80
+196                                Niue       240       0.01           99.81
+197                          Seychelles       240       0.01           99.82
+198                      Western Sahara       229       0.01           99.83
+199                              Monaco       210       0.01           99.84
+200                    French Polynesia       185       0.01           99.85
+201                    Falkland Islands       149       0.01           99.86
+202                       French Guiana       127       0.00           99.86
+203                       New Caledonia       127       0.00           99.86
+204 French Southern and Antarctic Lands       119       0.00           99.86
+205                      Canary Islands        94       0.00           99.86
+206                              Kosovo        72       0.00           99.86
+207                              Azores        67       0.00           99.86
+208                       Faroe Islands        63       0.00           99.86
+209                       South Georgia        55       0.00           99.86
+210                          Grenadines        39       0.00           99.86
+211                           Swaziland        38       0.00           99.86
+212                      Cayman Islands        36       0.00           99.86
+213                             Comoros        35       0.00           99.86
+214                          Guadeloupe        35       0.00           99.86
+215                African Region (WHO)        30       0.00           99.86
+216                       Cote d'Ivoire        30       0.00           99.86
+217            East Asia &amp; Pacific (WB)        30       0.00           99.86
+218  Eastern Mediterranean Region (WHO)        30       0.00           99.86
+219                             England        30       0.00           99.86
+220                            Eswatini        30       0.00           99.86
+221          Europe &amp; Central Asia (WB)        30       0.00           99.86
+222               European Region (WHO)        30       0.00           99.86
+223                                 G20        30       0.00           99.86
+224      Latin America &amp; Caribbean (WB)        30       0.00           99.86
+225     Middle East &amp; North Africa (WB)        30       0.00           99.86
+226                  North America (WB)        30       0.00           99.86
+227                    Northern Ireland        30       0.00           99.86
+228                      OECD Countries        30       0.00           99.86
+229        Region of the Americas (WHO)        30       0.00           99.86
+230               Saint Kitts and Nevis        30       0.00           99.86
+231    Saint Vincent and the Grenadines        30       0.00           99.86
+232                            Scotland        30       0.00           99.86
+233        South-East Asia Region (WHO)        30       0.00           99.86
+234                     South Asia (WB)        30       0.00           99.86
+235             Sub-Saharan Africa (WB)        30       0.00           99.86
+236                             Tokelau        30       0.00           99.86
+237                              Tuvalu        30       0.00           99.86
+238                               Wales        30       0.00           99.86
+239        Western Pacific Region (WHO)        30       0.00           99.86
+240                               World        30       0.00           99.86
+241              World Bank High Income        30       0.00           99.86
+242               World Bank Low Income        30       0.00           99.86
+243      World Bank Lower Middle Income        30       0.00           99.86
+244      World Bank Upper Middle Income        30       0.00           99.86
+245            Turks and Caicos Islands        29       0.00           99.86
+246                       Cocos Islands        26       0.00           99.86
+247                      Norfolk Island        26       0.00           99.86
+248           Saint Pierre and Miquelon        24       0.00           99.86
+249                          Martinique        22       0.00           99.86
+250                     Siachen Glacier        21       0.00           99.86
+251                  Chagos Archipelago        17       0.00           99.86
+252                   Wallis and Futuna        16       0.00           99.86
+253                        Heard Island        15       0.00           99.86
+254                         Isle of Man        15       0.00           99.86
+255                       Liechtenstein        15       0.00           99.86
+256                             Mayotte        15       0.00           99.86
+257                             Reunion        15       0.00           99.86
+258                         Saint Kitts        13       0.00           99.86
+259                     Madeira Islands        12       0.00           99.86
+260                             Vatican        12       0.00           99.86
+261                    Ascension Island        11       0.00           99.86
+262                    Saint Barthelemy        11       0.00           99.86
+263                               Aruba        10       0.00           99.86
+264                             Barbuda        10       0.00           99.86
+265                             Bonaire        10       0.00           99.86
+266                             Curacao        10       0.00           99.86
+267                       Saint Vincent        10       0.00           99.86
+268                    Christmas Island         9       0.00           99.86
+269                              Jersey         9       0.00           99.86
+270                    Pitcairn Islands         9       0.00           99.86
+271                           Singapore         9       0.00           99.86
+272                      Sint Eustatius         9       0.00           99.86
+273                                Saba         8       0.00           99.86
+274              South Sandwich Islands         8       0.00           99.86
+275                              Tobago         8       0.00           99.86
+276                            Guernsey         7       0.00           99.86
+277                          Montserrat         7       0.00           99.86
+278                               Nevis         7       0.00           99.86
+279                        Saint Helena         7       0.00           99.86
+280                        Saint Martin         7       0.00           99.86
+281                        Sint Maarten         7       0.00           99.86
+282                            Anguilla         6       0.00          100.00</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                             subregion frequency percentage cumulative_perc
+1                                 &lt;NA&gt;   1783783      64.32           64.32
+2                               Alaska     93990       3.39           67.71
+3                        Baffin Island     43200       1.56           69.27
+4                     Ellesmere Island     23130       0.83           70.10
+5                                    3     22017       0.79           70.89
+6                             Svalbard     17280       0.62           71.51
+7                        Great Britain     15360       0.55           72.06
+8                         Newfoundland     13650       0.49           72.55
+9                      Victoria Island     12810       0.46           73.01
+10                                  27     12360       0.45           73.46
+11                              Borneo     11640       0.42           73.88
+12                              Honshu     11550       0.42           74.30
+13                          Irian Jaya     11160       0.40           74.70
+14                            Scotland     10560       0.38           75.08
+15                       Novaya Zemlya     10470       0.38           75.46
+16                            Sulawesi     10290       0.37           75.83
+17                        Devon Island      9930       0.36           76.19
+18                     Melville Island      9780       0.35           76.54
+19                             Sarawak      9780       0.35           76.89
+20                        South Island      9732       0.35           77.24
+21                 Axel Heiberg Island      9210       0.33           77.57
+22                        North Island      9030       0.33           77.90
+23                             Sumatra      7740       0.28           78.18
+24                                  43      7511       0.27           78.45
+25                                   1      6867       0.25           78.70
+26              Prince of Wales Island      6810       0.25           78.95
+27                                   2      5839       0.21           79.16
+28                     Bathurst Island      5730       0.21           79.37
+29                            Mindanao      5730       0.21           79.58
+30                            Tasmania      5520       0.20           79.78
+31                     Ostrov Sakhalin      5370       0.19           79.97
+32                                  10      5341       0.19           80.16
+33                                Java      5160       0.19           80.35
+34                    Vancouver Island      4980       0.18           80.53
+35               Prince Patrick Island      4800       0.17           80.70
+36                            Hokkaido      4680       0.17           80.87
+37                                   5      4667       0.17           81.04
+38                              Kyushu      4500       0.16           81.20
+39                        Banks Island      4350       0.16           81.36
+40                  Southampton Island      4020       0.14           81.50
+41                              Hawaii      3900       0.14           81.64
+42                Ellef Ringnes Island      3780       0.14           81.78
+43                    Ostrov Kotel'nyy      3660       0.13           81.91
+44                    Malay Penninsula      3540       0.13           82.04
+45                                  16      3407       0.12           82.16
+46                         New Britain      3240       0.12           82.28
+47                 King William Island      3120       0.11           82.39
+48                           Halmahera      3030       0.11           82.50
+49     Ostrov Oktyabr'skoy Revolyutsii      3000       0.11           82.61
+50                    Northern Ireland      2970       0.11           82.72
+51                   Ostrov Bol'shevik      2940       0.11           82.83
+52                             Sumbawa      2880       0.10           82.93
+53                              Sicily      2700       0.10           83.03
+54                     Somerset Island      2700       0.10           83.13
+55                                   4      2593       0.09           83.22
+56                              Flores      2588       0.09           83.31
+57                               North      2580       0.09           83.40
+58                             enclave      2526       0.09           83.49
+59                                   8      2522       0.09           83.58
+60                            Sardinia      2460       0.09           83.67
+61                  Cape Breton Island      2400       0.09           83.76
+62                          Somaliland      2370       0.09           83.85
+63                Prince Edward Island      2310       0.08           83.93
+64                                   7      2290       0.08           84.01
+65                             Shikoku      2280       0.08           84.09
+66                               Ceram      2250       0.08           84.17
+67                      Ilha de Marajo      2250       0.08           84.25
+68                             Florida      2190       0.08           84.33
+69                             Palawan      2130       0.08           84.41
+70                                   6      2095       0.08           84.49
+71                                  13      2091       0.08           84.57
+72                               Crete      2070       0.07           84.64
+73                Amund Ringnes Island      2010       0.07           84.71
+74                     Isla Wellington      1950       0.07           84.78
+75                  Ostrov Komsomolets      1950       0.07           84.85
+76                           Sjaelland      1920       0.07           84.92
+77                          Isla Hoste      1890       0.07           84.99
+78                       Zemlya Georga      1890       0.07           85.06
+79                             Corsica      1830       0.07           85.13
+80                             Hinnoya      1830       0.07           85.20
+81                    Tierra del Fuego      1800       0.06           85.26
+82                          Vanua Levu      1800       0.06           85.32
+83                      Belcher Island      1770       0.06           85.38
+84                     Isla Santa Ines      1770       0.06           85.44
+85                       Graham Island      1740       0.06           85.50
+86                              Bangka      1710       0.06           85.56
+87                        Bylot Island      1680       0.06           85.62
+88                        Quqertarsuaq      1680       0.06           85.68
+89                     Andaman Islands      1650       0.06           85.74
+90                       Andros Island      1650       0.06           85.80
+91                          California      1650       0.06           85.86
+92                             Mindoro      1650       0.06           85.92
+93                          Washington      1650       0.06           85.98
+94                   Cornwallis Island      1590       0.06           86.04
+95                              Evvoia      1590       0.06           86.10
+96                            New York      1590       0.06           86.16
+97                               Samar      1590       0.06           86.22
+98                       Aland Islands      1560       0.06           86.28
+99                               Leyte      1560       0.06           86.34
+100              Mackenzie King Island      1560       0.06           86.40
+101                                 25      1545       0.06           86.46
+102              Isla Grande de Chiloe      1530       0.06           86.52
+103                     Moresby Island      1530       0.06           86.58
+104                             Negros      1530       0.06           86.64
+105                                 32      1500       0.05           86.69
+106                        New Ireland      1500       0.05           86.74
+107                              Buton      1440       0.05           86.79
+108                              Panay      1440       0.05           86.84
+109                           Rio Muni      1410       0.05           86.89
+110                              Sumba      1380       0.05           86.94
+111                          Viti Levu      1380       0.05           86.99
+112                      Borden Island      1350       0.05           87.04
+113                Ostrov Novaya Sibr'      1350       0.05           87.09
+114                                 11      1334       0.05           87.14
+115                                 14      1320       0.05           87.19
+116                       Bougainville      1320       0.05           87.24
+117                    Northern Cyprus      1320       0.05           87.29
+118                           Saaremaa      1320       0.05           87.34
+119                              Texas      1320       0.05           87.39
+120                  Vansittart Island      1320       0.05           87.44
+121                   Ostrov Vrangelya      1290       0.05           87.49
+122                            Cabinda      1260       0.05           87.54
+123                             Waigeo      1260       0.05           87.59
+124                                 12      1230       0.04           87.63
+125                          Milneland      1230       0.04           87.67
+126                         Nakhchivan      1230       0.04           87.71
+127                      Ostrov Iturup      1200       0.04           87.75
+128                     Ostrov Vaygach      1200       0.04           87.79
+129                              Senja      1200       0.04           87.83
+130                                 98      1170       0.04           87.87
+131                          Hong Kong      1170       0.04           87.91
+132              Prince Charles Island      1170       0.04           87.95
+133  Royal Geographical Society Island      1170       0.04           87.99
+134                    Isla Desolacion      1140       0.04           88.03
+135                   Isla Londonderry      1140       0.04           88.07
+136                   Jens Munk Island      1140       0.04           88.11
+137                              Wokam      1140       0.04           88.15
+138                                100      1110       0.04           88.19
+139                         IJsselmeer      1110       0.04           88.23
+140                  Zemlya Alexsandry      1110       0.04           88.27
+141                               Bali      1080       0.04           88.31
+142                        Long Island      1080       0.04           88.35
+143                            Okinawa      1080       0.04           88.39
+144                       Coats Island      1050       0.04           88.43
+145                            Gotland      1050       0.04           88.47
+146        Ostrov Bol'shoy Lyakhovskiy      1050       0.04           88.51
+147                            Majorca      1020       0.04           88.55
+148                                 21      1007       0.04           88.59
+149                                 56      1003       0.04           88.63
+150                                126       990       0.04           88.67
+151                               Cebu       990       0.04           88.71
+152                     Groote Eylandt       990       0.04           88.75
+153                      Mansel Island       990       0.04           88.79
+154                  Stefansson Island       990       0.04           88.83
+155                    Zemlya Vilcheka       990       0.04           88.87
+156                       Isla Isabela       960       0.03           88.90
+157                       Matty Island       960       0.03           88.93
+158                  Resolution Island       960       0.03           88.96
+159                            Yamdena       960       0.03           88.99
+160                       Abaco Island       930       0.03           89.02
+161                               Buru       930       0.03           89.05
+162                     Chatham Island       930       0.03           89.08
+163                             Peleng       930       0.03           89.11
+164                       Santa Isabel       900       0.03           89.14
+165                                131       870       0.03           89.17
+166                     Espiritu Santo       870       0.03           89.20
+167                    Kangaroo Island       870       0.03           89.23
+168                            Lomblen       870       0.03           89.26
+169                            Malaita       870       0.03           89.29
+170                            Masbate       870       0.03           89.32
+171              Ostrov Mezhdusharskiy       870       0.03           89.35
+172              Princess Royal Island       870       0.03           89.38
+173                                 15       848       0.03           89.41
+174                           Belitung       840       0.03           89.44
+175                            Langoya       840       0.03           89.47
+176                             Lesvos       840       0.03           89.50
+177                          Louisiana       840       0.03           89.53
+178                           Malakula       840       0.03           89.56
+179                      San Cristobal       840       0.03           89.59
+180                     Stewart Island       840       0.03           89.62
+181                       Wales Island       840       0.03           89.65
+182                                 75       820       0.03           89.68
+183                   Anticosti Island       810       0.03           89.71
+184                              Bacan       810       0.03           89.74
+185                     Cameron Island       810       0.03           89.77
+186                   Eleuthera Island       810       0.03           89.80
+187                      Isla Navarino       810       0.03           89.83
+188                         Isla Pratt       810       0.03           89.86
+189                    Lougheed Island       810       0.03           89.89
+190                       Manus Island       810       0.03           89.92
+191                     Meighen Island       810       0.03           89.95
+192                  Ostrov Greem-Bell       810       0.03           89.98
+193                    Ostrov Kolguyev       810       0.03           90.01
+194                     Russell Island       810       0.03           90.04
+195                             Soroya       810       0.03           90.07
+196                                 46       799       0.03           90.10
+197                        Guadalcanal       780       0.03           90.13
+198                     Jazair Farasan       780       0.03           90.16
+199                  North Kent Island       780       0.03           90.19
+200                          Vestvagoy       780       0.03           90.22
+201                                 23       772       0.03           90.25
+202                               Biak       750       0.03           90.28
+203                              Bohol       750       0.03           90.31
+204                 Byam Martin Island       750       0.03           90.34
+205                    Cornwall Island       750       0.03           90.37
+206                      Dehalak Deset       750       0.03           90.40
+207                        New Georgia       750       0.03           90.43
+208                   Ostrov Salisbury       750       0.03           90.46
+209                     Porcher Island       750       0.03           90.49
+210                      Ra's Musandam       750       0.03           90.52
+211                              Rugen       750       0.03           90.55
+212                       White Island       733       0.03           90.58
+213                                127       720       0.03           90.61
+214                       Brock Island       720       0.03           90.64
+215                           Choiseul       720       0.03           90.67
+216                   Jazireh-ye Qeshm       720       0.03           90.70
+217                      Kanton Island       720       0.03           90.73
+218                         Kefallinia       720       0.03           90.76
+219                             Lombok       720       0.03           90.79
+220                       Ostrov Belyy       720       0.03           90.82
+221           Ostrov Bol'shoy Begichev       720       0.03           90.85
+222                    Ostrov Kunashir       720       0.03           90.88
+223                              Wetar       720       0.03           90.91
+224                                 20       701       0.03           90.94
+225                            British       690       0.02           90.96
+226                    Auckland Island       690       0.02           90.98
+227                           Busuanga       690       0.02           91.00
+228                    Eglinton Island       690       0.02           91.02
+229                      Fraser Island       690       0.02           91.04
+230                            Hiiumaa       690       0.02           91.06
+231            Ostrov Bol'shoy Shantar       690       0.02           91.08
+232                              South       690       0.02           91.10
+233                            Taliabu       690       0.02           91.12
+234                                 49       672       0.02           91.14
+235                                128       660       0.02           91.16
+236                                140       660       0.02           91.18
+237                                 17       660       0.02           91.20
+238                      Amami O Shima       660       0.02           91.22
+239                             Bintan       660       0.02           91.24
+240                        Bray Island       660       0.02           91.26
+241                                Fyn       660       0.02           91.28
+242                Grand Bahama Island       660       0.02           91.30
+243                             Limnos       660       0.02           91.32
+244                              Oland       660       0.02           91.34
+245                      Ostrov Bering       660       0.02           91.36
+246                      Ostrov Gallya       660       0.02           91.38
+247                  Ostrov Paramushir       660       0.02           91.40
+248                        Yos Sudarso       660       0.02           91.42
+249                                103       630       0.02           91.44
+250                   Air Force Island       630       0.02           91.46
+251                   Fergusson Island       630       0.02           91.48
+252                       Foley Island       630       0.02           91.50
+253               Isla de la Juventura       630       0.02           91.52
+254                Isla de los Estados       630       0.02           91.54
+255                             Misool       630       0.02           91.56
+256                               Muna       630       0.02           91.58
+257                               Nias       630       0.02           91.60
+258                        Ostrov Ayon       630       0.02           91.62
+259    Ostrova Arkticheskogo Instituta       630       0.02           91.64
+260                             Padang       630       0.02           91.66
+261                            Seiland       630       0.02           91.68
+262                            Simeule       630       0.02           91.70
+263                            Trangan       630       0.02           91.72
+264                                 31       600       0.02           91.74
+265                                 67       600       0.02           91.76
+266                                 85       600       0.02           91.78
+267                              Ambon       600       0.02           91.80
+268                         Big Island       600       0.02           91.82
+269                        Fernando Po       600       0.02           91.84
+270               Ile du Cap aux Meule       600       0.02           91.86
+271                  Isla de Margarita       600       0.02           91.88
+272                     Isla Magdalena       600       0.02           91.90
+273                             Kadavu       600       0.02           91.92
+274                            Kerkira       600       0.02           91.94
+275              King Christian Island       600       0.02           91.96
+276                        Koch Island       600       0.02           91.98
+277                             Lingga       600       0.02           92.00
+278                  Nottingham Island       600       0.02           92.02
+279                      Ostrov Hooker       600       0.02           92.04
+280                            Siberut       600       0.02           92.06
+281                           Woodlark       600       0.02           92.08
+282                           Zanzibar       600       0.02           92.10
+283                                 28       597       0.02           92.12
+284                                 92       578       0.02           92.14
+285                                 US       570       0.02           92.16
+286                                110       570       0.02           92.18
+287                     Acklins Island       570       0.02           92.20
+288                         Cat Island       570       0.02           92.22
+289                       Disko Island       570       0.02           92.24
+290                      Edgell Island       570       0.02           92.26
+291                Great Inagua Island       570       0.02           92.28
+292                       Isla de Mona       570       0.02           92.30
+293                 Ostrov Bel'kovskiy       570       0.02           92.32
+294                 Ostrov Karaginskiy       570       0.02           92.34
+295                      Ostrov Pioner       570       0.02           92.36
+296                            Suqutra       570       0.02           92.38
+297                              Yapen       570       0.02           92.40
+298                 Catanduanes Island       540       0.02           92.42
+299                            Dinagat       540       0.02           92.44
+300                              Khios       540       0.02           92.46
+301                        King Island       540       0.02           92.48
+302                             Komodo       540       0.02           92.50
+303                               Laut       540       0.02           92.52
+304                       Natuna Besar       540       0.02           92.54
+305                    Normanby Island       540       0.02           92.56
+306                      Ostrov Taymyr       540       0.02           92.58
+307                       Ostrov Yarok       540       0.02           92.60
+308                          Otok Cres       540       0.02           92.62
+309                     Polillo Island       540       0.02           92.64
+310                    Prescott Island       540       0.02           92.66
+311                             Rodhos       540       0.02           92.68
+312                               Roti       540       0.02           92.70
+313                               Sado       540       0.02           92.72
+314                       Tebingtinggi       540       0.02           92.74
+315                                 22       519       0.02           92.76
+316                                 87       510       0.02           92.78
+317                               Alor       510       0.02           92.80
+318                              Efate       510       0.02           92.82
+319                     Enclave border       510       0.02           92.84
+320                   Loks Land Island       510       0.02           92.86
+321                     Massachusettes       510       0.02           92.88
+322                  Mornington Island       510       0.02           92.90
+323                              Nendo       510       0.02           92.92
+324                      Nootka Island       510       0.02           92.94
+325                                Obi       510       0.02           92.96
+326                Ostrov Mak-Klintoka       510       0.02           92.98
+327                      Ostrov Oleniy       510       0.02           93.00
+328                Ostrov Shokal'skogo       510       0.02           93.02
+329                           Otok Pag       510       0.02           93.04
+330                             Pantar       510       0.02           93.06
+331                             Rennel       510       0.02           93.08
+332                           Tawitawi       510       0.02           93.10
+333                     Zuid-Flevoland       510       0.02           93.12
+334                                 33       499       0.02           93.14
+335                     Akpatok Island       480       0.02           93.16
+336                            Batanta       480       0.02           93.18
+337                            Bubiyan       480       0.02           93.20
+338                      Coburg Island       480       0.02           93.22
+339                               East       480       0.02           93.24
+340                                Epi       480       0.02           93.26
+341                          Illorsuit       480       0.02           93.28
+342                       Isla Campana       480       0.02           93.30
+343                 Isla Duque de York       480       0.02           93.32
+344                 Isla Madre de Dios       480       0.02           93.34
+345                     Isla Magdelena       480       0.02           93.36
+346                     Isla Wollaston       480       0.02           93.38
+347                  Jenny Lind Island       480       0.02           93.40
+348                         Karakelong       480       0.02           93.42
+349                   Melbourne Island       480       0.02           93.44
+350                   New World Island       480       0.02           93.46
+351                     Ostrov Russkiy       480       0.02           93.48
+352                      Ostrova Petra       480       0.02           93.50
+353                            Sabatik       480       0.02           93.52
+354                            Shannon       480       0.02           93.54
+355                          Tongatapu       480       0.02           93.56
+356                     Tukarak Island       480       0.02           93.58
+357                          Vallgrund       480       0.02           93.60
+358                             Vannoy       480       0.02           93.62
+359                                201       450       0.02           93.64
+360                                 48       450       0.02           93.66
+361                                 58       450       0.02           93.68
+362                                 BC       450       0.02           93.70
+363                    Bentinck Island       450       0.02           93.72
+364                     Calvert Island       450       0.02           93.74
+365                     Fanning Island       450       0.02           93.76
+366                   Gateshead Island       450       0.02           93.78
+367                         Haitan Dao       450       0.02           93.80
+368                          Isla Puna       450       0.02           93.82
+369                 Isla San Cristobal       450       0.02           93.84
+370                              Jerba       450       0.02           93.86
+371                           Mageroya       450       0.02           93.88
+372                                Mon       450       0.02           93.90
+373                        Nansen Land       450       0.02           93.92
+374           Ostrov Malyy Lyakhovskiy       450       0.02           93.94
+375                        Ostrov Urup       450       0.02           93.96
+376                        Ostrov Vize       450       0.02           93.98
+377                      Pagai Selatan       450       0.02           94.00
+378                           Salawati       450       0.02           94.02
+379                            Singkep       450       0.02           94.04
+380                 South Bruny Island       450       0.02           94.06
+381                               Sulu       450       0.02           94.08
+382                             Tagula       450       0.02           94.10
+383                            Vangunu       450       0.02           94.12
+384                                 60       436       0.02           94.14
+385                                 64       435       0.02           94.16
+386                                123       420       0.02           94.18
+387                                175       420       0.02           94.20
+388                                 63       420       0.02           94.22
+389                                 99       420       0.02           94.24
+390                             Andros       420       0.02           94.26
+391          Angeleda la Guarda Island       420       0.02           94.28
+392                            Basilan       420       0.02           94.30
+393                          Cayo Coco       420       0.02           94.32
+394                      Chongming Dao       420       0.02           94.34
+395                   Christmas Island       420       0.02           94.36
+396                             Culion       420       0.02           94.38
+397                          Erromango       420       0.02           94.40
+398                         Fukue Jima       420       0.02           94.42
+399                            Fulanga       420       0.02           94.44
+400                           Guimaras       420       0.02           94.46
+401                    Harrison Island       420       0.02           94.48
+402                        Hull Island       420       0.02           94.50
+403              Ilha Grande de Gurupa       420       0.02           94.52
+404                      Isla de Coiba       420       0.02           94.54
+405                       Isola d'Elba       420       0.02           94.56
+406                             Jemaja       420       0.02           94.58
+407                            Kabaena       420       0.02           94.60
+408                       Kamino Shima       420       0.02           94.62
+409                           Langkawi       420       0.02           94.64
+410                            Lolland       420       0.02           94.66
+411                             Maiana       420       0.02           94.68
+412                         Marinduque       420       0.02           94.70
+413                        New Hanover       420       0.02           94.72
+414                        Ngella Sule       420       0.02           94.74
+415                   Northumberland O       420       0.02           94.76
+416                  Ostrov Kolosovykh       420       0.02           94.78
+417             Ostrov Starokadomskogo       420       0.02           94.80
+418                       Pemba Island       420       0.02           94.82
+419                      Quadra Island       420       0.02           94.84
+420                           Rangsang       420       0.02           94.86
+421                              Rupat       420       0.02           94.88
+422                              Samos       420       0.02           94.90
+423                          Sao Tiago       420       0.02           94.92
+424               Solovetskiye Ostrova       420       0.02           94.94
+425                             Tablas       420       0.02           94.96
+426                          Tanahmasa       420       0.02           94.98
+427                             Totoya       420       0.02           95.00
+428                              Upolu       420       0.02           95.02
+429                             Usedom       420       0.02           95.04
+430                      Vella Lavella       420       0.02           95.06
+431                              Wales       420       0.02           95.08
+432                                141       390       0.01           95.09
+433                                189       390       0.01           95.10
+434                                 30       390       0.01           95.11
+435                      Amakusa Shoto       390       0.01           95.12
+436                             Ambrym       390       0.01           95.13
+437                 Aristazabal Island       390       0.01           95.14
+438                              Arnoy       390       0.01           95.15
+439                              Batam       390       0.01           95.16
+440                          Bengkalis       390       0.01           95.17
+441                               Buka       390       0.01           95.18
+442                 Cape Barren Island       390       0.01           95.19
+443                     Charles Island       390       0.01           95.20
+444                      Curtis Island       390       0.01           95.21
+445                       Dao Phu Quoc       390       0.01           95.22
+446                         Daung Kyun       390       0.01           95.23
+447                       Emerald Isle       390       0.01           95.24
+448               Great Barrier Island       390       0.01           95.25
+449                      Helena Island       390       0.01           95.26
+450                Hinchinbrook Island       390       0.01           95.27
+451                              Ibiza       390       0.01           95.28
+452                       Ilha Caviana       390       0.01           95.29
+453                     Isla Guaitecas       390       0.01           95.30
+454                       Isla Hermite       390       0.01           95.31
+455                Isla Juan Fernandez       390       0.01           95.32
+456                      Isle of Wight       390       0.01           95.33
+457                          Karpathos       390       0.01           95.34
+458                           Kiriwina       390       0.01           95.35
+459                       Mafia Island       390       0.01           95.36
+460                              Maine       390       0.01           95.37
+461                            Mangole       390       0.01           95.38
+462                   Mayaguana Island       390       0.01           95.39
+463                     Minicoy Island       390       0.01           95.40
+464                             Orango       390       0.01           95.41
+465               Ostrova Belayazemiya       390       0.01           95.42
+466                       Otok Korcula       390       0.01           95.43
+467                           Otok Krk       390       0.01           95.44
+468                         Pea Island       390       0.01           95.45
+469                             Sanana       390       0.01           95.46
+470                            Savai'i       390       0.01           95.47
+471                           Shichiyo       390       0.01           95.48
+472                             Sipura       390       0.01           95.49
+473                      Texada Island       390       0.01           95.50
+474                       Vanua Balavu       390       0.01           95.51
+475                                 45       370       0.01           95.52
+476                                 54       370       0.01           95.53
+477                                 62       369       0.01           95.54
+478                                 69       369       0.01           95.55
+479                                125       360       0.01           95.56
+480                                146       360       0.01           95.57
+481                                 86       360       0.01           95.58
+482                        Awaji Shima       360       0.01           95.59
+483                         Babelthuap       360       0.01           95.60
+484                           Batudaka       360       0.01           95.61
+485                          Boa Vista       360       0.01           95.62
+486                             Burias       360       0.01           95.63
+487                       Cayo Guajaba       360       0.01           95.64
+488                        Cayo Romano       360       0.01           95.65
+489                       Cayo Sabinal       360       0.01           95.66
+490                    Charlton Island       360       0.01           95.67
+491                        Donghai Dao       360       0.01           95.68
+492                        Fogo Island       360       0.01           95.69
+493                   Ile de la Tortue       360       0.01           95.70
+494                   Ilha da Sao Tome       360       0.01           95.71
+495                      Ilha Queimada       360       0.01           95.72
+496                          Jan Mayen       360       0.01           95.73
+497                         Kadan Kyun       360       0.01           95.74
+498                          Kai Kecil       360       0.01           95.75
+499                            Kangean       360       0.01           95.76
+500                          Ko Phuket       360       0.01           95.77
+501                       Kolombangara       360       0.01           95.78
+502                            Kvaloya       360       0.01           95.79
+503                          Langeland       360       0.01           95.80
+504                     Letsok-Aw Kyun       360       0.01           95.81
+505                             Levkas       360       0.01           95.82
+506                         Maramasike       360       0.01           95.83
+507                  Marchinbar Island       360       0.01           95.84
+508                               Maya       360       0.01           95.85
+509                   Merasheen Island       360       0.01           95.86
+510                            Minorca       360       0.01           95.87
+511                            Morotai       360       0.01           95.88
+512                      Nakadori Jima       360       0.01           95.89
+513                     Ostrov Rudolfa       360       0.01           95.90
+514                       Ostrov Sal'm       360       0.01           95.91
+515                 Ostrov Sibiryakova       360       0.01           95.92
+516                   Ostrov Stolbovoy       360       0.01           95.93
+517                    Ostrov Ushakova       360       0.01           95.94
+518                   Ostrova Tyulen'i       360       0.01           95.95
+519                             Pavuvu       360       0.01           95.96
+520                            Rendova       360       0.01           95.97
+521                        Sao Nicolau       360       0.01           95.98
+522                       Tanega Shima       360       0.01           95.99
+523                             Temotu       360       0.01           96.00
+524                              Umboi       360       0.01           96.01
+525                         Vanua Lava       360       0.01           96.02
+526                      Winter Island       360       0.01           96.03
+527                        Mill Island       346       0.01           96.04
+528                                 73       341       0.01           96.05
+529                                106       330       0.01           96.06
+530                                113       330       0.01           96.07
+531                                198       330       0.01           96.08
+532                             Aiyina       330       0.01           96.09
+533                    Augustus Island       330       0.01           96.10
+534                        Bell Island       330       0.01           96.11
+535                    Bilugyun Island       330       0.01           96.12
+536               Chapman Lewes Island       330       0.01           96.13
+537                      Croker Island       330       0.01           96.14
+538                     Crooked Island       330       0.01           96.15
+539                                Cut       330       0.01           96.16
+540                 Dirk Hartog Island       330       0.01           96.17
+541                              Froya       330       0.01           96.18
+542                              hole2       330       0.01           96.19
+543                       Ihla Mexiana       330       0.01           96.20
+544              Ilha de Sao Sebastiao       330       0.01           96.21
+545                        Ilha Grande       330       0.01           96.22
+546                       Ilha Janaucu       330       0.01           96.23
+547                      Iriomote Jima       330       0.01           96.24
+548                     Ishigaki Shima       330       0.01           96.25
+549                       Isla del Rey       330       0.01           96.26
+550                         Isla Nueva       330       0.01           96.27
+551                    Isla Santa Cruz       330       0.01           96.28
+552                           Ko Chang       330       0.01           96.29
+553                                Kos       330       0.01           96.30
+554                         Lanbi Kyun       330       0.01           96.31
+555                      Likoma Island       330       0.01           96.32
+556              Little Andaman Island       330       0.01           96.33
+557                      Malden Island       330       0.01           96.34
+558                        Ndoi Island       330       0.01           96.35
+559                  Ostrov Feklistova       330       0.01           96.36
+560                     Ostrov Shumshu       330       0.01           96.37
+561                    Ostrov Simushir       330       0.01           96.38
+562                          Otok Brac       330       0.01           96.39
+563                          Otok Hvar       330       0.01           96.40
+564                        Pagai Utara       330       0.01           96.41
+565                            Pohnpei       330       0.01           96.42
+566                          Rarotonga       330       0.01           96.43
+567                     Redonda Island       330       0.01           96.44
+568                             Rossel       330       0.01           96.45
+569                  Saltspring Island       330       0.01           96.46
+570                              Samso       330       0.01           96.47
+571                        Santo Antao       330       0.01           96.48
+572                 Schouwen-Duiveland       330       0.01           96.49
+573                            Selayar       330       0.01           96.50
+574                            Siargao       330       0.01           96.51
+575                             Skiros       330       0.01           96.52
+576                             Thasos       330       0.01           96.53
+577                     Tiburon Island       330       0.01           96.54
+578                     Trinkat Island       330       0.01           96.55
+579                   Vanderlin Island       330       0.01           96.56
+580                          Zakinthos       330       0.01           96.57
+581                                 24       315       0.01           96.58
+582                                 29       307       0.01           96.59
+583                                 65       307       0.01           96.60
+584                                114       300       0.01           96.61
+585                                122       300       0.01           96.62
+586                                156       300       0.01           96.63
+587                                180       300       0.01           96.64
+588                                209       300       0.01           96.65
+589                                 70       300       0.01           96.66
+590                                 77       300       0.01           96.67
+591                       Abu al Abyad       300       0.01           96.68
+592                      Achill Island       300       0.01           96.69
+593                                Als       300       0.01           96.70
+594                              Babar       300       0.01           96.71
+595                             Banggi       300       0.01           96.72
+596                   Bickerton Island       300       0.01           96.73
+597                       Bruny Island       300       0.01           96.74
+598                      Carmen Island       300       0.01           96.75
+599                              Damar       300       0.01           96.76
+600                               Fogo       300       0.01           96.77
+601                         Formentera       300       0.01           96.78
+602                                Gam       300       0.01           96.79
+603                         Gaza Strip       300       0.01           96.80
+604                  Goodenough Island       300       0.01           96.81
+605                 Great Exuma Island       300       0.01           96.82
+606                      Great Nicobar       300       0.01           96.83
+607                   Guadalupe Island       300       0.01           96.84
+608                           Halluoto       300       0.01           96.85
+609                        Hirado Jima       300       0.01           96.86
+610                             Ikaria       300       0.01           96.87
+611                      Ile de France       300       0.01           96.88
+612                        Ile Lameque       300       0.01           96.89
+613                     Ilha de Maraca       300       0.01           96.90
+614             Ilha de Santa Catarina       300       0.01           96.91
+615                   Ilha do Principe       300       0.01           96.92
+616                    Isla de Cozumel       300       0.01           96.93
+617                    Isla Fernandina       300       0.01           96.94
+618                         Isle Guafo       300       0.01           96.95
+619                    Jazirat Masirah       300       0.01           96.96
+620                             Karkar       300       0.01           96.97
+621                           Kasiruta       300       0.01           96.98
+622                            Kithira       300       0.01           96.99
+623                               Maio       300       0.01           97.00
+624                           Maiskhal       300       0.01           97.01
+625                           Marawwah       300       0.01           97.02
+626                      Marion Island       300       0.01           97.03
+627                              Milos       300       0.01           97.04
+628                        Moskenesoya       300       0.01           97.05
+629                             Mussau       300       0.01           97.06
+630              New Providence Island       300       0.01           97.07
+631                            Numfoor       300       0.01           97.08
+632                 Ostrov Dzharylgach       300       0.01           97.09
+633        Ostrov Komsomol'skoy Pravdy       300       0.01           97.10
+634                Ostrov Malyy Taymyr       300       0.01           97.11
+635                    Ostrov Onekotan       300       0.01           97.12
+636                 Ostrov Shiashkotan       300       0.01           97.13
+637                Ostrov Vil'kitskogo       300       0.01           97.14
+638                      Ostrova Dunay       300       0.01           97.15
+639                             Saipan       300       0.01           97.16
+640                            Sandwip       300       0.01           97.17
+641                           Sangeang       300       0.01           97.18
+642                            Saparua       300       0.01           97.19
+643                               Sawu       300       0.01           97.20
+644                     Sherbro Island       300       0.01           97.21
+645                            Sibuyan       300       0.01           97.22
+646                           Siquijor       300       0.01           97.23
+647                              Smola       300       0.01           97.24
+648                    Starbuck Island       300       0.01           97.25
+649                      Tanjong Sirik       300       0.01           97.26
+650                              Tanna       300       0.01           97.27
+651                              Thira       300       0.01           97.28
+652                              Tinos       300       0.01           97.29
+653                    Turneffe Island       300       0.01           97.30
+654                             Varmdo       300       0.01           97.31
+655                             Vava'u       300       0.01           97.32
+656                             Wowoni       300       0.01           97.33
+657                                Yap       300       0.01           97.34
+658                       Zhoushan Dao       300       0.01           97.35
+659                                 26       287       0.01           97.36
+660                                  9       286       0.01           97.37
+661                                 61       282       0.01           97.38
+662                                 44       281       0.01           97.39
+663                        Santa Maria       279       0.01           97.40
+664                                182       270       0.01           97.41
+665                                 42       270       0.01           97.42
+666                                 50       270       0.01           97.43
+667                                 66       270       0.01           97.44
+668                                 88       270       0.01           97.45
+669                                 93       270       0.01           97.46
+670                      Abaiang Atoll       270       0.01           97.47
+671                            Adonara       270       0.01           97.48
+672                           Al Aryan       270       0.01           97.49
+673                            Asinara       270       0.01           97.50
+674                               Basu       270       0.01           97.51
+675                            Biliran       270       0.01           97.52
+676                           Bornholm       270       0.01           97.53
+677                           Camiguin       270       0.01           97.54
+678                   Camiguin-Babuyan       270       0.01           97.55
+679                 Car Nicobar Island       270       0.01           97.56
+680                     Cheduba Island       270       0.01           97.57
+681                         Dao Cat Ba       270       0.01           97.58
+682                            Enggano       270       0.01           97.59
+683                            Fehmarn       270       0.01           97.60
+684                       Flint Island       270       0.01           97.61
+685                    Herschel Island       270       0.01           97.62
+686                   Ile de la Gonave       270       0.01           97.63
+687                        Isla Cedros       270       0.01           97.64
+688                   Isla Maria Madre       270       0.01           97.65
+689                  Isla San Salvador       270       0.01           97.66
+690                      Isla Trinidad       270       0.01           97.67
+691                             Jaffna       270       0.01           97.68
+692                      Kadmat Island       270       0.01           97.69
+693                        Kanmaw Kyun       270       0.01           97.70
+694                    Katchall Island       270       0.01           97.71
+695                            Kithnos       270       0.01           97.72
+696                              Kiwai       270       0.01           97.73
+697                            Klimnos       270       0.01           97.74
+698                           Ko Samui       270       0.01           97.75
+699                             Kundur       270       0.01           97.76
+700                              Larat       270       0.01           97.77
+701                              Lepar       270       0.01           97.78
+702                              Macao       270       0.01           97.79
+703                          Mali Kyun       270       0.01           97.80
+704                               Moen       270       0.01           97.81
+705                     Moreton Island       270       0.01           97.82
+706                              Naxos       270       0.01           97.83
+707                               Ngau       270       0.01           97.84
+708                            Nonouti       270       0.01           97.85
+709                            Nosy Be       270       0.01           97.86
+710                        Okushiri To       270       0.01           97.87
+711                    Ostrov Atlasova       270       0.01           97.88
+712                 Ostrov Dzhangylakh       270       0.01           97.89
+713                  Ostrov Morzhovets       270       0.01           97.90
+714                     Ostrov Shmidta       270       0.01           97.91
+715                  Ostrov Zav'yalova       270       0.01           97.92
+716                          Otok Dugi       270       0.01           97.93
+717                           Panaitan       270       0.01           97.94
+718                              Paros       270       0.01           97.95
+719                       Patta Island       270       0.01           97.96
+720                          Pentecost       270       0.01           97.97
+721                   Rangitoto Island       270       0.01           97.98
+722                           Rebun To       270       0.01           97.99
+723                            Rempang       270       0.01           98.00
+724                             Rotuma       270       0.01           98.01
+725                       Sable Island       270       0.01           98.02
+726                                Sal       270       0.01           98.03
+727                   Salisbury Island       270       0.01           98.04
+728                   San Jorge Island       270       0.01           98.05
+729                    San Jose Island       270       0.01           98.06
+730                       Sao Vincente       270       0.01           98.07
+731                           Sebangka       270       0.01           98.08
+732                             Selaru       270       0.01           98.09
+733                              Semau       270       0.01           98.10
+734                        Shikotan To       270       0.01           98.11
+735                               Simi       270       0.01           98.12
+736                       Smith Island       270       0.01           98.13
+737                     Store Koldewey       270       0.01           98.14
+738                      Sydney Island       270       0.01           98.15
+739                           Tetepare       270       0.01           98.16
+740               Thayawthadangyi Kyun       270       0.01           98.17
+741                             Tidore       270       0.01           98.18
+742                       Tokuno Shima       270       0.01           98.19
+743                            Tuangku       270       0.01           98.20
+744                     Vieques Island       270       0.01           98.21
+745                                 We       270       0.01           98.22
+746                             Xiamen       270       0.01           98.23
+747                   Yukhari Askipari       270       0.01           98.24
+748                      Zadetkyi Kyun       270       0.01           98.25
+749                                 55       265       0.01           98.26
+750                        West Island       254       0.01           98.27
+751                                 76       250       0.01           98.28
+752                                 79       248       0.01           98.29
+753                                135       240       0.01           98.30
+754                                171       240       0.01           98.31
+755                                 40       240       0.01           98.32
+756                                 52       240       0.01           98.33
+757                                 71       240       0.01           98.34
+758                                 89       240       0.01           98.35
+759                      Ambergris Cay       240       0.01           98.36
+760                            Ameland       240       0.01           98.37
+761                           Anatahan       240       0.01           98.38
+762                             Anatom       240       0.01           98.39
+763                       Angmagssalik       240       0.01           98.40
+764                         Artsvashen       240       0.01           98.41
+765                        Bai Nha Mac       240       0.01           98.42
+766                      Barrow Island       240       0.01           98.43
+767                             Bawean       240       0.01           98.44
+768                       Bigge Island       240       0.01           98.45
+769                         Butaritari       240       0.01           98.46
+770                            Calayan       240       0.01           98.47
+771                       Caya Fragosa       240       0.01           98.48
+772                    Cerralvo Island       240       0.01           98.49
+773                Chincoteague Island       240       0.01           98.50
+774                   Chizumulu Island       240       0.01           98.51
+775                               Dogo       240       0.01           98.52
+776                       Elcho Island       240       0.01           98.53
+777                               Faro       240       0.01           98.54
+778                      Flores Island       240       0.01           98.55
+779                              Forio       240       0.01           98.56
+780                            Formosa       240       0.01           98.57
+781                     Galiano Island       240       0.01           98.58
+782                           Gokceada       240       0.01           98.59
+783                               Gozo       240       0.01           98.60
+784                       Hachijo Jima       240       0.01           98.61
+785                              hole1       240       0.01           98.62
+786                        Hook Island       240       0.01           98.63
+787                       Ile d'Oleron       240       0.01           98.64
+788                          Ile Tidra       240       0.01           98.65
+789              Ilha de Sao Francisco       240       0.01           98.66
+790                    Isla de Guanaja       240       0.01           98.67
+791                    Isla del Carmen       240       0.01           98.68
+792                    Isla La Tortuga       240       0.01           98.69
+793                      Isla Montague       240       0.01           98.70
+794                   Isla Santa Maria       240       0.01           98.71
+795                     Isle de Roatan       240       0.01           98.72
+796               Isola di Pantelleria       240       0.01           98.73
+797                      Karimun-Besar       240       0.01           98.74
+798                         Ko Phangan       240       0.01           98.75
+799                           Koh Kong       240       0.01           98.76
+800                           Kutubdia       240       0.01           98.77
+801                              Laeso       240       0.01           98.78
+802                        Liuheng Dao       240       0.01           98.79
+803                              Maewo       240       0.01           98.80
+804                        Mahe Island       240       0.01           98.81
+805                           Mandioli       240       0.01           98.82
+806                           Mendanau       240       0.01           98.83
+807                             Mendol       240       0.01           98.84
+808                        Miyako Jima       240       0.01           98.85
+809                                Moa       240       0.01           98.86
+810                               Muhu       240       0.01           98.87
+811                             Naviti       240       0.01           98.88
+812            North Stradbroke Island       240       0.01           98.89
+813                         Ogurja Ada       240       0.01           98.90
+814                               Orno       240       0.01           98.91
+815                    Ostrov Bennetta       240       0.01           98.92
+816                Ostrov Plavnikovyye       240       0.01           98.93
+817                             Penida       240       0.01           98.94
+818                     Phillip Island       240       0.01           98.95
+819                             Pinang       240       0.01           98.96
+820                             Purutu       240       0.01           98.97
+821                           Rambutyo       240       0.01           98.98
+822                           Ranongga       240       0.01           98.99
+823                         Rishiri To       240       0.01           99.00
+824                             Romang       240       0.01           99.01
+825                               Rota       240       0.01           99.02
+826                     Rutland Island       240       0.01           99.03
+827                     Saganthit Kyun       240       0.01           99.04
+828                            Serifos       240       0.01           99.05
+829                               Siau       240       0.01           99.06
+830                            Tarakan       240       0.01           99.07
+831                            Ternate       240       0.01           99.08
+832                              Ticao       240       0.01           99.09
+833                             Tioman       240       0.01           99.10
+834                   Townshend Island       240       0.01           99.11
+835                            Tutuila       240       0.01           99.12
+836                           Vanikoro       240       0.01           99.13
+837                               Waar       240       0.01           99.14
+838                  Whitsunday Island       240       0.01           99.15
+839                         Yaku Shima       240       0.01           99.16
+840                                 81       218       0.01           99.17
+841                                104       210       0.01           99.18
+842                                107       210       0.01           99.19
+843                                 36       210       0.01           99.20
+844                                 37       210       0.01           99.21
+845                                 39       210       0.01           99.22
+846                                 90       210       0.01           99.23
+847                                Adi       210       0.01           99.24
+848                            Agrihan       210       0.01           99.25
+849                       Ailinglaplap       210       0.01           99.26
+850                            Alabama       210       0.01           99.27
+851                               Aoba       210       0.01           99.28
+852                        Bac Nha Mac       210       0.01           99.29
+853                     Balabac Island       210       0.01           99.30
+854                           Bangkulu       210       0.01           99.31
+855                              Batan       210       0.01           99.32
+856                     Boronga Island       210       0.01           99.33
+857                        Chinmen Tao       210       0.01           99.34
+858                      Clarke Island       210       0.01           99.35
+859                            Con Son       210       0.01           99.36
+860                        Conway Reef       210       0.01           99.37
+861                         Core Banks       210       0.01           99.38
+862                        Dao Car Bau       210       0.01           99.39
+863                      Easter Island       210       0.01           99.40
+864                      French Island       210       0.01           99.41
+865                               Gebe       210       0.01           99.42
+866                 Grand Manan Island       210       0.01           99.43
+867                          Haha Jima       210       0.01           99.44
+868                      Hunter Island       210       0.01           99.45
+869                                Iki       210       0.01           99.46
+870                   Interview Island       210       0.01           99.47
+871                                Ios       210       0.01           99.48
+872                       Isla Socorro       210       0.01           99.49
+873                            Itbayat       210       0.01           99.50
+874                      Kakeroma Jima       210       0.01           99.51
+875                                Kea       210       0.01           99.52
+876                       Ko Lanta Yai       210       0.01           99.53
+877                      Ko Phra Thong       210       0.01           99.54
+878                               Koro       210       0.01           99.55
+879                             Lakeba       210       0.01           99.56
+880                              Lihir       210       0.01           99.57
+881                     Little Nicobar       210       0.01           99.58
+882                   Macquarie Island       210       0.01           99.59
+883                              Manar       210       0.01           99.60
+884                            Mikonos       210       0.01           99.61
+885                        Mississippi       210       0.01           99.62
+886                         Moa Island       210       0.01           99.63
+887                          Nggatokae       210       0.01           99.64
+888                            O Shima       210       0.01           99.65
+889                Ostrov Nordenshelda       210       0.01           99.66
+890                     Ostrov Rasshua       210       0.01           99.67
+891                             Ovalau       210       0.01           99.68
+892                             Panaon       210       0.01           99.69
+893                        Pitt Island       210       0.01           99.70
+894                     Rongelap Atoll       210       0.01           99.71
+895                       Samal Island       210       0.01           99.72
+896                         Samothraki       210       0.01           99.73
+897                       San Salvador       210       0.01           99.74
+898                       Sant'Antonio       210       0.01           99.75
+899                      Shimono Shima       210       0.01           99.76
+900                          Shortland       210       0.01           99.77
+901                            Siantan       210       0.01           99.78
+902                              Sidea       210       0.01           99.79
+903                        Sir Baniyas       210       0.01           99.80
+904                              Siros       210       0.01           99.81
+905                        Tarasa Dwip       210       0.01           99.82
+906                              Tatau       210       0.01           99.83
+907                       Terschelling       210       0.01           99.84
+908                              Texel       210       0.01           99.85
+909                             Tinian       210       0.01           99.86
+910                         Vanua Masi       210       0.01           99.87
+911                   Alexander Island       208       0.01           99.88
+912                                 59       193       0.01           99.89
+913                                 41       189       0.01           99.90
+914                               'Eua       180       0.01           99.91
+915                                 34       180       0.01           99.92
+916                                 35       180       0.01           99.93
+917                            Ambitle       180       0.01           99.94
+918                             Borkum       180       0.01           99.95
+919                             Haruku       180       0.01           99.96
+920                    Havelock Island       180       0.01           99.97
+921                   Ile Sainte-Marie       180       0.01           99.98
+922                         Isla Colon       180       0.01           99.99
+923            Isla de Santa Margarita       180       0.01          100.00
+924                      Isla San Jose       180       0.01          100.01
+925                         Kalimantan       180       0.01          100.02
+926                        Kau-Ye Kyun       180       0.01          100.03
+927                             Ko Kut       180       0.01          100.04
+928                        Ko Tarutao        180       0.01          100.05
+929                             Kosrae       180       0.01          100.06
+930                               Kuma       180       0.01          100.07
+931                               Malo       180       0.01          100.08
+932                            Melilis       180       0.01          100.09
+933                    Mulgrave Island       180       0.01          100.10
+934                         Otok Mljet       180       0.01          100.11
+935                           Pampanal       180       0.01          100.12
+936                    Schiermonnikoog       180       0.01          100.13
+937                     Shergui Island       180       0.01          100.14
+938                          Shomushon       180       0.01          100.15
+939                               Subi       180       0.01          100.16
+940        Ashmore and Cartier Islands       150       0.01          100.17
+941                         Ko Yao Yai       150       0.01          100.18
+942               Little Inagua Island       150       0.01          100.19
+943                  Long Beach Island       150       0.01          100.20
+944                    Ocracoke Island       150       0.01          100.21
+945                           Skopelos       150       0.01          100.22
+946                           Vlieland       150       0.01          100.23
+947                     Berkner Island       104       0.00          100.23
+948                   Kerguelen Island        99       0.00          100.23
+949                    Thurston Island        79       0.00          100.23
+950                       Siple Island        70       0.00          100.23
+951              Grand Recif de Oatope        65       0.00          100.23
+952                     Henry Ice Rise        63       0.00          100.23
+953                      West Falkland        58       0.00          100.23
+954                      East Falkland        57       0.00          100.23
+955                  James Ross Island        50       0.00          100.23
+956                    Adelaide Island        48       0.00          100.23
+957                                 68        38       0.00          100.23
+958                      Carney Island        37       0.00          100.23
+959                   Roosevelt Island        36       0.00          100.23
+960                      Anvers Island        35       0.00          100.23
+961                      Latady Island        35       0.00          100.23
+962                      Spaatz Island        35       0.00          100.23
+963                     Korff Ice Rise        34       0.00          100.23
+964                        Ross Island        30       0.00          100.23
+965                 King George Island        28       0.00          100.23
+966                      Lydden Island        27       0.00          100.23
+967                     Brabant Island        26       0.00          100.23
+968                   Joinville Island        24       0.00          100.23
+969                                 51        23       0.00          100.23
+970                             Bequia        23       0.00          100.23
+971                     Charcot Island        22       0.00          100.23
+972                     Farwell Island        21       0.00          100.23
+973                  Livingston Island        21       0.00          100.23
+974                                 19        19       0.00          100.23
+975                          Ile Lifou        19       0.00          100.23
+976                      Bowman Island        18       0.00          100.23
+977                  Coronation Island        18       0.00          100.23
+978                     Gillock Island        18       0.00          100.23
+979                      Hearst Island        18       0.00          100.23
+980                      Renaud Island        18       0.00          100.23
+981                           Cheju Do        17       0.00          100.23
+982                       Diego Garcia        17       0.00          100.23
+983                           Eysturoy        17       0.00          100.23
+984                      Fuerteventura        17       0.00          100.23
+985                       Grant Island        17       0.00          100.23
+986                                 57        16       0.00          100.23
+987                            Canouan        16       0.00          100.23
+988                       Gran Canaria        16       0.00          100.23
+989                             Tahiti        16       0.00          100.23
+990                           Tenerife        16       0.00          100.23
+991                        Dean Island        15       0.00          100.23
+992                           Ile Mare        15       0.00          100.23
+993                           Miquelon        15       0.00          100.23
+994                      Wright Island        15       0.00          100.23
+995                                 47        14       0.00          100.23
+996                            Anjouan        14       0.00          100.23
+997                      Grande Comore        14       0.00          100.23
+998                          Ile Ouvea        14       0.00          100.23
+999                          Lanzarote        14       0.00          100.23
+1000               Pourquoi Pas Island        14       0.00          100.23
+1001                           Suduroy        14       0.00          100.23
+1002                                38        13       0.00          100.23
+1003                       Basse-Terre        13       0.00          100.23
+1004                    Coulman Island        13       0.00          100.23
+1005                      Grand Cayman        13       0.00          100.23
+1006                      Grande-Terre        13       0.00          100.23
+1007                     Little Cayman        13       0.00          100.23
+1008                        Sao Miguel        13       0.00          100.23
+1009                  Snow Hill Island        13       0.00          100.23
+1010                     Sturge Island        13       0.00          100.23
+1011                                53        12       0.00          100.23
+1012                                83        12       0.00          100.23
+1013                                95        12       0.00          100.23
+1014                  D'Urville Island        12       0.00          100.23
+1015                 Kerguelen Islands        12       0.00          100.23
+1016                          La Palma        12       0.00          100.23
+1017                  Lavoisier Island        12       0.00          100.23
+1018                           Madeira        12       0.00          100.23
+1019                         Namhae Do        12       0.00          100.23
+1020                     Newman Island        12       0.00          100.23
+1021                            Sandoy        12       0.00          100.23
+1022                     Steele Island        12       0.00          100.23
+1023                                72        11       0.00          100.23
+1024                  Drygalski Island        11       0.00          100.23
+1025                            Gomera        11       0.00          100.23
+1026                              Pico        11       0.00          100.23
+1027                 Rothschild Island        11       0.00          100.23
+1028                       Snow Island        11       0.00          100.23
+1029                          Terceira        11       0.00          100.23
+1030                             Vagar        11       0.00          100.23
+1031                              Vega        11       0.00          100.23
+1032                                18        10       0.00          100.23
+1033                       Cayman Brac        10       0.00          100.23
+1034                   Elephant Island        10       0.00          100.23
+1035               North Caicos Island        10       0.00          100.23
+1036                         Nuku Hiva        10       0.00          100.23
+1037             Providenciales Island        10       0.00          100.23
+1038                    Weddell Island        10       0.00          100.23
+1039                      Young Island        10       0.00          100.23
+1040                                78         9       0.00          100.23
+1041                            Bordoy         9       0.00          100.23
+1042                      Burke Island         9       0.00          100.23
+1043                   Clarence Island         9       0.00          100.23
+1044                     Dundee Island         9       0.00          100.23
+1045                            Futuna         9       0.00          100.23
+1046               Grand Caicos Island         9       0.00          100.23
+1047                         Henderson         9       0.00          100.23
+1048                           Hiva Oa         9       0.00          100.23
+1049                     Marie-Galante         9       0.00          100.23
+1050                            Moorea         9       0.00          100.23
+1051                     Nelson Island         9       0.00          100.23
+1052                      Saint Pierre         9       0.00          100.23
+1053                           Ua Huka         9       0.00          100.23
+1054                    Wiencke Island         9       0.00          100.23
+1055                               101         8       0.00          100.23
+1056                            Hierro         8       0.00          100.23
+1057               Ile de la Posession         8       0.00          100.23
+1058                      Ile Koutoumo         8       0.00          100.23
+1059                           Koje Do         8       0.00          100.23
+1060                    Montagu Island         8       0.00          100.23
+1061                            Raitea         8       0.00          100.23
+1062                     Robert Island         8       0.00          100.23
+1063                             Tahaa         8       0.00          100.23
+1064                         Ullung Do         8       0.00          100.23
+1065                         Fatu Hiva         7       0.00          100.23
+1066                            Moheli         7       0.00          100.23
+1067                             Ua Pu         7       0.00          100.23
+1068                              Uvea         7       0.00          100.23
+1069                           Tahuata         6       0.00          100.23
+1070                    Aby Penninsula         5       0.00          100.00</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        code frequency percentage cumulative_perc
+1        CAN    347190      12.52           12.52
+2        RUS    220620       7.96           20.48
+3        USA    172590       6.22           26.70
+4        IDN    111450       4.02           30.72
+5        CHN     81300       2.93           33.65
+6        GRL     67200       2.42           36.07
+7        CHL     60180       2.17           38.24
+8        NOR     59550       2.15           40.39
+9        BRA     56550       2.04           42.43
+10       AUS     54120       1.95           44.38
+11       IND     45540       1.64           46.02
+12       PHL     37140       1.34           47.36
+13       KAZ     34200       1.23           48.59
+14       JPN     32910       1.19           49.78
+15       ARG     31170       1.12           50.90
+16       MEX     30450       1.10           52.00
+17       GBR     29700       1.07           53.07
+18       GRC     27690       1.00           54.07
+19       MMR     25260       0.91           54.98
+20       NZL     23250       0.84           55.82
+21       PNG     22920       0.83           56.65
+22       MNG     22080       0.80           57.45
+23       UKR     20340       0.73           58.18
+24       COL     18690       0.67           58.85
+25       VNM     18390       0.66           59.51
+26       COD     18270       0.66           60.17
+27       FRA     18150       0.65           60.82
+28       IRN     18150       0.65           61.47
+29       ITA     18030       0.65           62.12
+30       SWE     17790       0.64           62.76
+31       PER     17670       0.64           63.40
+32       UZB     17520       0.63           64.03
+33       THA     17340       0.63           64.66
+34       FIN     17130       0.62           65.28
+35       PAK     17130       0.62           65.90
+36       DEU     17040       0.61           66.51
+37       VEN     17010       0.61           67.12
+38       TUR     16860       0.61           67.73
+39       MYS     15270       0.55           68.28
+40       MLI     14280       0.51           68.79
+41       MOZ     14070       0.51           69.30
+42       ISL     13590       0.49           69.79
+43       ESP     13440       0.48           70.27
+44       SDN     13410       0.48           70.75
+45       ZAF     13260       0.48           71.23
+46       SAU     13080       0.47           71.70
+47       TKM     12990       0.47           72.17
+48       BOL     12540       0.45           72.62
+49       AFG     12300       0.44           73.06
+50       LAO     11700       0.42           73.48
+51       KGZ     11640       0.42           73.90
+52       BGD     11520       0.42           74.32
+53       DZA     11490       0.41           74.73
+54       ZMB     11310       0.41           75.14
+55       TZA     11280       0.41           75.55
+56       HRV     11220       0.40           75.95
+57       TJK     11070       0.40           76.35
+58       MAR     11040       0.40           76.75
+59       NGA     10920       0.39           77.14
+60       CMR     10500       0.38           77.52
+61       GIN     10440       0.38           77.90
+62       ECU     10410       0.38           78.28
+63       AGO     10140       0.37           78.65
+64       SLB     10050       0.36           79.01
+65       SSD      9780       0.35           79.36
+66       CAF      9720       0.35           79.71
+67       COG      9690       0.35           80.06
+68       BLR      9630       0.35           80.41
+69       MRT      9630       0.35           80.76
+70       POL      9480       0.34           81.10
+71       IRL      9450       0.34           81.44
+72       CUB      9150       0.33           81.77
+73       ETH      9060       0.33           82.10
+74       DNK      8940       0.32           82.42
+75       TCD      8730       0.31           82.73
+76       GUY      8610       0.31           83.04
+77       NLD      8460       0.31           83.35
+78       ROU      8220       0.30           83.65
+79       AUT      8160       0.29           83.94
+80       GAB      8130       0.29           84.23
+81       BHS      8040       0.29           84.52
+82       FJI      8010       0.29           84.81
+83       SRB      8010       0.29           85.10
+84       MDG      7980       0.29           85.39
+85       AZE      7920       0.29           85.68
+86      &lt;NA&gt;      7854       0.28           85.96
+87       LBY      7710       0.28           86.24
+88       PRK      7710       0.28           86.52
+89       PRY      7710       0.28           86.80
+90       BFA      7650       0.28           87.08
+91       NER      7650       0.28           87.36
+92       EGY      7590       0.27           87.63
+93       PAN      7380       0.27           87.90
+94       MWI      7350       0.27           88.17
+95       OMN      7290       0.26           88.43
+96       SEN      7290       0.26           88.69
+97       CZE      7200       0.26           88.95
+98       NAM      7050       0.25           89.20
+99       IRQ      6990       0.25           89.45
+100      KEN      6750       0.24           89.69
+101      YEM      6750       0.24           89.93
+102      SOM      6660       0.24           90.17
+103      BWA      6630       0.24           90.41
+104      KHM      6630       0.24           90.65
+105      GHA      6510       0.23           90.88
+106      HUN      6420       0.23           91.11
+107      KIR      6360       0.23           91.34
+108      HND      6210       0.22           91.56
+109      NPL      6060       0.22           91.78
+110      EST      5850       0.21           91.99
+111      ERI      5760       0.21           92.20
+112      CHE      5610       0.20           92.40
+113      PRT      5580       0.20           92.60
+114      TUN      5580       0.20           92.80
+115      VUT      5580       0.20           93.00
+116      SUR      5520       0.20           93.20
+117      ARE      5490       0.20           93.40
+118      UGA      5400       0.19           93.59
+119      BGR      5370       0.19           93.78
+120      NIC      5280       0.19           93.97
+121      SYR      5100       0.18           94.15
+122      ZWE      5100       0.18           94.33
+123      GEO      4920       0.18           94.51
+124      BEL      4890       0.18           94.69
+125      GNB      4650       0.17           94.86
+126      LTU      4650       0.17           95.03
+127      MDA      4470       0.16           95.19
+128      BEN      4410       0.16           95.35
+129      ARM      4380       0.16           95.51
+130      BIH      4380       0.16           95.67
+131      SVK      4350       0.16           95.83
+132      URY      4290       0.15           95.98
+133      LVA      4200       0.15           96.13
+134      LBR      4170       0.15           96.28
+135      TGO      4020       0.14           96.42
+136      CRI      3990       0.14           96.56
+137      SVN      3960       0.14           96.70
+138      SLE      3780       0.14           96.84
+139      GTM      3450       0.12           96.96
+140      ALB      3390       0.12           97.08
+141      DOM      3360       0.12           97.20
+142      HTI      3360       0.12           97.32
+143      ISR      3150       0.11           97.43
+144      BTN      3000       0.11           97.54
+145      CYP      3000       0.11           97.65
+146      JOR      2880       0.10           97.75
+147      LKA      2760       0.10           97.85
+148      MNE      2760       0.10           97.95
+149      CPV      2610       0.09           98.04
+150      RWA      2490       0.09           98.13
+151      MKD      2430       0.09           98.22
+152      BDI      2340       0.08           98.30
+153      LSO      2310       0.08           98.38
+154      SLV      2220       0.08           98.46
+155      GMB      2190       0.08           98.54
+156      TLS      2100       0.08           98.62
+157      PRI      2070       0.07           98.69
+158      TWN      2040       0.07           98.76
+159      GNQ      2010       0.07           98.83
+160      KWT      2010       0.07           98.90
+161      BLZ      1950       0.07           98.97
+162      LBN      1860       0.07           99.04
+163      BRN      1680       0.06           99.10
+164      DJI      1680       0.06           99.16
+165      PSE      1500       0.05           99.21
+166      FSM      1470       0.05           99.26
+167      JAM      1440       0.05           99.31
+168      MHL      1410       0.05           99.36
+169      LUX      1380       0.05           99.41
+170      MNP      1380       0.05           99.46
+171      VIR      1260       0.05           99.51
+172      QAT      1020       0.04           99.55
+173      TON       960       0.03           99.58
+174      TTO       900       0.03           99.61
+175      WSM       810       0.03           99.64
+176      MDV       660       0.02           99.66
+177      STP       660       0.02           99.68
+178      PLW       630       0.02           99.70
+179      AND       570       0.02           99.72
+180      MUS       570       0.02           99.74
+181      MLT       480       0.02           99.76
+182      SMR       420       0.02           99.78
+183      BHR       390       0.01           99.79
+184      ATG       360       0.01           99.80
+185      GUM       360       0.01           99.81
+186      COK       330       0.01           99.82
+187      DMA       300       0.01           99.83
+188      LCA       300       0.01           99.84
+189      BRB       270       0.01           99.85
+190      GRD       270       0.01           99.86
+191      ASM       240       0.01           99.87
+192      BMU       240       0.01           99.88
+193      NIU       240       0.01           99.89
+194      NRU       240       0.01           99.90
+195      SYC       240       0.01           99.91
+196      MCO       210       0.01           99.92
+197      CIV        30       0.00           99.92
+198      KNA        30       0.00           99.92
+199 OWID_WRL        30       0.00           99.92
+200      SWZ        30       0.00           99.92
+201      TKL        30       0.00           99.92
+202      TUV        30       0.00           99.92
+203      VCT        30       0.00          100.00</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dengue.present frequency percentage cumulative_perc
+1             no   1423590      51.33           51.33
+2            yes   1342530      48.41           99.74
+3           &lt;NA&gt;      7164       0.26          100.00</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Variables processed: region, subregion, code, dengue.present"</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="variable-types" class="level2" data-number="2.3">
@@ -826,7 +2516,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -840,7 +2530,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -855,7 +2545,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -867,7 +2557,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -882,7 +2572,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -892,14 +2582,14 @@ character(0)</code></pre>
 <section id="visualise-binary-variables-in-the-data" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="visualise-binary-variables-in-the-data"><span class="header-section-number">2.6</span> Visualise Binary Variables in the Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sample dataset</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">50</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">50</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sample dataset</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">50</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">50</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -930,7 +2620,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -939,11 +2629,11 @@ character(0)</code></pre>
 <section id="cell-identification-challenge-guess-the-function-of-each-cell" class="level3" data-number="2.7.2">
 <h3 data-number="2.7.2" class="anchored" data-anchor-id="cell-identification-challenge-guess-the-function-of-each-cell"><span class="header-section-number">2.7.2</span> Cell Identification Challenge: Guess the Function of Each Cell</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_guess</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_guess</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -960,7 +2650,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -972,7 +2662,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -985,7 +2675,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -995,7 +2685,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1010,7 +2700,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1019,14 +2709,14 @@ character(0)</code></pre>
 <section id="droneworldbankdata" class="level3" data-number="2.9.2">
 <h3 data-number="2.9.2" class="anchored" data-anchor-id="droneworldbankdata"><span class="header-section-number">2.9.2</span> <code>drone::worldbankdata</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"thiyangt/drone"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"thiyangt/drone"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(drone)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"worldbankdata"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>worldbankdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(drone)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"worldbankdata"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>worldbankdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7,937 × 7
    Country Code  Region                     Year Cooking Electricity Income
@@ -1046,13 +2736,13 @@ character(0)</code></pre>
 </div>
 <p>Question: Perform a data profiling analysis on <code>worldbankdata</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>worldbankdata <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_shadow_upset</span>() <span class="sc">|&gt;</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  UpSetR<span class="sc">::</span><span class="fu">upset</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>worldbankdata <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_shadow_upset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  UpSetR<span class="sc">::</span><span class="fu">upset</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1066,7 +2756,7 @@ character(0)</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
