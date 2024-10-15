@@ -124,7 +124,7 @@
     "href": "ch2.html#required-software-and-packages",
     "title": "2  Data Quality Analysis",
     "section": "",
-    "text": "R Software\nRStudio\nFollowing packages:\n\ntidyverse\nrmarkdown\nknitr\ndata.validator\ndlookr\nskimr\nvisdat\ndenguedatahub\nDSjobtracker",
+    "text": "R Software\nRStudio\nFollowing packages:\n\ntidyverse\nrmarkdown\nknitr\ndata.validator\ndlookr\nskimr\nnaniar\nvisdat\ndenguedatahub\nDSjobtracker",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
     ]
@@ -134,7 +134,7 @@
     "href": "ch2.html#data-profiling",
     "title": "2  Data Quality Analysis",
     "section": "2.2 Data Profiling",
-    "text": "2.2 Data Profiling\nName of the datasets:\ndenguedatahub::srilanka_weekly_data\ndenguedatahub::world_annual\n\n2.2.1 Data Description: denguedatahub::srilanka_weekly_data\n\n\n\nData summary\n\n\nName\nsrilanka_weekly_data\n\n\nNumber of rows\n23882\n\n\nNumber of columns\n6\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n1\n\n\nDate\n2\n\n\nnumeric\n3\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\ndistrict\n0\n1\n5\n12\n0\n26\n0\n\n\n\nVariable type: Date\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nmedian\nn_unique\n\n\n\n\nstart.date\n0\n1\n2006-12-23\n2024-07-27\n2015-10-10\n919\n\n\nend.date\n0\n1\n2006-12-29\n2024-08-02\n2015-10-16\n919\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nyear\n0\n1\n2015.29\n5.09\n2006\n2011\n2015\n2020\n2024\n▆▇▆▇▇\n\n\nweek\n0\n1\n26.30\n15.05\n1\n13\n26\n39\n53\n▇▇▇▇▇\n\n\ncases\n0\n1\n31.21\n82.00\n0\n2\n8\n28\n2631\n▇▁▁▁▁\n\n\n\n\n\n\n\n2.2.2 Data Description: denguedatahub::world_annual\n\n\n\nData summary\n\n\nName\nworld_annual\n\n\nNumber of rows\n2773284\n\n\nNumber of columns\n10\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n4\n\n\nnumeric\n6\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nregion\n0\n1.00\n2\n35\n0\n282\n0\n\n\nsubregion\n1783783\n0.36\n1\n33\n0\n1069\n0\n\n\ncode\n7854\n1.00\n3\n8\n0\n202\n0\n\n\ndengue.present\n7164\n1.00\n2\n3\n0\n2\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nlong\n900\n1\n12.64\n85.44\n-180.00\n-67.60\n19.10\n80.68\n190.27\n▂▆▇▆▃\n\n\nlat\n900\n1\n30.24\n32.65\n-85.19\n6.95\n36.81\n55.33\n83.60\n▁▂▆▇▇\n\n\ngroup\n900\n1\n834.10\n457.79\n1.00\n417.00\n847.00\n1296.00\n1627.00\n▅▇▆▅▇\n\n\norder\n900\n1\n52582.05\n28142.60\n1.00\n28173.00\n52658.00\n77045.00\n100964.00\n▆▇▇▇▇\n\n\nyear\n7164\n1\n2004.50\n8.66\n1990.00\n1997.00\n2004.50\n2012.00\n2019.00\n▇▇▇▇▇\n\n\nincidence\n7164\n1\n701055.46\n3036888.47\n0.00\n0.00\n0.00\n99597.00\n56878730.00\n▇▁▁▁▁",
+    "text": "2.2 Data Profiling\nName of the datasets:\ndenguedatahub::srilanka_weekly_data\ndenguedatahub::world_annual\n\n2.2.1 Data Description: denguedatahub::srilanka_weekly_data\n\n\n\nAttaching package: 'skimr'\n\n\nThe following object is masked from 'package:naniar':\n\n    n_complete\n\n\n\nData summary\n\n\nName\nsrilanka_weekly_data\n\n\nNumber of rows\n23882\n\n\nNumber of columns\n6\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n1\n\n\nDate\n2\n\n\nnumeric\n3\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\ndistrict\n0\n1\n5\n12\n0\n26\n0\n\n\n\nVariable type: Date\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nmedian\nn_unique\n\n\n\n\nstart.date\n0\n1\n2006-12-23\n2024-07-27\n2015-10-10\n919\n\n\nend.date\n0\n1\n2006-12-29\n2024-08-02\n2015-10-16\n919\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nyear\n0\n1\n2015.29\n5.09\n2006\n2011\n2015\n2020\n2024\n▆▇▆▇▇\n\n\nweek\n0\n1\n26.30\n15.05\n1\n13\n26\n39\n53\n▇▇▇▇▇\n\n\ncases\n0\n1\n31.21\n82.00\n0\n2\n8\n28\n2631\n▇▁▁▁▁\n\n\n\n\n\n\n\n2.2.2 Data Description: denguedatahub::world_annual\n\n\n\nData summary\n\n\nName\nworld_annual\n\n\nNumber of rows\n2773284\n\n\nNumber of columns\n10\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n4\n\n\nnumeric\n6\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nregion\n0\n1.00\n2\n35\n0\n282\n0\n\n\nsubregion\n1783783\n0.36\n1\n33\n0\n1069\n0\n\n\ncode\n7854\n1.00\n3\n8\n0\n202\n0\n\n\ndengue.present\n7164\n1.00\n2\n3\n0\n2\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nlong\n900\n1\n12.64\n85.44\n-180.00\n-67.60\n19.10\n80.68\n190.27\n▂▆▇▆▃\n\n\nlat\n900\n1\n30.24\n32.65\n-85.19\n6.95\n36.81\n55.33\n83.60\n▁▂▆▇▇\n\n\ngroup\n900\n1\n834.10\n457.79\n1.00\n417.00\n847.00\n1296.00\n1627.00\n▅▇▆▅▇\n\n\norder\n900\n1\n52582.05\n28142.60\n1.00\n28173.00\n52658.00\n77045.00\n100964.00\n▆▇▇▇▇\n\n\nyear\n7164\n1\n2004.50\n8.66\n1990.00\n1997.00\n2004.50\n2012.00\n2019.00\n▇▇▇▇▇\n\n\nincidence\n7164\n1\n701055.46\n3036888.47\n0.00\n0.00\n0.00\n99597.00\n56878730.00\n▇▁▁▁▁",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
     ]
@@ -175,6 +175,36 @@
     "title": "2  Data Quality Analysis",
     "section": "2.6 Visualise Binary Variables in the Data",
     "text": "2.6 Visualise Binary Variables in the Data\n\n## Sample dataset\ndf1 &lt;- tibble(x=rep(c(1, 0), 50), y=c(rep(1, 50), rep(0, 50)))",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "ch2.html#visualise-messy-data-sets-with-mixed-data-types",
+    "href": "ch2.html#visualise-messy-data-sets-with-mixed-data-types",
+    "title": "2  Data Quality Analysis",
+    "section": "2.7 Visualise Messy Data Sets with Mixed Data Types",
+    "text": "2.7 Visualise Messy Data Sets with Mixed Data Types\n\n\n# A tibble: 10 × 3\n   x        y        z       \n   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   \n 1 TRUE     200      30.5    \n 2 TRUE     30.5     TRUE    \n 3 1        TRUE     TRUE    \n 4 200      0        1       \n 5 1        2014/1/2 1       \n 6 30       1        0       \n 7 30.5     1        1       \n 8 1        1        30      \n 9 0        TRUE     200     \n10 2014/1/2 30       2014/1/2\n\n\n\n2.7.1 Visualise the Data Set\n\n\n\n\n\n\n\n\n\n\n\n2.7.2 Cell Identification Challenge: Guess the Function of Each Cell\n\nvis_guess(df2)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "ch2.html#visualise-the-data-set",
+    "href": "ch2.html#visualise-the-data-set",
+    "title": "2  Data Quality Analysis",
+    "section": "2.8 Visualise the Data Set",
+    "text": "2.8 Visualise the Data Set",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "ch2.html#data-completeness",
+    "href": "ch2.html#data-completeness",
+    "title": "2  Data Quality Analysis",
+    "section": "2.8 Data Completeness",
+    "text": "2.8 Data Completeness\n\n2.8.1 Visualize the distribution of missing data.\n\n2.8.1.1 denguedatahub::srilanka_weekly_data\n\n\n\n\n\n\n\n\n\n\n\n2.8.1.2 denguedatahub::world_annual\n\n\n\n\n\n\n\n\n\n\n\n\n2.8.2 Visualise Missing in Variables\n\n\n\n\n\n\n\n\n\nSmall multiples of the same plot facet by year",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
     ]

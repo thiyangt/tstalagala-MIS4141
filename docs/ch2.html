@@ -195,6 +195,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#denguedatahubsrilanka_weekly_data-2" id="toc-denguedatahubsrilanka_weekly_data-2" class="nav-link" data-scroll-target="#denguedatahubsrilanka_weekly_data-2"><span class="header-section-number">2.5.1</span> <code>denguedatahub::srilanka_weekly_data</code></a></li>
   </ul></li>
   <li><a href="#visualise-binary-variables-in-the-data" id="toc-visualise-binary-variables-in-the-data" class="nav-link" data-scroll-target="#visualise-binary-variables-in-the-data"><span class="header-section-number">2.6</span> Visualise Binary Variables in the Data</a></li>
+  <li><a href="#visualise-messy-data-sets-with-mixed-data-types" id="toc-visualise-messy-data-sets-with-mixed-data-types" class="nav-link" data-scroll-target="#visualise-messy-data-sets-with-mixed-data-types"><span class="header-section-number">2.7</span> Visualise Messy Data Sets with Mixed Data Types</a>
+  <ul class="collapse">
+  <li><a href="#visualise-the-data-set" id="toc-visualise-the-data-set" class="nav-link" data-scroll-target="#visualise-the-data-set"><span class="header-section-number">2.7.1</span> Visualise the Data Set</a></li>
+  <li><a href="#cell-identification-challenge-guess-the-function-of-each-cell" id="toc-cell-identification-challenge-guess-the-function-of-each-cell" class="nav-link" data-scroll-target="#cell-identification-challenge-guess-the-function-of-each-cell"><span class="header-section-number">2.7.2</span> Cell Identification Challenge: Guess the Function of Each Cell</a></li>
+  </ul></li>
+  <li><a href="#data-completeness" id="toc-data-completeness" class="nav-link" data-scroll-target="#data-completeness"><span class="header-section-number">2.8</span> Data Completeness</a>
+  <ul class="collapse">
+  <li><a href="#visualize-the-distribution-of-missing-data." id="toc-visualize-the-distribution-of-missing-data." class="nav-link" data-scroll-target="#visualize-the-distribution-of-missing-data."><span class="header-section-number">2.8.1</span> Visualize the distribution of missing data.</a></li>
+  <li><a href="#visualise-missing-in-variables" id="toc-visualise-missing-in-variables" class="nav-link" data-scroll-target="#visualise-missing-in-variables"><span class="header-section-number">2.8.2</span> Visualise Missing in Variables</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -233,6 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>data.validator</p></li>
 <li><p>dlookr</p></li>
 <li><p>skimr</p></li>
+<li><p>naniar</p></li>
 <li><p>visdat</p></li>
 <li><p>denguedatahub</p></li>
 <li><p>DSjobtracker</p></li>
@@ -247,6 +258,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="data-description-denguedatahubsrilanka_weekly_data" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="data-description-denguedatahubsrilanka_weekly_data"><span class="header-section-number">2.2.1</span> Data Description: <code>denguedatahub::srilanka_weekly_data</code></h3>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'skimr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:naniar':
+
+    n_complete</code></pre>
+</div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -749,8 +769,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="visualise-binary-variables-in-the-data" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="visualise-binary-variables-in-the-data"><span class="header-section-number">2.6</span> Visualise Binary Variables in the Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sample dataset</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">50</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">50</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sample dataset</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">50</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">50</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -761,8 +781,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="visualise-messy-data-sets-with-mixed-data-types" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="visualise-messy-data-sets-with-mixed-data-types"><span class="header-section-number">2.7</span> Visualise Messy Data Sets with Mixed Data Types</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   x        y        z       
+   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   
+ 1 TRUE     200      30.5    
+ 2 TRUE     30.5     TRUE    
+ 3 1        TRUE     TRUE    
+ 4 200      0        1       
+ 5 1        2014/1/2 1       
+ 6 30       1        0       
+ 7 30.5     1        1       
+ 8 1        1        30      
+ 9 0        TRUE     200     
+10 2014/1/2 30       2014/1/2</code></pre>
+</div>
+</div>
+<section id="visualise-the-data-set" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="visualise-the-data-set"><span class="header-section-number">2.7.1</span> Visualise the Data Set</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cell-identification-challenge-guess-the-function-of-each-cell" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="cell-identification-challenge-guess-the-function-of-each-cell"><span class="header-section-number">2.7.2</span> Cell Identification Challenge: Guess the Function of Each Cell</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_guess</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-completeness" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="data-completeness"><span class="header-section-number">2.8</span> Data Completeness</h2>
+<section id="visualize-the-distribution-of-missing-data." class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="visualize-the-distribution-of-missing-data."><span class="header-section-number">2.8.1</span> Visualize the distribution of missing data.</h3>
+<section id="denguedatahubsrilanka_weekly_data-3" class="level4" data-number="2.8.1.1">
+<h4 data-number="2.8.1.1" class="anchored" data-anchor-id="denguedatahubsrilanka_weekly_data-3"><span class="header-section-number">2.8.1.1</span> <code>denguedatahub::srilanka_weekly_data</code></h4>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="denguedatahubworld_annual-2" class="level4" data-number="2.8.1.2">
+<h4 data-number="2.8.1.2" class="anchored" data-anchor-id="denguedatahubworld_annual-2"><span class="header-section-number">2.8.1.2</span> <code>denguedatahub::world_annual</code></h4>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="visualise-missing-in-variables" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="visualise-missing-in-variables"><span class="header-section-number">2.8.2</span> Visualise Missing in Variables</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Small multiples of the same plot facet by year</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

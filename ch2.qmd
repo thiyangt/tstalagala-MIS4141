@@ -19,6 +19,8 @@
     -   dlookr
 
     -   skimr
+    
+    - naniar
 
     -   visdat
 
@@ -37,6 +39,7 @@ Name of the datasets:
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(denguedatahub)
 library(tidyverse)
+library(naniar)
 ```
 
 ### Data Description: `denguedatahub::srilanka_weekly_data`
@@ -114,4 +117,61 @@ df1 <- tibble(x=rep(c(1, 0), 50), y=c(rep(1, 50), rep(0, 50)))
 
 ```{r, echo=FALSE}
 vis_binary(df1)
+```
+
+## Visualise Messy Data Sets with Mixed Data Types
+
+```{r,  echo=FALSE}
+set.seed(8)
+x <- c("TRUE", "TRUE", 1, 200, 1L, 30, 30.5, 1, 0, "2014/1/2")
+y <- sample(x)
+z <- sample(y)
+df2 <- tibble(x, y, z)
+df2
+```
+
+### Visualise the Data Set
+
+```{r,  echo=FALSE}
+vis_dat(df2)
+```
+
+###  Cell Identification Challenge: Guess the Function of Each Cell
+
+```{r}
+vis_guess(df2)
+```
+
+## Data Completeness
+
+### Visualize the distribution of missing data.
+
+#### `denguedatahub::srilanka_weekly_data`
+
+```{r, echo=FALSE}
+vis_miss(srilanka_weekly_data)
+```
+
+#### `denguedatahub::world_annual`
+
+```{r, echo=FALSE}
+world_annual |>
+  slice(1:2000) |>
+  vis_miss()
+```
+
+### Visualise Missing in Variables
+
+```{r, echo=FALSE}
+world_annual |>
+  slice(1:2000) |>
+  gg_miss_var()
+```
+
+Small multiples of the same plot facet by year
+
+```{r, echo=FALSE, fig.height=15}
+world_annual |>
+  slice(1:2000) |>
+  gg_miss_var(facet = year)
 ```
