@@ -208,3 +208,11 @@ worldbankdata |>
   as_shadow_upset() |>
   UpSetR::upset()
 ```
+
+## Visualizing Values That Meet Specific Conditions
+
+```{r, echo=FALSE}
+srilanka_weekly_data |>
+  select(week, cases) |>
+  vis_expect(~.x >= 50)
+```
