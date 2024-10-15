@@ -175,3 +175,36 @@ world_annual |>
   slice(1:2000) |>
   gg_miss_var(facet = year)
 ```
+
+## Explore Missing Relationships
+
+### `denguedatahub::srilanka_weekly_data`
+
+```{r, echo=FALSE}
+world_annual |>
+  slice(1:2000) |>
+  as_shadow_upset() |>
+  UpSetR::upset()
+```
+
+### `drone::worldbankdata`
+
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("thiyangt/drone")
+```
+
+```{r}
+library(tibble)
+library(drone)
+data("worldbankdata")
+worldbankdata
+```
+
+Question: Perform a data profiling analysis on `worldbankdata`.
+
+```{r}
+worldbankdata |>
+  as_shadow_upset() |>
+  UpSetR::upset()
+```

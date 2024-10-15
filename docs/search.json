@@ -208,5 +208,15 @@
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
     ]
+  },
+  {
+    "objectID": "ch2.html#explore-missing-relationships",
+    "href": "ch2.html#explore-missing-relationships",
+    "title": "2  Data Quality Analysis",
+    "section": "2.9 Explore Missing Relationships",
+    "text": "2.9 Explore Missing Relationships\n\n2.9.1 denguedatahub::srilanka_weekly_data\n\n\n\n\n\n\n\n\n\n\n\n2.9.2 drone::worldbankdata\n\n# install.packages(\"devtools\")\ndevtools::install_github(\"thiyangt/drone\")\n\n\nlibrary(tibble)\nlibrary(drone)\ndata(\"worldbankdata\")\nworldbankdata\n\n# A tibble: 7,937 × 7\n   Country Code  Region                     Year Cooking Electricity Income\n   &lt;fct&gt;   &lt;fct&gt; &lt;fct&gt;                     &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt; \n 1 Aruba   ABW   Latin America & Caribbean  1990      NA       100   H     \n 2 Aruba   ABW   Latin America & Caribbean  2000      NA        91.7 H     \n 3 Aruba   ABW   Latin America & Caribbean  2013      NA       100   H     \n 4 Aruba   ABW   Latin America & Caribbean  2014      NA       100   H     \n 5 Aruba   ABW   Latin America & Caribbean  2015      NA       100   H     \n 6 Aruba   ABW   Latin America & Caribbean  2016      NA       100   H     \n 7 Aruba   ABW   Latin America & Caribbean  2017      NA       100   H     \n 8 Aruba   ABW   Latin America & Caribbean  2018      NA       100   H     \n 9 Aruba   ABW   Latin America & Caribbean  2019      NA       100   H     \n10 Aruba   ABW   Latin America & Caribbean  2020      NA       100   H     \n# ℹ 7,927 more rows\n\n\nQuestion: Perform a data profiling analysis on worldbankdata.\n\nworldbankdata |&gt;\n  as_shadow_upset() |&gt;\n  UpSetR::upset()",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
+    ]
   }
 ]

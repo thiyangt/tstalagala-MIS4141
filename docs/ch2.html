@@ -205,6 +205,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#visualize-the-distribution-of-missing-data." id="toc-visualize-the-distribution-of-missing-data." class="nav-link" data-scroll-target="#visualize-the-distribution-of-missing-data."><span class="header-section-number">2.8.1</span> Visualize the distribution of missing data.</a></li>
   <li><a href="#visualise-missing-in-variables" id="toc-visualise-missing-in-variables" class="nav-link" data-scroll-target="#visualise-missing-in-variables"><span class="header-section-number">2.8.2</span> Visualise Missing in Variables</a></li>
   </ul></li>
+  <li><a href="#explore-missing-relationships" id="toc-explore-missing-relationships" class="nav-link" data-scroll-target="#explore-missing-relationships"><span class="header-section-number">2.9</span> Explore Missing Relationships</a>
+  <ul class="collapse">
+  <li><a href="#denguedatahubsrilanka_weekly_data-4" id="toc-denguedatahubsrilanka_weekly_data-4" class="nav-link" data-scroll-target="#denguedatahubsrilanka_weekly_data-4"><span class="header-section-number">2.9.1</span> <code>denguedatahub::srilanka_weekly_data</code></a></li>
+  <li><a href="#droneworldbankdata" id="toc-droneworldbankdata" class="nav-link" data-scroll-target="#droneworldbankdata"><span class="header-section-number">2.9.2</span> <code>drone::worldbankdata</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -873,6 +878,63 @@ Attaching package: 'skimr'</code></pre>
 <div>
 <figure class="figure">
 <p><img src="ch2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="explore-missing-relationships" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="explore-missing-relationships"><span class="header-section-number">2.9</span> Explore Missing Relationships</h2>
+<section id="denguedatahubsrilanka_weekly_data-4" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="denguedatahubsrilanka_weekly_data-4"><span class="header-section-number">2.9.1</span> <code>denguedatahub::srilanka_weekly_data</code></h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="droneworldbankdata" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2" class="anchored" data-anchor-id="droneworldbankdata"><span class="header-section-number">2.9.2</span> <code>drone::worldbankdata</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"thiyangt/drone"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(drone)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"worldbankdata"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>worldbankdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7,937 × 7
+   Country Code  Region                     Year Cooking Electricity Income
+   &lt;fct&gt;   &lt;fct&gt; &lt;fct&gt;                     &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt; 
+ 1 Aruba   ABW   Latin America &amp; Caribbean  1990      NA       100   H     
+ 2 Aruba   ABW   Latin America &amp; Caribbean  2000      NA        91.7 H     
+ 3 Aruba   ABW   Latin America &amp; Caribbean  2013      NA       100   H     
+ 4 Aruba   ABW   Latin America &amp; Caribbean  2014      NA       100   H     
+ 5 Aruba   ABW   Latin America &amp; Caribbean  2015      NA       100   H     
+ 6 Aruba   ABW   Latin America &amp; Caribbean  2016      NA       100   H     
+ 7 Aruba   ABW   Latin America &amp; Caribbean  2017      NA       100   H     
+ 8 Aruba   ABW   Latin America &amp; Caribbean  2018      NA       100   H     
+ 9 Aruba   ABW   Latin America &amp; Caribbean  2019      NA       100   H     
+10 Aruba   ABW   Latin America &amp; Caribbean  2020      NA       100   H     
+# ℹ 7,927 more rows</code></pre>
+</div>
+</div>
+<p>Question: Perform a data profiling analysis on <code>worldbankdata</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>worldbankdata <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_shadow_upset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  UpSetR<span class="sc">::</span><span class="fu">upset</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
