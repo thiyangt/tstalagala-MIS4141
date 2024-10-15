@@ -141,6 +141,16 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#required-software-and-packages" id="toc-required-software-and-packages" class="nav-link active" data-scroll-target="#required-software-and-packages"><span class="header-section-number">2.1</span> Required software and packages</a></li>
+  <li><a href="#data-profiling" id="toc-data-profiling" class="nav-link" data-scroll-target="#data-profiling"><span class="header-section-number">2.2</span> Data Profiling</a>
+  <ul class="collapse">
+  <li><a href="#data-description-denguedatahubsrilanka_weekly_data" id="toc-data-description-denguedatahubsrilanka_weekly_data" class="nav-link" data-scroll-target="#data-description-denguedatahubsrilanka_weekly_data"><span class="header-section-number">2.2.1</span> Data Description: <code>denguedatahub::srilanka_weekly_data</code></a></li>
+  <li><a href="#data-description-denguedatahubworld_annual" id="toc-data-description-denguedatahubworld_annual" class="nav-link" data-scroll-target="#data-description-denguedatahubworld_annual"><span class="header-section-number">2.2.2</span> Data Description: <code>denguedatahub::world_annual</code></a></li>
+  </ul></li>
+  <li><a href="#variable-types" id="toc-variable-types" class="nav-link" data-scroll-target="#variable-types"><span class="header-section-number">2.3</span> Variable Types</a>
+  <ul class="collapse">
+  <li><a href="#denguedatahubsrilanka_weekly_data" id="toc-denguedatahubsrilanka_weekly_data" class="nav-link" data-scroll-target="#denguedatahubsrilanka_weekly_data"><span class="header-section-number">2.3.1</span> <code>denguedatahub::srilanka_weekly_data</code></a></li>
+  <li><a href="#denguedatahubworld_annual" id="toc-denguedatahubworld_annual" class="nav-link" data-scroll-target="#denguedatahubworld_annual"><span class="header-section-number">2.3.2</span> <code>denguedatahub::world_annual</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -178,12 +188,478 @@ ul.task-list li input[type="checkbox"] {
 <li><p>knitr</p></li>
 <li><p>data.validator</p></li>
 <li><p>dlookr</p></li>
+<li><p>skimr</p></li>
+<li><p>visdat</p></li>
 <li><p>denguedatahub</p></li>
 <li><p>DSjobtracker</p></li>
 </ul></li>
 </ol>
+</section>
+<section id="data-profiling" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="data-profiling"><span class="header-section-number">2.2</span> Data Profiling</h2>
+<p>Name of the datasets:</p>
+<p><code>denguedatahub::srilanka_weekly_data</code></p>
+<p><code>denguedatahub::world_annual</code></p>
+<section id="data-description-denguedatahubsrilanka_weekly_data" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="data-description-denguedatahubsrilanka_weekly_data"><span class="header-section-number">2.2.1</span> Data Description: <code>denguedatahub::srilanka_weekly_data</code></h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">srilanka_weekly_data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">23882</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Date</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">district</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: Date</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">min</th>
+<th style="text-align: left;">max</th>
+<th style="text-align: left;">median</th>
+<th style="text-align: right;">n_unique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">start.date</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2006-12-23</td>
+<td style="text-align: left;">2024-07-27</td>
+<td style="text-align: left;">2015-10-10</td>
+<td style="text-align: right;">919</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">end.date</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2006-12-29</td>
+<td style="text-align: left;">2024-08-02</td>
+<td style="text-align: left;">2015-10-16</td>
+<td style="text-align: right;">919</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">year</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2015.29</td>
+<td style="text-align: right;">5.09</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">2024</td>
+<td style="text-align: left;">▆▇▆▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">week</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">26.30</td>
+<td style="text-align: right;">15.05</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: left;">▇▇▇▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cases</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">31.21</td>
+<td style="text-align: right;">82.00</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">2631</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="data-description-denguedatahubworld_annual" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="data-description-denguedatahubworld_annual"><span class="header-section-number">2.2.2</span> Data Description: <code>denguedatahub::world_annual</code></h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">world_annual</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">2773284</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">region</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">282</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">subregion</td>
+<td style="text-align: right;">1783783</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1069</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">code</td>
+<td style="text-align: right;">7854</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dengue.present</td>
+<td style="text-align: right;">7164</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">long</td>
+<td style="text-align: right;">900</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12.64</td>
+<td style="text-align: right;">85.44</td>
+<td style="text-align: right;">-180.00</td>
+<td style="text-align: right;">-67.60</td>
+<td style="text-align: right;">19.10</td>
+<td style="text-align: right;">80.68</td>
+<td style="text-align: right;">190.27</td>
+<td style="text-align: left;">▂▆▇▆▃</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lat</td>
+<td style="text-align: right;">900</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">30.24</td>
+<td style="text-align: right;">32.65</td>
+<td style="text-align: right;">-85.19</td>
+<td style="text-align: right;">6.95</td>
+<td style="text-align: right;">36.81</td>
+<td style="text-align: right;">55.33</td>
+<td style="text-align: right;">83.60</td>
+<td style="text-align: left;">▁▂▆▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">900</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">834.10</td>
+<td style="text-align: right;">457.79</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">417.00</td>
+<td style="text-align: right;">847.00</td>
+<td style="text-align: right;">1296.00</td>
+<td style="text-align: right;">1627.00</td>
+<td style="text-align: left;">▅▇▆▅▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">order</td>
+<td style="text-align: right;">900</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">52582.05</td>
+<td style="text-align: right;">28142.60</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">28173.00</td>
+<td style="text-align: right;">52658.00</td>
+<td style="text-align: right;">77045.00</td>
+<td style="text-align: right;">100964.00</td>
+<td style="text-align: left;">▆▇▇▇▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">year</td>
+<td style="text-align: right;">7164</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2004.50</td>
+<td style="text-align: right;">8.66</td>
+<td style="text-align: right;">1990.00</td>
+<td style="text-align: right;">1997.00</td>
+<td style="text-align: right;">2004.50</td>
+<td style="text-align: right;">2012.00</td>
+<td style="text-align: right;">2019.00</td>
+<td style="text-align: left;">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">incidence</td>
+<td style="text-align: right;">7164</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">701055.46</td>
+<td style="text-align: right;">3036888.47</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">99597.00</td>
+<td style="text-align: right;">56878730.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="variable-types" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="variable-types"><span class="header-section-number">2.3</span> Variable Types</h2>
+<section id="denguedatahubsrilanka_weekly_data" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="denguedatahubsrilanka_weekly_data"><span class="header-section-number">2.3.1</span> <code>denguedatahub::srilanka_weekly_data</code></h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="denguedatahubworld_annual" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="denguedatahubworld_annual"><span class="header-section-number">2.3.2</span> <code>denguedatahub::world_annual</code></h3>
+<p>This example shows how to work with a large dataset with <code>visdat</code></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

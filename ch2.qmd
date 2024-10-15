@@ -17,7 +17,58 @@
     - data.validator
   
     - dlookr
+    
+    - skimr
+    
+    - visdat
   
     - denguedatahub
   
     - DSjobtracker
+
+
+## Data Profiling
+
+Name of the datasets:
+
+`denguedatahub::srilanka_weekly_data`
+
+`denguedatahub::world_annual`
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(denguedatahub)
+```
+
+### Data Description: `denguedatahub::srilanka_weekly_data`
+
+```{r, echo=FALSE}
+library(skimr)
+skim(srilanka_weekly_data)
+```
+
+### Data Description: `denguedatahub::world_annual`
+
+```{r, echo=FALSE}
+library(skimr)
+skim(world_annual)
+```
+
+
+## Variable Types
+
+### `denguedatahub::srilanka_weekly_data`
+
+```{r, echo=FALSE}
+library(visdat)
+vis_dat(srilanka_weekly_data)
+```
+
+### `denguedatahub::world_annual`
+
+This example shows how to work  with a large dataset with `visdat`
+
+```{r, echo=FALSE}
+world_annual |>
+  dplyr::slice(1000) |>
+  vis_dat()
+```
