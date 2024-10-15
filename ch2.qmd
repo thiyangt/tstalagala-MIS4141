@@ -28,13 +28,29 @@
 
     -   DSjobtracker
 
-## Data Profiling
 
-Name of the datasets:
+## Data sets
 
 `denguedatahub::srilanka_weekly_data`
 
+```{r}
+library(tibble)
+library(denguedatahub)
+data(srilanka_weekly_data)
+srilanka_weekly_data
+```
+
 `denguedatahub::world_annual`
+
+
+```{r}
+library(tibble)
+data(world_annual)
+as_tibble(world_annual)
+```
+
+
+## Data Profiling
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(denguedatahub)
@@ -44,38 +60,45 @@ library(naniar)
 
 ### Data Description: `denguedatahub::srilanka_weekly_data`
 
-Method 1:
+#### Method 1
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(skimr)
 skim(srilanka_weekly_data)
 ```
 
-Method 2:
+#### Method 2
 
-```{r, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(funModeling)
 status(srilanka_weekly_data)
 ```
 
-```{r, message=FALSE, warning=FALSE}
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 data_integrity(srilanka_weekly_data)
 ```
 
-```{r, message=FALSE, warning=FALSE}
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 profiling_num(srilanka_weekly_data)
 ```
 
 Distribution of Numeric Variables
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
+```{r,  echo=FALSE, warning=FALSE, message=FALSE}
 plot_num(srilanka_weekly_data)
 ```
 
 Distribution of Categorical Variables
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
+```{r,  echo=FALSE, warning=FALSE, message=FALSE}
 freq(srilanka_weekly_data)
+```
+
+#### Method 3
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(dlookr)
+diagnose(flights, year, month, day)
 ```
 
 ### Data Description: `denguedatahub::world_annual`
@@ -107,10 +130,11 @@ plot_num(world_annual)
 
 Distribution of Categorical Variables
 
-```{r,  warning=FALSE, message=FALSE}
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
 freq(world_annual)
 ```
 
+Note: Output has been omitted due to its length.
 
 ## Variable Types
 
@@ -256,7 +280,7 @@ data("worldbankdata")
 worldbankdata
 ```
 
-Question: Perform a data profiling analysis on `worldbankdata`.
+> Your turn: Perform a data profiling analysis on `worldbankdata`.
 
 ```{r}
 worldbankdata |>
@@ -273,3 +297,58 @@ srilanka_weekly_data |>
   select(week, cases) |>
   vis_expect(~.x >= 50)
 ```
+
+
+## Descriptive Statistcs
+
+### denguedatahub::srilanka_weekly_data
+
+
+```{r}
+describe(srilanka_weekly_data)
+```
+
+### denguedatahub::worldbankdata
+
+```{r}
+describe(worldbankdata)
+```
+
+## Diagnosing outliers 
+
+### denguedatahub::srilanka_weekly_data
+
+
+```{r, echo=FALSE}
+diagnose_outlier(srilanka_weekly_data)
+```
+
+### denguedatahub::worldbankdata
+
+```{r, echo=FALSE}
+diagnose_outlier(worldbankdata)
+```
+
+## Bi-variate relationships
+
+### drone::worldbankdata
+
+```{r, echo=FALSE}
+worldbankdata|>
+  select(where(is.numeric)) |>
+  vis_cor()
+```
+
+## Exercise 
+
+1. Explore the methodologies behind each code used to generate the outputs.
+
+2. Explore data validation methods implemented in R.
+
+3. Perform data quality analysis for the following datasets and properly report your findings:
+
+- Datasets in the denguedatahub package in R
+
+- Datasets in the drone package in R
+
+- The penguins dataset in the palmerpenguins package in R
