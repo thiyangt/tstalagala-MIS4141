@@ -44,9 +44,22 @@ library(naniar)
 
 ### Data Description: `denguedatahub::srilanka_weekly_data`
 
-```{r, echo=FALSE}
+Method 1:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(skimr)
 skim(srilanka_weekly_data)
+```
+
+Method 2:
+
+```{r, message=FALSE, warning=FALSE}
+library(funModeling)
+status(srilanka_weekly_data)
+```
+
+```{r, message=FALSE, warning=FALSE}
+data_integrity(srilanka_weekly_data)
 ```
 
 ### Data Description: `denguedatahub::world_annual`
@@ -55,6 +68,17 @@ skim(srilanka_weekly_data)
 library(skimr)
 skim(world_annual)
 ```
+
+Method 2:
+
+```{r}
+status(world_annual)
+```
+
+```{r}
+data_integrity(world_annual)
+```
+
 
 ## Variable Types
 
@@ -210,6 +234,8 @@ worldbankdata |>
 ```
 
 ## Visualizing Values That Meet Specific Conditions
+
+Visualize values greater than 50 in the cases Column of the `srilanka_weekly_data` dataset.
 
 ```{r, echo=FALSE}
 srilanka_weekly_data |>

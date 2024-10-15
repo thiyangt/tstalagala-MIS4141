@@ -263,16 +263,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>denguedatahub::world_annual</code></p>
 <section id="data-description-denguedatahubsrilanka_weekly_data" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="data-description-denguedatahubsrilanka_weekly_data"><span class="header-section-number">2.2.1</span> Data Description: <code>denguedatahub::srilanka_weekly_data</code></h3>
+<p>Method 1:</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'skimr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:naniar':
-
-    n_complete</code></pre>
-</div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -471,6 +463,57 @@ Attaching package: 'skimr'</code></pre>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<p>Method 2:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(funModeling)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">status</span>(srilanka_weekly_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             variable q_zeros   p_zeros q_na p_na q_inf p_inf      type unique
+year             year       0 0.0000000    0    0     0     0   numeric     19
+week             week       0 0.0000000    0    0     0     0   numeric     53
+start.date start.date       0 0.0000000    0    0     0     0      Date    919
+end.date     end.date       0 0.0000000    0    0     0     0      Date    919
+district     district       0 0.0000000    0    0     0     0 character     26
+cases           cases    3551 0.1486894    0    0     0     0   numeric    530</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_integrity</span>(srilanka_weekly_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$vars_num_with_NA
+[1] variable q_na     p_na    
+&lt;0 rows&gt; (or 0-length row.names)
+
+$vars_cat_with_NA
+[1] variable q_na     p_na    
+&lt;0 rows&gt; (or 0-length row.names)
+
+$vars_cat_high_card
+[1] variable unique  
+&lt;0 rows&gt; (or 0-length row.names)
+
+$MAX_UNIQUE
+[1] 35
+
+$vars_one_value
+character(0)
+
+$vars_cat
+[1] "district"
+
+$vars_num
+[1] "year"  "week"  "cases"
+
+$vars_char
+[1] "district"
+
+$vars_factor
+character(0)
+
+$vars_other
+[1] "start.date" "end.date"  </code></pre>
 </div>
 </div>
 </section>
@@ -699,6 +742,80 @@ Attaching package: 'skimr'</code></pre>
 </table>
 </div>
 </div>
+<p>Method 2:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">status</span>(world_annual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     variable q_zeros      p_zeros    q_na        p_na q_inf
+long                     long     721 0.0002599806     900 0.000324525     0
+lat                       lat       0 0.0000000000     900 0.000324525     0
+group                   group       0 0.0000000000     900 0.000324525     0
+order                   order       0 0.0000000000     900 0.000324525     0
+region                 region       0 0.0000000000       0 0.000000000     0
+subregion           subregion       0 0.0000000000 1783783 0.643202427     0
+code                     code       0 0.0000000000    7854 0.002832022     0
+year                     year       0 0.0000000000    7164 0.002583219     0
+incidence           incidence 1423590 0.5133228331    7164 0.002583219     0
+dengue.present dengue.present       0 0.0000000000    7164 0.002583219     0
+               p_inf      type unique
+long               0   numeric  76880
+lat                0   numeric  76361
+group              0   numeric   1627
+order              0   integer  99338
+region             0 character    282
+subregion          0 character   1069
+code               0 character    202
+year               0   numeric     30
+incidence          0   numeric   4109
+dengue.present     0 character      2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data_integrity</span>(world_annual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$vars_num_with_NA
+           variable q_na        p_na
+long           long  900 0.000324525
+lat             lat  900 0.000324525
+group         group  900 0.000324525
+order         order  900 0.000324525
+year           year 7164 0.002583219
+incidence incidence 7164 0.002583219
+
+$vars_cat_with_NA
+                     variable    q_na        p_na
+subregion           subregion 1783783 0.643202427
+code                     code    7854 0.002832022
+dengue.present dengue.present    7164 0.002583219
+
+$vars_cat_high_card
+           variable unique
+subregion subregion   1069
+region       region    282
+code           code    202
+
+$MAX_UNIQUE
+[1] 35
+
+$vars_one_value
+character(0)
+
+$vars_cat
+[1] "region"         "subregion"      "code"           "dengue.present"
+
+$vars_num
+[1] "long"      "lat"       "group"     "order"     "year"      "incidence"
+
+$vars_char
+[1] "region"         "subregion"      "code"           "dengue.present"
+
+$vars_factor
+character(0)
+
+$vars_other
+character(0)</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="variable-types" class="level2" data-number="2.3">
@@ -709,7 +826,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -723,7 +840,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -738,7 +855,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -750,7 +867,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -765,7 +882,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -775,14 +892,14 @@ Attaching package: 'skimr'</code></pre>
 <section id="visualise-binary-variables-in-the-data" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="visualise-binary-variables-in-the-data"><span class="header-section-number">2.6</span> Visualise Binary Variables in the Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sample dataset</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">50</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">50</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sample dataset</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">50</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">50</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -813,7 +930,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -822,11 +939,11 @@ Attaching package: 'skimr'</code></pre>
 <section id="cell-identification-challenge-guess-the-function-of-each-cell" class="level3" data-number="2.7.2">
 <h3 data-number="2.7.2" class="anchored" data-anchor-id="cell-identification-challenge-guess-the-function-of-each-cell"><span class="header-section-number">2.7.2</span> Cell Identification Challenge: Guess the Function of Each Cell</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_guess</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_guess</span>(df2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -843,7 +960,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -855,7 +972,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -868,7 +985,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -878,7 +995,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -893,7 +1010,7 @@ Attaching package: 'skimr'</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -902,14 +1019,14 @@ Attaching package: 'skimr'</code></pre>
 <section id="droneworldbankdata" class="level3" data-number="2.9.2">
 <h3 data-number="2.9.2" class="anchored" data-anchor-id="droneworldbankdata"><span class="header-section-number">2.9.2</span> <code>drone::worldbankdata</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"thiyangt/drone"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"thiyangt/drone"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(drone)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"worldbankdata"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>worldbankdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(drone)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"worldbankdata"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>worldbankdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7,937 × 7
    Country Code  Region                     Year Cooking Electricity Income
@@ -929,13 +1046,13 @@ Attaching package: 'skimr'</code></pre>
 </div>
 <p>Question: Perform a data profiling analysis on <code>worldbankdata</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>worldbankdata <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_shadow_upset</span>() <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  UpSetR<span class="sc">::</span><span class="fu">upset</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>worldbankdata <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_shadow_upset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  UpSetR<span class="sc">::</span><span class="fu">upset</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -944,11 +1061,12 @@ Attaching package: 'skimr'</code></pre>
 </section>
 <section id="visualizing-values-that-meet-specific-conditions" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="visualizing-values-that-meet-specific-conditions"><span class="header-section-number">2.10</span> Visualizing Values That Meet Specific Conditions</h2>
+<p>Visualize values greater than 50 in the cases Column of the <code>srilanka_weekly_data</code> dataset.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ch2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ch2_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
