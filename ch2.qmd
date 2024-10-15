@@ -2,30 +2,29 @@
 
 ## Required software and packages
 
-1. R Software
+1.  R Software
 
-2. RStudio
+2.  RStudio
 
-3. Following packages:
+3.  Following packages:
 
-    - tidyverse
-  
-    - rmarkdown
-    
-    - knitr
-  
-    - data.validator
-  
-    - dlookr
-    
-    - skimr
-    
-    - visdat
-  
-    - denguedatahub
-  
-    - DSjobtracker
+    -   tidyverse
 
+    -   rmarkdown
+
+    -   knitr
+
+    -   data.validator
+
+    -   dlookr
+
+    -   skimr
+
+    -   visdat
+
+    -   denguedatahub
+
+    -   DSjobtracker
 
 ## Data Profiling
 
@@ -37,6 +36,7 @@ Name of the datasets:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(denguedatahub)
+library(tidyverse)
 ```
 
 ### Data Description: `denguedatahub::srilanka_weekly_data`
@@ -53,7 +53,6 @@ library(skimr)
 skim(world_annual)
 ```
 
-
 ## Variable Types
 
 ### `denguedatahub::srilanka_weekly_data`
@@ -63,12 +62,56 @@ library(visdat)
 vis_dat(srilanka_weekly_data)
 ```
 
+Question: Why is there no observable variability in the `cases` column?
+
 ### `denguedatahub::world_annual`
 
-This example shows how to work  with a large dataset with `visdat`
+This example shows how to work with a large dataset with `visdat`
 
 ```{r, echo=FALSE}
 world_annual |>
-  dplyr::slice(1000) |>
+  dplyr::slice(1:1000) |>
   vis_dat()
+```
+
+## Visualising Numerial Data
+
+### `denguedatahub::srilanka_weekly_data`
+
+```{r, echo=FALSE}
+srilanka_weekly_data |>
+  select(where(is.numeric)) |>
+  vis_value()
+```
+
+### `denguedatahub::world_annual`
+
+```{r, echo=FALSE}
+world_annual |>
+  slice(1:1000) |>
+  select(where(is.numeric)) |>
+  vis_value()
+```
+
+## Arrange Data Before Plotting Numeric Variables
+
+
+### `denguedatahub::srilanka_weekly_data`
+
+```{r, echo=FALSE}
+srilanka_weekly_data |>
+  select(where(is.numeric)) |>
+  arrange(cases) |>
+  vis_value()
+```
+
+## Visualise Binary Variables in the Data
+
+```{r}
+## Sample dataset
+df1 <- tibble(x=rep(c(1, 0), 50), y=c(rep(1, 50), rep(0, 50)))
+```
+
+```{r, echo=FALSE}
+vis_binary(df1)
 ```

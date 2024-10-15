@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -151,6 +185,16 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#denguedatahubsrilanka_weekly_data" id="toc-denguedatahubsrilanka_weekly_data" class="nav-link" data-scroll-target="#denguedatahubsrilanka_weekly_data"><span class="header-section-number">2.3.1</span> <code>denguedatahub::srilanka_weekly_data</code></a></li>
   <li><a href="#denguedatahubworld_annual" id="toc-denguedatahubworld_annual" class="nav-link" data-scroll-target="#denguedatahubworld_annual"><span class="header-section-number">2.3.2</span> <code>denguedatahub::world_annual</code></a></li>
   </ul></li>
+  <li><a href="#visualising-numerial-data" id="toc-visualising-numerial-data" class="nav-link" data-scroll-target="#visualising-numerial-data"><span class="header-section-number">2.4</span> Visualising Numerial Data</a>
+  <ul class="collapse">
+  <li><a href="#denguedatahubsrilanka_weekly_data-1" id="toc-denguedatahubsrilanka_weekly_data-1" class="nav-link" data-scroll-target="#denguedatahubsrilanka_weekly_data-1"><span class="header-section-number">2.4.1</span> <code>denguedatahub::srilanka_weekly_data</code></a></li>
+  <li><a href="#denguedatahubworld_annual-1" id="toc-denguedatahubworld_annual-1" class="nav-link" data-scroll-target="#denguedatahubworld_annual-1"><span class="header-section-number">2.4.2</span> <code>denguedatahub::world_annual</code></a></li>
+  </ul></li>
+  <li><a href="#arrange-data-before-plotting-numeric-variables" id="toc-arrange-data-before-plotting-numeric-variables" class="nav-link" data-scroll-target="#arrange-data-before-plotting-numeric-variables"><span class="header-section-number">2.5</span> Arrange Data Before Plotting Numeric Variables</a>
+  <ul class="collapse">
+  <li><a href="#denguedatahubsrilanka_weekly_data-2" id="toc-denguedatahubsrilanka_weekly_data-2" class="nav-link" data-scroll-target="#denguedatahubsrilanka_weekly_data-2"><span class="header-section-number">2.5.1</span> <code>denguedatahub::srilanka_weekly_data</code></a></li>
+  </ul></li>
+  <li><a href="#visualise-binary-variables-in-the-data" id="toc-visualise-binary-variables-in-the-data" class="nav-link" data-scroll-target="#visualise-binary-variables-in-the-data"><span class="header-section-number">2.6</span> Visualise Binary Variables in the Data</a></li>
   </ul>
 </nav>
     </div>
@@ -644,6 +688,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Question: Why is there no observable variability in the <code>cases</code> column?</p>
 </section>
 <section id="denguedatahubworld_annual" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="denguedatahubworld_annual"><span class="header-section-number">2.3.2</span> <code>denguedatahub::world_annual</code></h3>
@@ -657,9 +702,67 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="visualising-numerial-data" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="visualising-numerial-data"><span class="header-section-number">2.4</span> Visualising Numerial Data</h2>
+<section id="denguedatahubsrilanka_weekly_data-1" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="denguedatahubsrilanka_weekly_data-1"><span class="header-section-number">2.4.1</span> <code>denguedatahub::srilanka_weekly_data</code></h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="denguedatahubworld_annual-1" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="denguedatahubworld_annual-1"><span class="header-section-number">2.4.2</span> <code>denguedatahub::world_annual</code></h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="arrange-data-before-plotting-numeric-variables" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="arrange-data-before-plotting-numeric-variables"><span class="header-section-number">2.5</span> Arrange Data Before Plotting Numeric Variables</h2>
+<section id="denguedatahubsrilanka_weekly_data-2" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="denguedatahubsrilanka_weekly_data-2"><span class="header-section-number">2.5.1</span> <code>denguedatahub::srilanka_weekly_data</code></h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="visualise-binary-variables-in-the-data" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="visualise-binary-variables-in-the-data"><span class="header-section-number">2.6</span> Visualise Binary Variables in the Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sample dataset</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">50</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">50</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">50</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->

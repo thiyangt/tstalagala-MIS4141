@@ -144,7 +144,37 @@
     "href": "ch2.html#variable-types",
     "title": "2  Data Quality Analysis",
     "section": "2.3 Variable Types",
-    "text": "2.3 Variable Types\n\n2.3.1 denguedatahub::srilanka_weekly_data\n\n\n\n\n\n\n\n\n\n\n\n2.3.2 denguedatahub::world_annual\nThis example shows how to work with a large dataset with visdat",
+    "text": "2.3 Variable Types\n\n2.3.1 denguedatahub::srilanka_weekly_data\n\n\n\n\n\n\n\n\n\nQuestion: Why is there no observable variability in the cases column?\n\n\n2.3.2 denguedatahub::world_annual\nThis example shows how to work with a large dataset with visdat",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "ch2.html#visualising-numerial-data",
+    "href": "ch2.html#visualising-numerial-data",
+    "title": "2  Data Quality Analysis",
+    "section": "2.4 Visualising Numerial Data",
+    "text": "2.4 Visualising Numerial Data\n\n2.4.1 denguedatahub::srilanka_weekly_data\n\n\n\n\n\n\n\n\n\n\n\n2.4.2 denguedatahub::world_annual",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "ch2.html#arrange-data-before-plotting-numeric-variables",
+    "href": "ch2.html#arrange-data-before-plotting-numeric-variables",
+    "title": "2  Data Quality Analysis",
+    "section": "2.5 Arrange Data Before Plotting Numeric Variables",
+    "text": "2.5 Arrange Data Before Plotting Numeric Variables\n\n2.5.1 denguedatahub::srilanka_weekly_data",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "ch2.html#visualise-binary-variables-in-the-data",
+    "href": "ch2.html#visualise-binary-variables-in-the-data",
+    "title": "2  Data Quality Analysis",
+    "section": "2.6 Visualise Binary Variables in the Data",
+    "text": "2.6 Visualise Binary Variables in the Data\n\n## Sample dataset\ndf1 &lt;- tibble(x=rep(c(1, 0), 50), y=c(rep(1, 50), rep(0, 50)))",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
     ]
