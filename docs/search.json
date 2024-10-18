@@ -274,7 +274,7 @@
     "href": "ch2.html#exercise",
     "title": "2  Data Quality Analysis",
     "section": "2.15 Exercise",
-    "text": "2.15 Exercise\n\nExplore the methodologies behind each code used to generate the outputs.\nExplore data validation methods implemented in R.\nPerform data quality analysis for the following datasets and properly report your findings:\n\n\nDatasets in the denguedatahub package in R\nDatasets in the drone package in R\nThe penguins dataset in the palmerpenguins package in R",
+    "text": "2.15 Exercise\n\nExplore the methodologies behind each code used to generate the outputs.\nExplore data validation methods implemented in R.\nPerform data quality analysis for the following datasets and properly report your findings:\n\n\nDatasets in the denguedatahub package in R\nDatasets in the drone package in R\nThe penguins dataset in the palmerpenguins package in R\n\n\nPerform a data quality analysis on the following data set.\n\n\nlibrary(DSjobtracker)\ndata(DSraw)",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Quality Analysis</span>"
     ]

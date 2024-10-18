@@ -28,7 +28,6 @@
 
     -   DSjobtracker
 
-
 ## Data sets
 
 `denguedatahub::srilanka_weekly_data`
@@ -42,13 +41,11 @@ srilanka_weekly_data
 
 `denguedatahub::world_annual`
 
-
 ```{r}
 library(tibble)
 data(world_annual)
 as_tibble(world_annual)
 ```
-
 
 ## Data Profiling
 
@@ -298,11 +295,9 @@ srilanka_weekly_data |>
   vis_expect(~.x >= 50)
 ```
 
-
 ## Descriptive Statistcs
 
 ### denguedatahub::srilanka_weekly_data
-
 
 ```{r}
 describe(srilanka_weekly_data)
@@ -314,10 +309,9 @@ describe(srilanka_weekly_data)
 describe(worldbankdata)
 ```
 
-## Diagnosing outliers 
+## Diagnosing outliers
 
 ### denguedatahub::srilanka_weekly_data
-
 
 ```{r, echo=FALSE}
 diagnose_outlier(srilanka_weekly_data)
@@ -339,16 +333,23 @@ worldbankdata|>
   vis_cor()
 ```
 
-## Exercise 
+## Exercise
 
-1. Explore the methodologies behind each code used to generate the outputs.
+1.  Explore the methodologies behind each code used to generate the outputs.
 
-2. Explore data validation methods implemented in R.
+2.  Explore data validation methods implemented in R.
 
-3. Perform data quality analysis for the following datasets and properly report your findings:
+3.  Perform data quality analysis for the following datasets and properly report your findings:
 
-- Datasets in the denguedatahub package in R
+-   Datasets in the denguedatahub package in R
 
-- Datasets in the drone package in R
+-   Datasets in the drone package in R
 
-- The penguins dataset in the palmerpenguins package in R
+-   The penguins dataset in the palmerpenguins package in R
+
+4. Perform a data quality analysis on the following data set.
+
+```{r}
+library(DSjobtracker)
+data(DSraw)
+```
