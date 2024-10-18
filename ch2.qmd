@@ -1,5 +1,7 @@
 # Data Quality Analysis
 
+Data quality analysis is the process of evaluating the quality of data against a set of defined standards or requirements. It ensures that the data is fit for its intended use by checking for errors, inconsistencies, and other issues.
+
 ## Required software and packages
 
 1.  R Software
@@ -49,6 +51,8 @@ as_tibble(world_annual)
 
 ## Data Profiling
 
+Data Profiling is about exploring the data. It helps us to identify the characteristics of a dataset, such as its dimensions, data types, and overall structure.
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(denguedatahub)
 library(tidyverse)
@@ -59,6 +63,8 @@ library(naniar)
 
 #### Method 1
 
+R Code:..................................
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(skimr)
 skim(srilanka_weekly_data)
@@ -66,14 +72,24 @@ skim(srilanka_weekly_data)
 
 #### Method 2
 
+
+R Code:..................................
+
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(funModeling)
 status(srilanka_weekly_data)
 ```
 
+
+R Code:..................................
+
 ```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 data_integrity(srilanka_weekly_data)
 ```
+
+
+R Code:..................................
 
 ```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 profiling_num(srilanka_weekly_data)
@@ -81,11 +97,17 @@ profiling_num(srilanka_weekly_data)
 
 Distribution of Numeric Variables
 
+
+R Code:..................................
+
 ```{r,  echo=FALSE, warning=FALSE, message=FALSE}
 plot_num(srilanka_weekly_data)
 ```
 
 Distribution of Categorical Variables
+
+
+R Code:..................................
 
 ```{r,  echo=FALSE, warning=FALSE, message=FALSE}
 freq(srilanka_weekly_data)
@@ -93,12 +115,18 @@ freq(srilanka_weekly_data)
 
 #### Method 3
 
+
+R Code:..................................
+
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(dlookr)
 diagnose(flights, year, month, day)
 ```
 
 ### Data Description: `denguedatahub::world_annual`
+
+
+R Code:..................................
 
 ```{r, echo=FALSE}
 library(skimr)
@@ -137,6 +165,9 @@ Note: Output has been omitted due to its length.
 
 ### `denguedatahub::srilanka_weekly_data`
 
+
+R Code:..................................
+
 ```{r, echo=FALSE}
 library(visdat)
 vis_dat(srilanka_weekly_data)
@@ -148,6 +179,9 @@ Question: Why is there no observable variability in the `cases` column?
 
 This example shows how to work with a large dataset with `visdat`
 
+
+R Code:..................................
+
 ```{r, echo=FALSE}
 world_annual |>
   dplyr::slice(1:1000) |>
@@ -158,6 +192,9 @@ world_annual |>
 
 ### `denguedatahub::srilanka_weekly_data`
 
+
+R Code:..................................
+
 ```{r, echo=FALSE}
 srilanka_weekly_data |>
   select(where(is.numeric)) |>
@@ -165,6 +202,9 @@ srilanka_weekly_data |>
 ```
 
 ### `denguedatahub::world_annual`
+
+
+R Code:..................................
 
 ```{r, echo=FALSE}
 world_annual |>
@@ -176,6 +216,9 @@ world_annual |>
 ## Arrange Data Before Plotting Numeric Variables
 
 ### `denguedatahub::srilanka_weekly_data`
+
+
+R Code:..................................
 
 ```{r, echo=FALSE}
 srilanka_weekly_data |>
@@ -191,11 +234,17 @@ srilanka_weekly_data |>
 df1 <- tibble(x=rep(c(1, 0), 50), y=c(rep(1, 50), rep(0, 50)))
 ```
 
+
+R Code:..................................
+
 ```{r, echo=FALSE}
 vis_binary(df1)
 ```
 
 ## Visualise Messy Data Sets with Mixed Data Types
+
+
+R Code:..................................
 
 ```{r,  echo=FALSE}
 set.seed(8)
@@ -207,6 +256,9 @@ df2
 ```
 
 ### Visualise the Data Set
+
+
+R Code:..................................
 
 ```{r,  echo=FALSE}
 vis_dat(df2)
@@ -224,11 +276,17 @@ vis_guess(df2)
 
 #### `denguedatahub::srilanka_weekly_data`
 
+
+R Code:..................................
+
 ```{r, echo=FALSE}
 vis_miss(srilanka_weekly_data)
 ```
 
 #### `denguedatahub::world_annual`
+
+
+R Code:..................................
 
 ```{r, echo=FALSE}
 world_annual |>
@@ -238,6 +296,9 @@ world_annual |>
 
 ### Visualise Missing in Variables
 
+
+R Code:..................................
+
 ```{r, echo=FALSE}
 world_annual |>
   slice(1:2000) |>
@@ -245,6 +306,9 @@ world_annual |>
 ```
 
 Small multiples of the same plot facet by year
+
+
+R Code:..................................
 
 ```{r, echo=FALSE, fig.height=15}
 world_annual |>
@@ -256,6 +320,9 @@ world_annual |>
 
 ### `denguedatahub::srilanka_weekly_data`
 
+
+R Code:..................................
+
 ```{r, echo=FALSE}
 world_annual |>
   slice(1:2000) |>
@@ -264,6 +331,9 @@ world_annual |>
 ```
 
 ### `drone::worldbankdata`
+
+
+
 
 ```{r, eval=FALSE}
 # install.packages("devtools")
@@ -289,6 +359,8 @@ worldbankdata |>
 
 Visualize values greater than 50 in the cases Column of the `srilanka_weekly_data` dataset.
 
+R Code:..................................
+
 ```{r, echo=FALSE}
 srilanka_weekly_data |>
   select(week, cases) |>
@@ -299,11 +371,15 @@ srilanka_weekly_data |>
 
 ### denguedatahub::srilanka_weekly_data
 
+R Code:..................................
+
 ```{r}
 describe(srilanka_weekly_data)
 ```
 
 ### denguedatahub::worldbankdata
+
+R Code:..................................
 
 ```{r}
 describe(worldbankdata)
@@ -313,11 +389,15 @@ describe(worldbankdata)
 
 ### denguedatahub::srilanka_weekly_data
 
+R Code:..................................
+
 ```{r, echo=FALSE}
 diagnose_outlier(srilanka_weekly_data)
 ```
 
 ### denguedatahub::worldbankdata
+
+R Code:..................................
 
 ```{r, echo=FALSE}
 diagnose_outlier(worldbankdata)
@@ -326,6 +406,8 @@ diagnose_outlier(worldbankdata)
 ## Bi-variate relationships
 
 ### drone::worldbankdata
+
+R Code:..................................
 
 ```{r, echo=FALSE}
 worldbankdata|>
@@ -341,11 +423,11 @@ worldbankdata|>
 
 3.  Perform data quality analysis for the following datasets and properly report your findings:
 
--   Datasets in the denguedatahub package in R
+  -   Datasets in the denguedatahub package in R
 
--   Datasets in the drone package in R
+  -   Datasets in the drone package in R
 
--   The penguins dataset in the palmerpenguins package in R
+  -   The penguins dataset in the palmerpenguins package in R
 
 4. Perform a data quality analysis on the following data set.
 
