@@ -72,22 +72,18 @@ skim(srilanka_weekly_data)
 
 #### Method 2
 
-
 R Code:..................................
-
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(funModeling)
 status(srilanka_weekly_data)
 ```
 
-
 R Code:..................................
 
 ```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 data_integrity(srilanka_weekly_data)
 ```
-
 
 R Code:..................................
 
@@ -97,7 +93,6 @@ profiling_num(srilanka_weekly_data)
 
 Distribution of Numeric Variables
 
-
 R Code:..................................
 
 ```{r,  echo=FALSE, warning=FALSE, message=FALSE}
@@ -105,7 +100,6 @@ plot_num(srilanka_weekly_data)
 ```
 
 Distribution of Categorical Variables
-
 
 R Code:..................................
 
@@ -115,7 +109,6 @@ freq(srilanka_weekly_data)
 
 #### Method 3
 
-
 R Code:..................................
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
@@ -124,7 +117,6 @@ diagnose(flights, year, month, day)
 ```
 
 ### Data Description: `denguedatahub::world_annual`
-
 
 R Code:..................................
 
@@ -165,7 +157,6 @@ Note: Output has been omitted due to its length.
 
 ### `denguedatahub::srilanka_weekly_data`
 
-
 R Code:..................................
 
 ```{r, echo=FALSE}
@@ -179,7 +170,6 @@ Question: Why is there no observable variability in the `cases` column?
 
 This example shows how to work with a large dataset with `visdat`
 
-
 R Code:..................................
 
 ```{r, echo=FALSE}
@@ -192,7 +182,6 @@ world_annual |>
 
 ### `denguedatahub::srilanka_weekly_data`
 
-
 R Code:..................................
 
 ```{r, echo=FALSE}
@@ -202,7 +191,6 @@ srilanka_weekly_data |>
 ```
 
 ### `denguedatahub::world_annual`
-
 
 R Code:..................................
 
@@ -216,7 +204,6 @@ world_annual |>
 ## Arrange Data Before Plotting Numeric Variables
 
 ### `denguedatahub::srilanka_weekly_data`
-
 
 R Code:..................................
 
@@ -234,7 +221,6 @@ srilanka_weekly_data |>
 df1 <- tibble(x=rep(c(1, 0), 50), y=c(rep(1, 50), rep(0, 50)))
 ```
 
-
 R Code:..................................
 
 ```{r, echo=FALSE}
@@ -242,7 +228,6 @@ vis_binary(df1)
 ```
 
 ## Visualise Messy Data Sets with Mixed Data Types
-
 
 R Code:..................................
 
@@ -256,7 +241,6 @@ df2
 ```
 
 ### Visualise the Data Set
-
 
 R Code:..................................
 
@@ -276,7 +260,6 @@ vis_guess(df2)
 
 #### `denguedatahub::srilanka_weekly_data`
 
-
 R Code:..................................
 
 ```{r, echo=FALSE}
@@ -284,7 +267,6 @@ vis_miss(srilanka_weekly_data)
 ```
 
 #### `denguedatahub::world_annual`
-
 
 R Code:..................................
 
@@ -296,7 +278,6 @@ world_annual |>
 
 ### Visualise Missing in Variables
 
-
 R Code:..................................
 
 ```{r, echo=FALSE}
@@ -306,7 +287,6 @@ world_annual |>
 ```
 
 Small multiples of the same plot facet by year
-
 
 R Code:..................................
 
@@ -320,7 +300,6 @@ world_annual |>
 
 ### `denguedatahub::srilanka_weekly_data`
 
-
 R Code:..................................
 
 ```{r, echo=FALSE}
@@ -331,9 +310,6 @@ world_annual |>
 ```
 
 ### `drone::worldbankdata`
-
-
-
 
 ```{r, eval=FALSE}
 # install.packages("devtools")
@@ -423,13 +399,13 @@ worldbankdata|>
 
 3.  Perform data quality analysis for the following datasets and properly report your findings:
 
-  -   Datasets in the denguedatahub package in R
+-   Datasets in the denguedatahub package in R
 
-  -   Datasets in the drone package in R
+-   Datasets in the drone package in R
 
-  -   The penguins dataset in the palmerpenguins package in R
+-   The penguins dataset in the palmerpenguins package in R
 
-4. Perform a data quality analysis on the following data set.
+4.  Perform a data quality analysis on the following data set.
 
 ```{r}
 library(DSjobtracker)

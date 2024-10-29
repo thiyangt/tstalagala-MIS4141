@@ -1,0 +1,50 @@
+# Techniques for Addressing Data Quality Issues
+
+
+## Assignment: 20 Marks
+
+### Instructions
+
+
+- Organize into groups, with a maximum of 5 members per group.
+
+- Each member should have a distinct role and individual contribution toward the final submission.
+
+### Task
+
+- Identify and explore methods to address common data quality issues (e.g., handling missing values, detecting and managing outliers, resolving data inconsistencies, etc.).
+
+- Use a sample dataset to demonstrate these methods in R. Your implementation should include clear R code and explanations of the methodologies used.
+
+### Submission Requirements
+
+**1. Report:** The group must prepare a comprehensive report that details:
+
+- An overview of data quality issues and the chosen methods.
+
+- The step-by-step process for implementing these methods in R.
+
+- Sample R code with commentary and explanations.
+Insights or findings based on the sample dataset.
+
+**2. Presentation:** 
+
+- Each member must present only the part of the work they personally contributed to.
+
+
+### Evaluation Criteria
+
+- Quality and accuracy of the report, including clarity of explanations and code functionality.
+Effectiveness and relevance of the techniques chosen for data quality issues.
+
+- Depth of individual contributions in both the report and the presentation.
+
+- Cohesiveness and clarity of the group presentation.
+
+- To earn marks, each member must contribute to both the written report and the presentation.
+
+### Deadline
+
+- Submit the report and presentation files by November 9, 2024
+
+- Final presentations: November 10, 2024
