@@ -1,0 +1,107 @@
+# Verbal Communication
+
+## Active Listening
+
+-   Active listening is a key communication skill.
+
+-   Active listening is about understanding the speaker's message and responding to them.
+
+-   Active listening includes verbal and non-verbal cues.
+
+## Active Listening: Key Components
+
+In what ways can you show that you are listening actively?
+
+## Benefits of Active Listening for a Smooth Consultancy Session
+
+How active listening benefits statistical consultancy?
+
+## Asking Questions
+
+1.  Plan what information do we need?
+
+2.  Listen carefully
+
+3.  Slow down
+
+4.  Clarify all terms
+
+5.  Ask if you do not understand
+
+6.  Take notes
+
+## Common questions
+
+1.  Research area/ domain
+
+2.  Goals and objectives
+
+3.  Motivation
+
+4.  Significance of the study
+
+5.  Novelty of the study topic
+
+6.  Related work (literature, relevant methods, etc)
+
+7.  Data collection procedure
+
+8.  Sample size
+
+9.  Structure of data
+
+10. Missing values, outliers
+
+11. Limitations of data
+
+12. Survey/ Census: Target population, variables, sampling design, sampling frame, sources of bias, sampling unit
+
+13. Design of experiments: experimental unit, sampling unit, factors, treatments, responses, randomization, blocking, design
+
+14. Background reading
+
+## Client Question Checklist
+
+Create a Checklist for Reviewing Client Information Before Starting Analysis?
+
+## Question types
+
+### Close probe questions (usually with Yes or No)
+
+-   Did you interview every person on the list?
+
+-   Are there any missing values?
+
+### Open probes (long responses)
+
+-   What factors are likely to affect the response?
+
+-   I’d like to hear more about the independent variables you plan to measure.
+
+-   Is there anything more that we should discuss related to food packaging types before we go on to discuss the variables you plan to measure?
+
+### Specific questions
+
+-   What is the sample size?
+
+-   When did you collect this data?
+
+-   Which methodology did you use for this analysis?
+
+## Cognitive Load Theory: Forms of Cognitive Load
+
+1.  Intrinsic cognitive load
+
+2.  Extraneous cognitive load
+
+3.  Germane cognitive load
+
+## Ask if you don’t understand
+
+Restate factual information and make sure you have gotten everything correct.
+
+-   Let me make sure that I understand ...
+
+-   Do I have this correctly?
+
+-   So a sampling unit is an individual person, is that correct?

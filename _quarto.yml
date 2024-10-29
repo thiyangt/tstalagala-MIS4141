@@ -12,6 +12,8 @@ book:
     - ch2.qmd
     - ch3.qmd
     - ch4.qmd
+    - ch5v.qmd
+    - ch6.qmd
     - references.qmd
 
 bibliography: references.bib
