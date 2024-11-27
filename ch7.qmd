@@ -127,3 +127,17 @@ In class discussion with examples
 -   References
 
 -   Acknowledgement
+
+# Research misconducts
+
+- Data falsification
+
+- Data fabrication
+
+- Plagiarism
+
+# Handling misconduct
+
+- Rejection
+
+- Retraction
