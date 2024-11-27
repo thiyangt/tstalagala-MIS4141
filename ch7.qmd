@@ -2,9 +2,9 @@
 title: "Writing Manuscript"
 ---
 
-# Abstract
+## Abstract
 
-## Role of abstract
+### Role of abstract
 
 1.  Grab attention
 
@@ -16,7 +16,7 @@ title: "Writing Manuscript"
 
 5.  Making the paper discoverabl
 
-## Types of abstracts
+### Types of abstracts
 
 1.  Descriptive abstract
 
@@ -30,7 +30,7 @@ title: "Writing Manuscript"
 
 6.  Highlight abstract
 
-## How to write an abstract?
+### How to write an abstract?
 
 Your abstract should answer the following questions.
 
@@ -48,7 +48,7 @@ Your abstract should answer the following questions.
 
 7.  How well does it work?
 
-## Features of a good abstract
+### Features of a good abstract
 
 1.  Stands on its own
 
@@ -58,7 +58,7 @@ Your abstract should answer the following questions.
 
 4.  Use active voice instead of passive voice (the study tested rather than it was tested by the study)
 
-# Introduction
+## Introduction
 
 1.  Introduce general topic
 
@@ -68,7 +68,7 @@ Your abstract should answer the following questions.
 
 4.  Objectives of the current study
 
-# Guidelines on how to divide paragraphs in the introduction
+## Guidelines on how to divide paragraphs in the introduction
 
 In class discussion with examples
 
@@ -94,7 +94,7 @@ In class discussion with examples
 
 8.3..................
 
-# Literature review
+## Literature review
 
 -   Chronological
 
@@ -102,15 +102,15 @@ In class discussion with examples
 
 -   Methodological
 
-# Methodology
+## Methodology
 
 -   How the research was conducted
 
-# Results
+## Results
 
 -   What you discovered through your research
 
-# Conclusions and Discussions
+## Conclusions and Discussions
 
 -   Interpret the results
 
@@ -122,22 +122,22 @@ In class discussion with examples
 
 -   Future directions
 
-# Other sections
+## Other sections
 
 -   References
 
 -   Acknowledgement
 
-# Research misconducts
+## Research misconducts
 
-- Data falsification
+-   Data falsification
 
-- Data fabrication
+-   Data fabrication
 
-- Plagiarism
+-   Plagiarism
 
-# Handling misconduct
+## Handling misconduct
 
-- Rejection
+-   Rejection
 
-- Retraction
+-   Retraction
