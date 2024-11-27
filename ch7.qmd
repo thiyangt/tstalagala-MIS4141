@@ -128,4 +128,4 @@ Your abstract should answer the following questions.
 
 - References
 
-- Acknowledgeent
+- Acknowledgement
