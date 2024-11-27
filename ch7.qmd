@@ -1,0 +1,131 @@
+---
+title: "Writing Manuscript"
+---
+
+# Abstract
+
+## Role of abstract
+
+1.  Grad attention
+
+2.  Establishes Relevance: decide whether to continue reading
+
+3.  Gives an idea of the quality of the work
+
+4.  Serves as a marketing tool
+
+5.  Making the paper discoverabl
+
+## Types of abstracts
+
+1.  Descriptive abstract
+
+2.  Informative abstract
+
+3.  Critical abstract
+
+4.  Structured abstract
+
+5.  Graphical abstract
+
+6.  Highlight abstract
+
+## How to write an abstract?
+
+Your abstract should answer the following questions.
+
+1.  What did you do?
+
+2.  Why did you do?
+
+3.  How did you do?
+
+4.  What did you find?
+
+5.  What do your findings mean?
+
+6.  What are the advantages of your findings?
+
+7.  How well does it work?
+
+## Features of a good abstract
+
+1.  Stands on its own
+
+2.  Avoid "I", "We"
+
+3.  Avoid trade names, acronyms, abbreviations, or symbols
+
+4.  Use active voice instead of passive voice (the study tested rather than it was tested by the study)
+
+# Introduction
+
+
+1. Introduce general topic
+
+3. Past studies
+
+2. Highlight the gap
+
+3. Objectives of the current study
+
+#  Guidelines on how to divide paragraphs in the introduction
+
+- In class discussion with examples
+
+1..............
+
+2..............
+
+3..............
+
+4..............
+
+5..............
+
+6..............
+
+7..............
+
+8. Significance of your study
+
+  8.1..................
+  
+  8.2..................
+  
+  8.3..................
+
+# Literature review
+
+- Chronological
+
+- Thematic
+
+- Methodological
+
+# Methodology
+
+- How the research was conducted
+
+# Results
+
+- What you discovered through your research
+
+# Conclusions and Discussions
+
+- Interpret the results
+
+- Explain their implications
+
+- Address unexpected findings
+
+- Limitations in your study
+
+- Future directions
+
+
+# Other sections
+
+- References
+
+- Acknowledgeent

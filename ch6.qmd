@@ -1,64 +1,62 @@
 # Written Communication
 
+## Components of a statistical consultancy report
 
+1.  Cover page
 
-##   Components of a statistical consultancy report
+    -   Title of the Report
 
-1. Cover page
+    -   Client’s Name and Contact Information
 
-    - Title of the Report
+    -   Consultant’s Name and Contact Information
 
-    - Client’s Name and Contact Information
+    -   Date of Submission
 
-    - Consultant’s Name and Contact Information
+    -   Confidentiality Statement (if applicable)
 
-    - Date of Submission
+2.  Introduction
 
-    - Confidentiality Statement (if applicable)
+    -   Background information
 
-2. Introduction
+    -   Objectives
 
-    - Background information
+    -   Scope
 
-    - Objectives
+3.  Methodology
 
-    - Scope
+4.  Results
 
-3. Methodology
+5.  Discussion
 
-4. Results
+6.  Conclusions
 
-5. Discussion
+7.  Appendices
 
-6. Conclusions
-
-7. Appendices
-
-6. References
+8.  References
 
 ## Exercise
 
 What are the differences between a statistical consultancy report, a thesis, and a journal article?
 
-##  Other essential documents commonly needed in statistical consultancy
+## Other essential documents commonly needed in statistical consultancy
 
-1. Log book 
+1.  Log book
 
-2. Meeting minutes 
+2.  Meeting minutes
 
-3. Letter head
+3.  Letter head
 
-4. Project plan 
+4.  Project plan
 
-5. Data collection plan
+5.  Data collection plan
 
-6. Progress report
+6.  Progress report
 
-7. Technical documentation
+7.  Technical documentation
 
-8. Follow up documents
+8.  Follow up documents
 
-9. Final report
+9.  Final report
 
 10. Presentation
 
