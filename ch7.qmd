@@ -60,18 +60,17 @@ Your abstract should answer the following questions.
 
 # Introduction
 
+1.  Introduce general topic
 
-1. Introduce general topic
+2.  Past studies
 
-3. Past studies
+3.  Highlight the gap
 
-2. Highlight the gap
+4.  Objectives of the current study
 
-3. Objectives of the current study
+# Guidelines on how to divide paragraphs in the introduction
 
-#  Guidelines on how to divide paragraphs in the introduction
-
-- In class discussion with examples
+In class discussion with examples
 
 1..............
 
@@ -87,45 +86,44 @@ Your abstract should answer the following questions.
 
 7..............
 
-8. Significance of your study
+8.  Significance of your study
 
-  8.1..................
-  
-  8.2..................
-  
-  8.3..................
+8.1..................
+
+8.2..................
+
+8.3..................
 
 # Literature review
 
-- Chronological
+-   Chronological
 
-- Thematic
+-   Thematic
 
-- Methodological
+-   Methodological
 
 # Methodology
 
-- How the research was conducted
+-   How the research was conducted
 
 # Results
 
-- What you discovered through your research
+-   What you discovered through your research
 
 # Conclusions and Discussions
 
-- Interpret the results
+-   Interpret the results
 
-- Explain their implications
+-   Explain their implications
 
-- Address unexpected findings
+-   Address unexpected findings
 
-- Limitations in your study
+-   Limitations in your study
 
-- Future directions
-
+-   Future directions
 
 # Other sections
 
-- References
+-   References
 
-- Acknowledgement
+-   Acknowledgement
