@@ -3197,6 +3197,87 @@ curves}\label{receiver-operating-characteristic-roc-curves}
   on the same dataset to see which performs better across thresholds.
 \end{itemize}
 
+\section{Simulation illustrating ROC curve
+calculations}\label{simulation-illustrating-roc-curve-calculations}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)  }\CommentTok{\# For reproducibility}
+
+\CommentTok{\# Simulate true labels (0 or 1) for 100 observations}
+\NormalTok{true\_labels }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DecValTok{100}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Simulate predicted probabilities for the positive class (between 0 and 1)}
+\NormalTok{predicted\_probs }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(predicted\_probs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.5999890 0.3328235 0.4886130 0.9544738 0.4829024 0.8903502
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define thresholds from 0 to 1}
+\NormalTok{thresholds }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.01}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(thresholds)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.00 0.01 0.02 0.03 0.04 0.05
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Initialize vectors to store TPR and FPR values}
+\NormalTok{tpr\_values }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(thresholds))}
+\NormalTok{fpr\_values }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(thresholds))}
+
+\CommentTok{\# Calculate TPR and FPR at each threshold}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(thresholds)) \{}
+\NormalTok{  threshold }\OtherTok{\textless{}{-}}\NormalTok{ thresholds[i]}
+  
+  \CommentTok{\# Classify samples based on the threshold}
+\NormalTok{  predicted\_class }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(predicted\_probs }\SpecialCharTok{\textgreater{}=}\NormalTok{ threshold, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+  
+  \CommentTok{\# Calculate confusion matrix components}
+\NormalTok{  TP }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((predicted\_class }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (true\_labels }\SpecialCharTok{==} \DecValTok{1}\NormalTok{))  }\CommentTok{\# True Positives}
+\NormalTok{  FP }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((predicted\_class }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (true\_labels }\SpecialCharTok{==} \DecValTok{0}\NormalTok{))  }\CommentTok{\# False Positives}
+\NormalTok{  TN }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((predicted\_class }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (true\_labels }\SpecialCharTok{==} \DecValTok{0}\NormalTok{))  }\CommentTok{\# True Negatives}
+\NormalTok{  FN }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((predicted\_class }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (true\_labels }\SpecialCharTok{==} \DecValTok{1}\NormalTok{))  }\CommentTok{\# False Negatives}
+  
+  \CommentTok{\# Calculate TPR and FPR}
+\NormalTok{  tpr\_values[i] }\OtherTok{\textless{}{-}}\NormalTok{ TP }\SpecialCharTok{/}\NormalTok{ (TP }\SpecialCharTok{+}\NormalTok{ FN)}
+\NormalTok{  fpr\_values[i] }\OtherTok{\textless{}{-}}\NormalTok{ FP }\SpecialCharTok{/}\NormalTok{ (FP }\SpecialCharTok{+}\NormalTok{ TN)}
+\NormalTok{\}}
+
+\CommentTok{\# View first few TPR and FPR values}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(thresholds, tpr\_values, fpr\_values)}
+\FunctionTok{head}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  thresholds tpr_values fpr_values
+1       0.00  1.0000000          1
+2       0.01  1.0000000          1
+3       0.02  0.9767442          1
+4       0.03  0.9767442          1
+5       0.04  0.9767442          1
+6       0.05  0.9767442          1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot ROC curve}
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{fpr\_values, }\AttributeTok{y=}\NormalTok{tpr\_values)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ch9_files/figure-pdf/unnamed-chunk-12-1.pdf}
+
 \bookmarksetup{startatroot}
 
 \chapter{Writing Grant Proposals}\label{writing-grant-proposals}

@@ -28,9 +28,9 @@ skim(penguins)
 
 ### Exploratory Data Analysis
 
-1. Your turn: Perform an exploratory data analysis
+1.  Your turn: Perform an exploratory data analysis
 
-2. What are the limitations of the following chart? Could you suggest ways to reduce clutter and enhance its clarity?
+2.  What are the limitations of the following chart? Could you suggest ways to reduce clutter and enhance its clarity?
 
 ```{r, warning=FALSE, message=FALSE}
 ggpairs(penguins, aes(colour = species), progress = FALSE) +
@@ -53,7 +53,7 @@ penguin_train <- training(penguin_split)
 penguin_test <- testing(penguin_split)
 ```
 
-###  Display the dimensions of the training dataset
+### Display the dimensions of the training dataset
 
 ```{r, warning=FALSE, message=FALSE}
 dim(penguin_test)
@@ -85,14 +85,13 @@ confusionMatrix(data = penguin_test$predict,
 
 ## Random forests
 
-- Bagging ensemble method
+-   Bagging ensemble method
 
-- Gives final prediction by aggregating the predictions of bootstrapped decision tree samples.
+-   Gives final prediction by aggregating the predictions of bootstrapped decision tree samples.
 
-- Trees in a random forest are independent of each other.
+-   Trees in a random forest are independent of each other.
 
-- With ensemble methods, we get a new metric for assessing the
-predictive performance of the model, the out-of-bag error
+-   With ensemble methods, we get a new metric for assessing the predictive performance of the model, the out-of-bag error
 
 ## Illustration of how random forests algorithm works
 
@@ -102,14 +101,11 @@ predictive performance of the model, the out-of-bag error
 
 ![](r2.png)
 
-
 ### Out-of-bag sample for the first tree
 
 ![](r3.png)
 
 ![](r4.png)
-
-
 
 ### Out-of-bag sample predictions
 
@@ -121,14 +117,13 @@ predictive performance of the model, the out-of-bag error
 
 ![](r8.png)
 
-
 ![](r9.png)
 
 ### Variable importance measures in random forest
 
-- Permutation-based variable importance
+-   Permutation-based variable importance
 
-- Mean decrease in Gini coefficient
+-   Mean decrease in Gini coefficient
 
 ### Random forest using R
 
@@ -148,12 +143,60 @@ confusionMatrix(data = penguin_test$predictrf,
 
 ### Receiver Operating Characteristic (ROC) curves
 
-- Graphical plot that illustrates the performance of a binary classifier model.
+-   Graphical plot that illustrates the performance of a binary classifier model.
 
 ### When to Use an ROC Curve?
 
-- Binary Classification: It is particularly useful when you have two classes (e.g., yes/no, positive/negative).
+-   Binary Classification: It is particularly useful when you have two classes (e.g., yes/no, positive/negative).
 
-- Imbalanced Datasets: It’s beneficial for imbalanced classes since it doesn't rely on accuracy, which can be biased when one class is significantly more frequent than the other.
+-   Imbalanced Datasets: It’s beneficial for imbalanced classes since it doesn't rely on accuracy, which can be biased when one class is significantly more frequent than the other.
 
-- Comparing Models: It’s a great tool for comparing multiple classifiers on the same dataset to see which performs better across thresholds.
+-   Comparing Models: It’s a great tool for comparing multiple classifiers on the same dataset to see which performs better across thresholds.
+
+## Simulation illustrating ROC curve calculations
+
+```{r}
+set.seed(123)  # For reproducibility
+
+# Simulate true labels (0 or 1) for 100 observations
+true_labels <- sample(c(0, 1), 100, replace = TRUE)
+
+# Simulate predicted probabilities for the positive class (between 0 and 1)
+predicted_probs <- runif(100)
+head(predicted_probs)
+
+# Define thresholds from 0 to 1
+thresholds <- seq(0, 1, by = 0.01)
+head(thresholds)
+
+# Initialize vectors to store TPR and FPR values
+tpr_values <- numeric(length(thresholds))
+fpr_values <- numeric(length(thresholds))
+
+# Calculate TPR and FPR at each threshold
+for (i in 1:length(thresholds)) {
+  threshold <- thresholds[i]
+  
+  # Classify samples based on the threshold
+  predicted_class <- ifelse(predicted_probs >= threshold, 1, 0)
+  
+  # Calculate confusion matrix components
+  TP <- sum((predicted_class == 1) & (true_labels == 1))  # True Positives
+  FP <- sum((predicted_class == 1) & (true_labels == 0))  # False Positives
+  TN <- sum((predicted_class == 0) & (true_labels == 0))  # True Negatives
+  FN <- sum((predicted_class == 0) & (true_labels == 1))  # False Negatives
+  
+  # Calculate TPR and FPR
+  tpr_values[i] <- TP / (TP + FN)
+  fpr_values[i] <- FP / (FP + TN)
+}
+
+# View first few TPR and FPR values
+df <- data.frame(thresholds, tpr_values, fpr_values)
+head(df)
+
+# Plot ROC curve
+ggplot(df, aes(x=fpr_values, y=tpr_values)) + geom_line()
+
+
+```

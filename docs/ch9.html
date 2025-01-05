@@ -253,6 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#receiver-operating-characteristic-roc-curves" id="toc-receiver-operating-characteristic-roc-curves" class="nav-link" data-scroll-target="#receiver-operating-characteristic-roc-curves"><span class="header-section-number">9.3.7</span> Receiver Operating Characteristic (ROC) curves</a></li>
   <li><a href="#when-to-use-an-roc-curve" id="toc-when-to-use-an-roc-curve" class="nav-link" data-scroll-target="#when-to-use-an-roc-curve"><span class="header-section-number">9.3.8</span> When to Use an ROC Curve?</a></li>
   </ul></li>
+  <li><a href="#simulation-illustrating-roc-curve-calculations" id="toc-simulation-illustrating-roc-curve-calculations" class="nav-link" data-scroll-target="#simulation-illustrating-roc-curve-calculations"><span class="header-section-number">9.4</span> Simulation illustrating ROC curve calculations</a></li>
   </ul>
 </nav>
     </div>
@@ -728,9 +729,74 @@ Balanced Accuracy           1.0000           1.0000        1.0000</code></pre>
 <li><p>Imbalanced Datasets: It’s beneficial for imbalanced classes since it doesn’t rely on accuracy, which can be biased when one class is significantly more frequent than the other.</p></li>
 <li><p>Comparing Models: It’s a great tool for comparing multiple classifiers on the same dataset to see which performs better across thresholds.</p></li>
 </ul>
-
-
 </section>
+</section>
+<section id="simulation-illustrating-roc-curve-calculations" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="simulation-illustrating-roc-curve-calculations"><span class="header-section-number">9.4</span> Simulation illustrating ROC curve calculations</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># For reproducibility</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate true labels (0 or 1) for 100 observations</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>true_labels <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate predicted probabilities for the positive class (between 0 and 1)</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>predicted_probs <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predicted_probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5999890 0.3328235 0.4886130 0.9544738 0.4829024 0.8903502</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define thresholds from 0 to 1</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>thresholds <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(thresholds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.00 0.01 0.02 0.03 0.04 0.05</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize vectors to store TPR and FPR values</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>tpr_values <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(thresholds))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>fpr_values <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(thresholds))</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate TPR and FPR at each threshold</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(thresholds)) {</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  threshold <span class="ot">&lt;-</span> thresholds[i]</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Classify samples based on the threshold</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  predicted_class <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(predicted_probs <span class="sc">&gt;=</span> threshold, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate confusion matrix components</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  TP <span class="ot">&lt;-</span> <span class="fu">sum</span>((predicted_class <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">&amp;</span> (true_labels <span class="sc">==</span> <span class="dv">1</span>))  <span class="co"># True Positives</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  FP <span class="ot">&lt;-</span> <span class="fu">sum</span>((predicted_class <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">&amp;</span> (true_labels <span class="sc">==</span> <span class="dv">0</span>))  <span class="co"># False Positives</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  TN <span class="ot">&lt;-</span> <span class="fu">sum</span>((predicted_class <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (true_labels <span class="sc">==</span> <span class="dv">0</span>))  <span class="co"># True Negatives</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  FN <span class="ot">&lt;-</span> <span class="fu">sum</span>((predicted_class <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (true_labels <span class="sc">==</span> <span class="dv">1</span>))  <span class="co"># False Negatives</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate TPR and FPR</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  tpr_values[i] <span class="ot">&lt;-</span> TP <span class="sc">/</span> (TP <span class="sc">+</span> FN)</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>  fpr_values[i] <span class="ot">&lt;-</span> FP <span class="sc">/</span> (FP <span class="sc">+</span> TN)</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co"># View first few TPR and FPR values</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(thresholds, tpr_values, fpr_values)</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  thresholds tpr_values fpr_values
+1       0.00  1.0000000          1
+2       0.01  1.0000000          1
+3       0.02  0.9767442          1
+4       0.03  0.9767442          1
+5       0.04  0.9767442          1
+6       0.05  0.9767442          1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot ROC curve</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>fpr_values, <span class="at">y=</span>tpr_values)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ch9_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
