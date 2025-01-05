@@ -15,6 +15,10 @@ book:
     - ch5.qmd
     - ch6.qmd
     - ch7.qmd
+    - ch8.qmd
+    - ch9.qmd
+    - ch10.qmd
+    - ch11.qmd
     - references.qmd
 
 bibliography: references.bib

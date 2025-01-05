@@ -2,48 +2,42 @@
 title: "Anatomy of a Statistical Study"
 ---
 
-Please complete the blanks and include additional notes during the in-class sessions.
+Please complete the blanks and include additional notes during the in-class teaching and discussion sessions.
 
-1. Introduction and Objectives
+1.  Introduction and Objectives
 
----------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-2. Study Design
+2.  Study Design
 
-- Types of studies
+-   Types of studies
 
-- Selection of variables
+-   Selection of variables
 
-- Ethical considerations in study design.
+-   Ethical considerations in study design.
 
+3.  Data Collection
 
-3. Data Collection
+-   Methods of data collection (e.g., surveys, experiments, secondary data).
 
-- Methods of data collection (e.g., surveys, experiments, secondary data).
+-   Tools and instruments for measurement. Ensuring data quality and integrity.
 
-- Tools and instruments for measurement.
-Ensuring data quality and integrity.
+4.  Data Preparation
 
+------------------------------------------------------------------------
 
-4. Data Preparation
+5.  Statistical Analysis
 
+------------------------------------------------------------------------
 
----------------------------------------------------------------------------------------------------------------------------------
+6.  Conclusions and Discussion
 
-5. Statistical Analysis
+------------------------------------------------------------------------
 
----------------------------------------------------------------------------------------------------------------------------------
+7.  Reproducibility and Documentation
 
-6. Conclusions and Discussion
+------------------------------------------------------------------------
 
----------------------------------------------------------------------------------------------------------------------------------
+8.  Translating findings into actionable insights
 
-
-
-7. Reproducibility and Documentation
-
----------------------------------------------------------------------------------------------------------------------------------
-
-8. Translating findings into actionable insights
-
----------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------

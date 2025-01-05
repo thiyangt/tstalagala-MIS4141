@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predictive modelling: Measures of Accuracy</title>
+<title>8&nbsp; Predictive modelling: Measures of Accuracy – Practical Guide for Statistical Consulting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,29 +57,208 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="ch8_files/libs/clipboard/clipboard.min.js"></script>
-<script src="ch8_files/libs/quarto-html/quarto.js"></script>
-<script src="ch8_files/libs/quarto-html/popper.min.js"></script>
-<script src="ch8_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="ch8_files/libs/quarto-html/anchor.min.js"></script>
-<link href="ch8_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="ch8_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="ch8_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="ch8_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="ch8_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ch9.html" rel="next">
+<link href="./ch7.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
 
 </head>
 
-<body class="fullcontent">
+<body class="nav-sidebar floating">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Predictive modelling: Measures of Accuracy</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Practical Guide for Statistical Consulting</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistical Consulting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Quality Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Techniques for Addressing Data Quality Issues</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Types of Consultancy Projects</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Verbal Communication</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Written Communication</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing Manuscript</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch8.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Predictive modelling: Measures of Accuracy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Decision Trees and Random Forests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Writing Grant Proposals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Anatomy of a Statistical Study</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages"><span class="header-section-number">8.1</span> Packages</a></li>
+  <li><a href="#import-data-and-check-data-format" id="toc-import-data-and-check-data-format" class="nav-link" data-scroll-target="#import-data-and-check-data-format"><span class="header-section-number">8.2</span> Import Data and Check Data Format</a></li>
+  <li><a href="#preprocessing" id="toc-preprocessing" class="nav-link" data-scroll-target="#preprocessing"><span class="header-section-number">8.3</span> Preprocessing</a>
+  <ul class="collapse">
+  <li><a href="#recheck-the-format" id="toc-recheck-the-format" class="nav-link" data-scroll-target="#recheck-the-format"><span class="header-section-number">8.3.1</span> Recheck the format</a></li>
+  <li><a href="#visualize-the-structure" id="toc-visualize-the-structure" class="nav-link" data-scroll-target="#visualize-the-structure"><span class="header-section-number">8.3.2</span> Visualize the structure</a></li>
+  <li><a href="#observe-summary-statistics" id="toc-observe-summary-statistics" class="nav-link" data-scroll-target="#observe-summary-statistics"><span class="header-section-number">8.3.3</span> Observe summary statistics</a></li>
+  <li><a href="#convert-qualitative-variables-into-factor" id="toc-convert-qualitative-variables-into-factor" class="nav-link" data-scroll-target="#convert-qualitative-variables-into-factor"><span class="header-section-number">8.3.4</span> Convert qualitative variables into factor</a></li>
+  <li><a href="#convert-variables-into-numeric" id="toc-convert-variables-into-numeric" class="nav-link" data-scroll-target="#convert-variables-into-numeric"><span class="header-section-number">8.3.5</span> Convert variables into numeric</a></li>
+  <li><a href="#observe-missing-value" id="toc-observe-missing-value" class="nav-link" data-scroll-target="#observe-missing-value"><span class="header-section-number">8.3.6</span> Observe missing value</a></li>
+  </ul></li>
+  <li><a href="#create-new-variables" id="toc-create-new-variables" class="nav-link" data-scroll-target="#create-new-variables"><span class="header-section-number">8.4</span> Create new variables</a></li>
+  <li><a href="#categorize-the-dependent-variable" id="toc-categorize-the-dependent-variable" class="nav-link" data-scroll-target="#categorize-the-dependent-variable"><span class="header-section-number">8.5</span> Categorize the dependent variable</a></li>
+  <li><a href="#distribution-of-the-dependent-variable" id="toc-distribution-of-the-dependent-variable" class="nav-link" data-scroll-target="#distribution-of-the-dependent-variable"><span class="header-section-number">8.6</span> Distribution of the dependent variable</a></li>
+  <li><a href="#check-the-structure-again" id="toc-check-the-structure-again" class="nav-link" data-scroll-target="#check-the-structure-again"><span class="header-section-number">8.7</span> Check the structure again</a></li>
+  <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda"><span class="header-section-number">8.8</span> EDA</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn"><span class="header-section-number">8.9</span> Your turn</a></li>
+  <li><a href="#split-data-into-training-and-test" id="toc-split-data-into-training-and-test" class="nav-link" data-scroll-target="#split-data-into-training-and-test"><span class="header-section-number">8.10</span> Split data into training and test</a></li>
+  <li><a href="#build-a-randomforest-model" id="toc-build-a-randomforest-model" class="nav-link" data-scroll-target="#build-a-randomforest-model"><span class="header-section-number">8.11</span> Build a randomforest model</a></li>
+  <li><a href="#accuracy-measures" id="toc-accuracy-measures" class="nav-link" data-scroll-target="#accuracy-measures"><span class="header-section-number">8.12</span> Accuracy measures</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">8.13</span> Exercise</a></li>
+  <li><a href="#data-profiling" id="toc-data-profiling" class="nav-link" data-scroll-target="#data-profiling"><span class="header-section-number">8.14</span> Data Profiling</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Predictive modelling: Measures of Accuracy</h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Predictive modelling: Measures of Accuracy</span></h1>
 </div>
 
 
@@ -96,63 +275,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<section id="packages" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="packages"><span class="header-section-number">8.1</span> Packages</h2>
 <div class="cell" data-warnings="false">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.2.0 ──</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ broom        1.0.6      ✔ recipes      1.0.10
-✔ dials        1.2.1      ✔ rsample      1.2.1 
-✔ dplyr        1.1.4      ✔ tibble       3.2.1 
-✔ ggplot2      3.5.1      ✔ tidyr        1.3.1 
-✔ infer        1.0.7      ✔ tune         1.2.1 
-✔ modeldata    1.3.0      ✔ workflows    1.1.4 
-✔ parsnip      1.2.1      ✔ workflowsets 1.1.0 
-✔ purrr        1.0.2      ✔ yardstick    1.3.1 </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
-✖ purrr::discard() masks scales::discard()
-✖ dplyr::filter()  masks stats::filter()
-✖ dplyr::lag()     masks stats::lag()
-✖ recipes::step()  masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ forcats   1.0.0     ✔ readr     2.1.5
-✔ lubridate 1.9.3     ✔ stringr   1.5.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ readr::col_factor() masks scales::col_factor()
-✖ purrr::discard()    masks scales::discard()
-✖ dplyr::filter()     masks stats::filter()
-✖ stringr::fixed()    masks recipes::fixed()
-✖ dplyr::lag()        masks stats::lag()
-✖ readr::spec()       masks yardstick::spec()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(visdat)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'GGally':
-  method from   
-  +.gg   ggplot2</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(visdat)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="import-data-and-check-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="import-data-and-check-data-format">Import Data and Check Data Format</h2>
+<section id="import-data-and-check-data-format" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="import-data-and-check-data-format"><span class="header-section-number">8.2</span> Import Data and Check Data Format</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>link <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv"</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(link) <span class="co">#readr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>link <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(link) <span class="co">#readr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 20640 Columns: 10
 ── Column specification ────────────────────────────────────────────────────────
@@ -163,38 +301,38 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20640    10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "longitude"          "latitude"           "housing_median_age"
  [4] "total_rooms"        "total_bedrooms"     "population"        
  [7] "households"         "median_income"      "median_house_value"
 [10] "ocean_proximity"   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#View(hdf)</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(hdf) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#View(hdf)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(hdf) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="yqndsipxnx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yqndsipxnx table {
+<div id="gvmehbthbt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gvmehbthbt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yqndsipxnx thead, #yqndsipxnx tbody, #yqndsipxnx tfoot, #yqndsipxnx tr, #yqndsipxnx td, #yqndsipxnx th {
+#gvmehbthbt thead, #gvmehbthbt tbody, #gvmehbthbt tfoot, #gvmehbthbt tr, #gvmehbthbt td, #gvmehbthbt th {
   border-style: none;
 }
 
-#yqndsipxnx p {
+#gvmehbthbt p {
   margin: 0;
   padding: 0;
 }
 
-#yqndsipxnx .gt_table {
+#gvmehbthbt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -220,12 +358,12 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-left-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_caption {
+#gvmehbthbt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yqndsipxnx .gt_title {
+#gvmehbthbt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -237,7 +375,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-bottom-width: 0;
 }
 
-#yqndsipxnx .gt_subtitle {
+#gvmehbthbt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -249,7 +387,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-top-width: 0;
 }
 
-#yqndsipxnx .gt_heading {
+#gvmehbthbt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -261,13 +399,13 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-right-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_bottom_border {
+#gvmehbthbt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_col_headings {
+#gvmehbthbt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -282,7 +420,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-right-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_col_heading {
+#gvmehbthbt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -302,7 +440,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   overflow-x: hidden;
 }
 
-#yqndsipxnx .gt_column_spanner_outer {
+#gvmehbthbt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -314,15 +452,15 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 4px;
 }
 
-#yqndsipxnx .gt_column_spanner_outer:first-child {
+#gvmehbthbt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yqndsipxnx .gt_column_spanner_outer:last-child {
+#gvmehbthbt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yqndsipxnx .gt_column_spanner {
+#gvmehbthbt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -334,11 +472,11 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   width: 100%;
 }
 
-#yqndsipxnx .gt_spanner_row {
+#gvmehbthbt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yqndsipxnx .gt_group_heading {
+#gvmehbthbt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -364,7 +502,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   text-align: left;
 }
 
-#yqndsipxnx .gt_empty_group_heading {
+#gvmehbthbt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -379,15 +517,15 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   vertical-align: middle;
 }
 
-#yqndsipxnx .gt_from_md > :first-child {
+#gvmehbthbt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yqndsipxnx .gt_from_md > :last-child {
+#gvmehbthbt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yqndsipxnx .gt_row {
+#gvmehbthbt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -406,7 +544,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   overflow-x: hidden;
 }
 
-#yqndsipxnx .gt_stub {
+#gvmehbthbt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -419,7 +557,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#yqndsipxnx .gt_stub_row_group {
+#gvmehbthbt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -433,15 +571,15 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   vertical-align: top;
 }
 
-#yqndsipxnx .gt_row_group_first td {
+#gvmehbthbt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yqndsipxnx .gt_row_group_first th {
+#gvmehbthbt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yqndsipxnx .gt_summary_row {
+#gvmehbthbt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -451,16 +589,16 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#yqndsipxnx .gt_first_summary_row {
+#gvmehbthbt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_first_summary_row.thick {
+#gvmehbthbt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yqndsipxnx .gt_last_summary_row {
+#gvmehbthbt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -470,7 +608,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-bottom-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_grand_summary_row {
+#gvmehbthbt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -480,7 +618,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#yqndsipxnx .gt_first_grand_summary_row {
+#gvmehbthbt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -490,7 +628,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-top-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_last_grand_summary_row_top {
+#gvmehbthbt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -500,11 +638,11 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-bottom-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_striped {
+#gvmehbthbt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yqndsipxnx .gt_table_body {
+#gvmehbthbt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -513,7 +651,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-bottom-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_footnotes {
+#gvmehbthbt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -527,7 +665,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-right-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_footnote {
+#gvmehbthbt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -536,7 +674,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#yqndsipxnx .gt_sourcenotes {
+#gvmehbthbt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -550,7 +688,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-right-color: #D3D3D3;
 }
 
-#yqndsipxnx .gt_sourcenote {
+#gvmehbthbt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -558,72 +696,72 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#yqndsipxnx .gt_left {
+#gvmehbthbt .gt_left {
   text-align: left;
 }
 
-#yqndsipxnx .gt_center {
+#gvmehbthbt .gt_center {
   text-align: center;
 }
 
-#yqndsipxnx .gt_right {
+#gvmehbthbt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yqndsipxnx .gt_font_normal {
+#gvmehbthbt .gt_font_normal {
   font-weight: normal;
 }
 
-#yqndsipxnx .gt_font_bold {
+#gvmehbthbt .gt_font_bold {
   font-weight: bold;
 }
 
-#yqndsipxnx .gt_font_italic {
+#gvmehbthbt .gt_font_italic {
   font-style: italic;
 }
 
-#yqndsipxnx .gt_super {
+#gvmehbthbt .gt_super {
   font-size: 65%;
 }
 
-#yqndsipxnx .gt_footnote_marks {
+#gvmehbthbt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yqndsipxnx .gt_asterisk {
+#gvmehbthbt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yqndsipxnx .gt_indent_1 {
+#gvmehbthbt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yqndsipxnx .gt_indent_2 {
+#gvmehbthbt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yqndsipxnx .gt_indent_3 {
+#gvmehbthbt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yqndsipxnx .gt_indent_4 {
+#gvmehbthbt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yqndsipxnx .gt_indent_5 {
+#gvmehbthbt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yqndsipxnx .katex-display {
+#gvmehbthbt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yqndsipxnx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gvmehbthbt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -723,27 +861,27 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="wgfueicbrm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wgfueicbrm table {
+<div id="azdsmntyvg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#azdsmntyvg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wgfueicbrm thead, #wgfueicbrm tbody, #wgfueicbrm tfoot, #wgfueicbrm tr, #wgfueicbrm td, #wgfueicbrm th {
+#azdsmntyvg thead, #azdsmntyvg tbody, #azdsmntyvg tfoot, #azdsmntyvg tr, #azdsmntyvg td, #azdsmntyvg th {
   border-style: none;
 }
 
-#wgfueicbrm p {
+#azdsmntyvg p {
   margin: 0;
   padding: 0;
 }
 
-#wgfueicbrm .gt_table {
+#azdsmntyvg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -769,12 +907,12 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-left-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_caption {
+#azdsmntyvg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wgfueicbrm .gt_title {
+#azdsmntyvg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -786,7 +924,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-bottom-width: 0;
 }
 
-#wgfueicbrm .gt_subtitle {
+#azdsmntyvg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -798,7 +936,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-top-width: 0;
 }
 
-#wgfueicbrm .gt_heading {
+#azdsmntyvg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -810,13 +948,13 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-right-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_bottom_border {
+#azdsmntyvg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_col_headings {
+#azdsmntyvg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -831,7 +969,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-right-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_col_heading {
+#azdsmntyvg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -851,7 +989,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   overflow-x: hidden;
 }
 
-#wgfueicbrm .gt_column_spanner_outer {
+#azdsmntyvg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -863,15 +1001,15 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 4px;
 }
 
-#wgfueicbrm .gt_column_spanner_outer:first-child {
+#azdsmntyvg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wgfueicbrm .gt_column_spanner_outer:last-child {
+#azdsmntyvg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wgfueicbrm .gt_column_spanner {
+#azdsmntyvg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -883,11 +1021,11 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   width: 100%;
 }
 
-#wgfueicbrm .gt_spanner_row {
+#azdsmntyvg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wgfueicbrm .gt_group_heading {
+#azdsmntyvg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -913,7 +1051,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   text-align: left;
 }
 
-#wgfueicbrm .gt_empty_group_heading {
+#azdsmntyvg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -928,15 +1066,15 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   vertical-align: middle;
 }
 
-#wgfueicbrm .gt_from_md > :first-child {
+#azdsmntyvg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wgfueicbrm .gt_from_md > :last-child {
+#azdsmntyvg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wgfueicbrm .gt_row {
+#azdsmntyvg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -955,7 +1093,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   overflow-x: hidden;
 }
 
-#wgfueicbrm .gt_stub {
+#azdsmntyvg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -968,7 +1106,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#wgfueicbrm .gt_stub_row_group {
+#azdsmntyvg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -982,15 +1120,15 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   vertical-align: top;
 }
 
-#wgfueicbrm .gt_row_group_first td {
+#azdsmntyvg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wgfueicbrm .gt_row_group_first th {
+#azdsmntyvg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wgfueicbrm .gt_summary_row {
+#azdsmntyvg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1000,16 +1138,16 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#wgfueicbrm .gt_first_summary_row {
+#azdsmntyvg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_first_summary_row.thick {
+#azdsmntyvg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wgfueicbrm .gt_last_summary_row {
+#azdsmntyvg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1019,7 +1157,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-bottom-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_grand_summary_row {
+#azdsmntyvg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1029,7 +1167,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#wgfueicbrm .gt_first_grand_summary_row {
+#azdsmntyvg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1039,7 +1177,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-top-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_last_grand_summary_row_top {
+#azdsmntyvg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1049,11 +1187,11 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-bottom-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_striped {
+#azdsmntyvg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wgfueicbrm .gt_table_body {
+#azdsmntyvg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1062,7 +1200,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-bottom-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_footnotes {
+#azdsmntyvg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1076,7 +1214,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-right-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_footnote {
+#azdsmntyvg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1085,7 +1223,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#wgfueicbrm .gt_sourcenotes {
+#azdsmntyvg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1099,7 +1237,7 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   border-right-color: #D3D3D3;
 }
 
-#wgfueicbrm .gt_sourcenote {
+#azdsmntyvg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1107,72 +1245,72 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
   padding-right: 5px;
 }
 
-#wgfueicbrm .gt_left {
+#azdsmntyvg .gt_left {
   text-align: left;
 }
 
-#wgfueicbrm .gt_center {
+#azdsmntyvg .gt_center {
   text-align: center;
 }
 
-#wgfueicbrm .gt_right {
+#azdsmntyvg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wgfueicbrm .gt_font_normal {
+#azdsmntyvg .gt_font_normal {
   font-weight: normal;
 }
 
-#wgfueicbrm .gt_font_bold {
+#azdsmntyvg .gt_font_bold {
   font-weight: bold;
 }
 
-#wgfueicbrm .gt_font_italic {
+#azdsmntyvg .gt_font_italic {
   font-style: italic;
 }
 
-#wgfueicbrm .gt_super {
+#azdsmntyvg .gt_super {
   font-size: 65%;
 }
 
-#wgfueicbrm .gt_footnote_marks {
+#azdsmntyvg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wgfueicbrm .gt_asterisk {
+#azdsmntyvg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wgfueicbrm .gt_indent_1 {
+#azdsmntyvg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wgfueicbrm .gt_indent_2 {
+#azdsmntyvg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wgfueicbrm .gt_indent_3 {
+#azdsmntyvg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wgfueicbrm .gt_indent_4 {
+#azdsmntyvg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wgfueicbrm .gt_indent_5 {
+#azdsmntyvg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wgfueicbrm .katex-display {
+#azdsmntyvg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wgfueicbrm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#azdsmntyvg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1272,20 +1410,20 @@ dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
 </div>
 </div>
 </section>
-<section id="preprocessing" class="level2">
-<h2 class="anchored" data-anchor-id="preprocessing">preprocessing</h2>
+<section id="preprocessing" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="preprocessing"><span class="header-section-number">8.3</span> Preprocessing</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  hdf <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">housing_median_age=</span><span class="fu">str_remove_all</span>(housing_median_age, <span class="st">"[years]"</span>),</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_house_value =</span> <span class="fu">str_remove_all</span>(median_house_value, <span class="st">"[$]"</span>))</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#View(hdf)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  hdf <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">housing_median_age=</span><span class="fu">str_remove_all</span>(housing_median_age, <span class="st">"[years]"</span>),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_house_value =</span> <span class="fu">str_remove_all</span>(median_house_value, <span class="st">"[$]"</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#View(hdf)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="recheck-the-format" class="level3">
-<h3 class="anchored" data-anchor-id="recheck-the-format">Recheck the format</h3>
+<section id="recheck-the-format" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="recheck-the-format"><span class="header-section-number">8.3.1</span> Recheck the format</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hdf) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hdf) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20,640
 Columns: 10
@@ -1302,10 +1440,10 @@ $ ocean_proximity    &lt;chr&gt; "NEAR BAY", "NEAR BAY", "NEAR BAY", "NEAR BAY",
 </div>
 </div>
 </section>
-<section id="visualize-the-structure" class="level3">
-<h3 class="anchored" data-anchor-id="visualize-the-structure">Visualize the structure</h3>
+<section id="visualize-the-structure" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="visualize-the-structure"><span class="header-section-number">8.3.2</span> Visualize the structure</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_dat</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_dat</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1315,11 +1453,11 @@ $ ocean_proximity    &lt;chr&gt; "NEAR BAY", "NEAR BAY", "NEAR BAY", "NEAR BAY",
 </div>
 </div>
 </section>
-<section id="observe-summary-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="observe-summary-statistics">Observe summary statistics</h3>
+<section id="observe-summary-statistics" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="observe-summary-statistics"><span class="header-section-number">8.3.3</span> Observe summary statistics</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(ocean_proximity, <span class="at">sort=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(ocean_proximity, <span class="at">sort=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   ocean_proximity     n
@@ -1332,12 +1470,12 @@ $ ocean_proximity    &lt;chr&gt; "NEAR BAY", "NEAR BAY", "NEAR BAY", "NEAR BAY",
 </div>
 </div>
 </section>
-<section id="convert-qualitative-variables-into-factor" class="level3">
-<h3 class="anchored" data-anchor-id="convert-qualitative-variables-into-factor">Convert qualitative variables into factor</h3>
+<section id="convert-qualitative-variables-into-factor" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="convert-qualitative-variables-into-factor"><span class="header-section-number">8.3.4</span> Convert qualitative variables into factor</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), as.factor))</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_dat</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), as.factor))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_dat</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1347,15 +1485,15 @@ $ ocean_proximity    &lt;chr&gt; "NEAR BAY", "NEAR BAY", "NEAR BAY", "NEAR BAY",
 </div>
 </div>
 </section>
-<section id="convert-variables-into-numeric" class="level3">
-<h3 class="anchored" data-anchor-id="convert-variables-into-numeric">Convert variables into numeric</h3>
+<section id="convert-variables-into-numeric" class="level3" data-number="8.3.5">
+<h3 data-number="8.3.5" class="anchored" data-anchor-id="convert-variables-into-numeric"><span class="header-section-number">8.3.5</span> Convert variables into numeric</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">housing_median_age =</span> <span class="fu">as.numeric</span>(housing_median_age),</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_house_value =</span> <span class="fu">as.numeric</span>(median_house_value)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_dat</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">housing_median_age =</span> <span class="fu">as.numeric</span>(housing_median_age),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_house_value =</span> <span class="fu">as.numeric</span>(median_house_value)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_dat</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1365,10 +1503,10 @@ $ ocean_proximity    &lt;chr&gt; "NEAR BAY", "NEAR BAY", "NEAR BAY", "NEAR BAY",
 </div>
 </div>
 </section>
-<section id="observe-missing-value" class="level3">
-<h3 class="anchored" data-anchor-id="observe-missing-value">Observe missing value</h3>
+<section id="observe-missing-value" class="level3" data-number="8.3.6">
+<h3 data-number="8.3.6" class="anchored" data-anchor-id="observe-missing-value"><span class="header-section-number">8.3.6</span> Observe missing value</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_miss</span>(hdf, <span class="at">sort_miss=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_miss</span>(hdf, <span class="at">sort_miss=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1376,7 +1514,7 @@ $ ocean_proximity    &lt;chr&gt; "NEAR BAY", "NEAR BAY", "NEAR BAY", "NEAR BAY",
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(hdf) <span class="sc">|&gt;</span> <span class="fu">colSums</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(hdf) <span class="sc">|&gt;</span> <span class="fu">colSums</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         longitude           latitude housing_median_age        total_rooms 
                  0                  0                  0                  0 
@@ -1388,55 +1526,55 @@ median_house_value    ocean_proximity
 </div>
 </section>
 </section>
-<section id="create-new-variables" class="level2">
-<h2 class="anchored" data-anchor-id="create-new-variables">Create new variables</h2>
+<section id="create-new-variables" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="create-new-variables"><span class="header-section-number">8.4</span> Create new variables</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rooms_per_household =</span> total_rooms<span class="sc">/</span>households,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">bedrooms_per_room =</span> total_bedrooms<span class="sc">/</span>total_rooms,</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">population_per_household =</span> population<span class="sc">/</span>households)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#View(hdf)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rooms_per_household =</span> total_rooms<span class="sc">/</span>households,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">bedrooms_per_room =</span> total_bedrooms<span class="sc">/</span>total_rooms,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">population_per_household =</span> population<span class="sc">/</span>households)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#View(hdf)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="categorize-the-dependent-variable" class="level2">
-<h2 class="anchored" data-anchor-id="categorize-the-dependent-variable">Categorize the dependent variable</h2>
+<section id="categorize-the-dependent-variable" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="categorize-the-dependent-variable"><span class="header-section-number">8.5</span> Categorize the dependent variable</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">price_category =</span> <span class="fu">case_when</span>(</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    median_house_value <span class="sc">&lt;</span> <span class="dv">1500</span> <span class="sc">~</span> <span class="st">"below"</span>,</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    median_house_value <span class="sc">&gt;=</span> <span class="dv">1500</span> <span class="sc">~</span> <span class="st">"above"</span>,</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">price_category =</span> <span class="fu">as.factor</span>(price_category)) <span class="sc">|&gt;</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>median_house_value)</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#View(hdf)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">price_category =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    median_house_value <span class="sc">&lt;</span> <span class="dv">1500</span> <span class="sc">~</span> <span class="st">"below"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    median_house_value <span class="sc">&gt;=</span> <span class="dv">1500</span> <span class="sc">~</span> <span class="st">"above"</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">price_category =</span> <span class="fu">as.factor</span>(price_category)) <span class="sc">|&gt;</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>median_house_value)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#View(hdf)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="distribution-of-the-dependent-variable" class="level2">
-<h2 class="anchored" data-anchor-id="distribution-of-the-dependent-variable">Distribution of the dependent variable</h2>
+<section id="distribution-of-the-dependent-variable" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="distribution-of-the-dependent-variable"><span class="header-section-number">8.6</span> Distribution of the dependent variable</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(price_category, <span class="at">name=</span><span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> count<span class="sc">/</span><span class="fu">sum</span>(count)) <span class="sc">|&gt;</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(price_category, <span class="at">name=</span><span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> count<span class="sc">/</span><span class="fu">sum</span>(count)) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="ikxlezugtm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ikxlezugtm table {
+<div id="aeulvxqgra" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aeulvxqgra table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ikxlezugtm thead, #ikxlezugtm tbody, #ikxlezugtm tfoot, #ikxlezugtm tr, #ikxlezugtm td, #ikxlezugtm th {
+#aeulvxqgra thead, #aeulvxqgra tbody, #aeulvxqgra tfoot, #aeulvxqgra tr, #aeulvxqgra td, #aeulvxqgra th {
   border-style: none;
 }
 
-#ikxlezugtm p {
+#aeulvxqgra p {
   margin: 0;
   padding: 0;
 }
 
-#ikxlezugtm .gt_table {
+#aeulvxqgra .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1462,12 +1600,12 @@ median_house_value    ocean_proximity
   border-left-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_caption {
+#aeulvxqgra .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ikxlezugtm .gt_title {
+#aeulvxqgra .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1479,7 +1617,7 @@ median_house_value    ocean_proximity
   border-bottom-width: 0;
 }
 
-#ikxlezugtm .gt_subtitle {
+#aeulvxqgra .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1491,7 +1629,7 @@ median_house_value    ocean_proximity
   border-top-width: 0;
 }
 
-#ikxlezugtm .gt_heading {
+#aeulvxqgra .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1503,13 +1641,13 @@ median_house_value    ocean_proximity
   border-right-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_bottom_border {
+#aeulvxqgra .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_col_headings {
+#aeulvxqgra .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1524,7 +1662,7 @@ median_house_value    ocean_proximity
   border-right-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_col_heading {
+#aeulvxqgra .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1544,7 +1682,7 @@ median_house_value    ocean_proximity
   overflow-x: hidden;
 }
 
-#ikxlezugtm .gt_column_spanner_outer {
+#aeulvxqgra .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1556,15 +1694,15 @@ median_house_value    ocean_proximity
   padding-right: 4px;
 }
 
-#ikxlezugtm .gt_column_spanner_outer:first-child {
+#aeulvxqgra .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ikxlezugtm .gt_column_spanner_outer:last-child {
+#aeulvxqgra .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ikxlezugtm .gt_column_spanner {
+#aeulvxqgra .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1576,11 +1714,11 @@ median_house_value    ocean_proximity
   width: 100%;
 }
 
-#ikxlezugtm .gt_spanner_row {
+#aeulvxqgra .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ikxlezugtm .gt_group_heading {
+#aeulvxqgra .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1606,7 +1744,7 @@ median_house_value    ocean_proximity
   text-align: left;
 }
 
-#ikxlezugtm .gt_empty_group_heading {
+#aeulvxqgra .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1621,15 +1759,15 @@ median_house_value    ocean_proximity
   vertical-align: middle;
 }
 
-#ikxlezugtm .gt_from_md > :first-child {
+#aeulvxqgra .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ikxlezugtm .gt_from_md > :last-child {
+#aeulvxqgra .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ikxlezugtm .gt_row {
+#aeulvxqgra .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1648,7 +1786,7 @@ median_house_value    ocean_proximity
   overflow-x: hidden;
 }
 
-#ikxlezugtm .gt_stub {
+#aeulvxqgra .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1661,7 +1799,7 @@ median_house_value    ocean_proximity
   padding-right: 5px;
 }
 
-#ikxlezugtm .gt_stub_row_group {
+#aeulvxqgra .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1675,15 +1813,15 @@ median_house_value    ocean_proximity
   vertical-align: top;
 }
 
-#ikxlezugtm .gt_row_group_first td {
+#aeulvxqgra .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ikxlezugtm .gt_row_group_first th {
+#aeulvxqgra .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ikxlezugtm .gt_summary_row {
+#aeulvxqgra .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1693,16 +1831,16 @@ median_house_value    ocean_proximity
   padding-right: 5px;
 }
 
-#ikxlezugtm .gt_first_summary_row {
+#aeulvxqgra .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_first_summary_row.thick {
+#aeulvxqgra .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ikxlezugtm .gt_last_summary_row {
+#aeulvxqgra .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1712,7 +1850,7 @@ median_house_value    ocean_proximity
   border-bottom-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_grand_summary_row {
+#aeulvxqgra .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1722,7 +1860,7 @@ median_house_value    ocean_proximity
   padding-right: 5px;
 }
 
-#ikxlezugtm .gt_first_grand_summary_row {
+#aeulvxqgra .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1732,7 +1870,7 @@ median_house_value    ocean_proximity
   border-top-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_last_grand_summary_row_top {
+#aeulvxqgra .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1742,11 +1880,11 @@ median_house_value    ocean_proximity
   border-bottom-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_striped {
+#aeulvxqgra .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ikxlezugtm .gt_table_body {
+#aeulvxqgra .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1755,7 +1893,7 @@ median_house_value    ocean_proximity
   border-bottom-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_footnotes {
+#aeulvxqgra .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1769,7 +1907,7 @@ median_house_value    ocean_proximity
   border-right-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_footnote {
+#aeulvxqgra .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1778,7 +1916,7 @@ median_house_value    ocean_proximity
   padding-right: 5px;
 }
 
-#ikxlezugtm .gt_sourcenotes {
+#aeulvxqgra .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1792,7 +1930,7 @@ median_house_value    ocean_proximity
   border-right-color: #D3D3D3;
 }
 
-#ikxlezugtm .gt_sourcenote {
+#aeulvxqgra .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1800,72 +1938,72 @@ median_house_value    ocean_proximity
   padding-right: 5px;
 }
 
-#ikxlezugtm .gt_left {
+#aeulvxqgra .gt_left {
   text-align: left;
 }
 
-#ikxlezugtm .gt_center {
+#aeulvxqgra .gt_center {
   text-align: center;
 }
 
-#ikxlezugtm .gt_right {
+#aeulvxqgra .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ikxlezugtm .gt_font_normal {
+#aeulvxqgra .gt_font_normal {
   font-weight: normal;
 }
 
-#ikxlezugtm .gt_font_bold {
+#aeulvxqgra .gt_font_bold {
   font-weight: bold;
 }
 
-#ikxlezugtm .gt_font_italic {
+#aeulvxqgra .gt_font_italic {
   font-style: italic;
 }
 
-#ikxlezugtm .gt_super {
+#aeulvxqgra .gt_super {
   font-size: 65%;
 }
 
-#ikxlezugtm .gt_footnote_marks {
+#aeulvxqgra .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ikxlezugtm .gt_asterisk {
+#aeulvxqgra .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ikxlezugtm .gt_indent_1 {
+#aeulvxqgra .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ikxlezugtm .gt_indent_2 {
+#aeulvxqgra .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ikxlezugtm .gt_indent_3 {
+#aeulvxqgra .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ikxlezugtm .gt_indent_4 {
+#aeulvxqgra .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ikxlezugtm .gt_indent_5 {
+#aeulvxqgra .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ikxlezugtm .katex-display {
+#aeulvxqgra .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ikxlezugtm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#aeulvxqgra div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1896,10 +2034,10 @@ median_house_value    ocean_proximity
 </div>
 </div>
 </section>
-<section id="check-the-structure-again" class="level2">
-<h2 class="anchored" data-anchor-id="check-the-structure-again">Check the structure again</h2>
+<section id="check-the-structure-again" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="check-the-structure-again"><span class="header-section-number">8.7</span> Check the structure again</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(hdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -2160,16 +2298,16 @@ median_house_value    ocean_proximity
 </div>
 </div>
 </section>
-<section id="eda" class="level2">
-<h2 class="anchored" data-anchor-id="eda">EDA</h2>
+<section id="eda" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="eda"><span class="header-section-number">8.8</span> EDA</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(housing_median_age,</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>         median_income,</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>         bedrooms_per_room,</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>         rooms_per_household,</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>         population_per_household) <span class="sc">|&gt;</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggscatmat</span>(<span class="at">alpha=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(housing_median_age,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>         median_income,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>         bedrooms_per_room,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>         rooms_per_household,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>         population_per_household) <span class="sc">|&gt;</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggscatmat</span>(<span class="at">alpha=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2177,8 +2315,8 @@ median_house_value    ocean_proximity
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(price_category)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>hdf <span class="sc">|&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(price_category)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2188,31 +2326,31 @@ median_house_value    ocean_proximity
 </div>
 </div>
 </section>
-<section id="your-turn" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn">Your turn</h2>
+<section id="your-turn" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="your-turn"><span class="header-section-number">8.9</span> Your turn</h2>
 <ul>
 <li><p>Obtain hex binning scatterplot</p></li>
 <li><p>Obtain scatterplot matrix using ggpairs</p></li>
 </ul>
 </section>
-<section id="split-data-into-training-and-test" class="level2">
-<h2 class="anchored" data-anchor-id="split-data-into-training-and-test">Split data into training and test</h2>
+<section id="split-data-into-training-and-test" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="split-data-into-training-and-test"><span class="header-section-number">8.10</span> Split data into training and test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>hdf_no_na <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span> </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>data.split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(hdf_no_na,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">prop=</span><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">strata =</span> price_category)</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>train.data <span class="ot">&lt;-</span> <span class="fu">training</span>(data.split)</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>test.data <span class="ot">&lt;-</span> <span class="fu">testing</span>(data.split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>hdf_no_na <span class="ot">&lt;-</span> hdf <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>data.split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(hdf_no_na,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">prop=</span><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">strata =</span> price_category)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>train.data <span class="ot">&lt;-</span> <span class="fu">training</span>(data.split)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>test.data <span class="ot">&lt;-</span> <span class="fu">testing</span>(data.split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="build-a-randomforest-model" class="level2">
-<h2 class="anchored" data-anchor-id="build-a-randomforest-model">Build a randomforest model</h2>
+<section id="build-a-randomforest-model" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="build-a-randomforest-model"><span class="header-section-number">8.11</span> Build a randomforest model</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>randomForest 4.7-1.2</code></pre>
 </div>
@@ -2233,18 +2371,18 @@ Attaching package: 'randomForest'</code></pre>
 
     combine</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>rf <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(price_category <span class="sc">~</span> .,</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data=</span>train.data, </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">importance=</span><span class="cn">TRUE</span>)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>test.data<span class="sc">$</span>predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf, test.data)</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(test.data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>rf <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(price_category <span class="sc">~</span> .,</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data=</span>train.data, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">importance=</span><span class="cn">TRUE</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>test.data<span class="sc">$</span>predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf, test.data)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(test.data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="accuracy-measures" class="level2">
-<h2 class="anchored" data-anchor-id="accuracy-measures">Accuracy measures</h2>
+<section id="accuracy-measures" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="accuracy-measures"><span class="header-section-number">8.12</span> Accuracy measures</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: lattice</code></pre>
 </div>
@@ -2262,8 +2400,8 @@ Attaching package: 'caret'</code></pre>
 
     lift</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data =</span> test.data<span class="sc">$</span>predict,</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">reference =</span> test.data<span class="sc">$</span>price_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data =</span> test.data<span class="sc">$</span>predict,</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">reference =</span> test.data<span class="sc">$</span>price_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
@@ -2294,14 +2432,28 @@ Prediction above below
                                           </code></pre>
 </div>
 </div>
+<ol type="1">
+<li><p>Sensitivity:…………………</p></li>
+<li><p>Specificity:…………………</p></li>
+<li><p>Prevalence:………………….</p></li>
+<li><p>Positive Predictive Value:…………………</p></li>
+<li><p>Negative Predictive Value:…………………</p></li>
+<li><p>Detection rate:…………….</p></li>
+<li><p>Detection prevalence:………………..</p></li>
+<li><p>Balanced accuracy:……………………</p></li>
+<li><p>Precision:……………….</p></li>
+<li><p>Recall:…………………</p></li>
+<li><p>F1 score:………………….</p></li>
+</ol>
 </section>
-<section id="exercise" class="level2">
-<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
-<p>R code:</p>
+<section id="exercise" class="level2" data-number="8.13">
+<h2 data-number="8.13" class="anchored" data-anchor-id="exercise"><span class="header-section-number">8.13</span> Exercise</h2>
+<p>Prepare a model to predict <code>medv</code> - Median value of owner-occupied homes in $1000s</p>
+<p>R code to load data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(BostonHousing)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BostonHousing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(BostonHousing)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BostonHousing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     crim zn indus chas   nox    rm  age    dis rad tax ptratio      b lstat
 1 0.00632 18  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90  4.98
@@ -2320,10 +2472,10 @@ Prediction above below
 </div>
 </div>
 </section>
-<section id="data-profiling" class="level2">
-<h2 class="anchored" data-anchor-id="data-profiling">Data Profiling</h2>
+<section id="data-profiling" class="level2" data-number="8.14">
+<h2 data-number="8.14" class="anchored" data-anchor-id="data-profiling"><span class="header-section-number">8.14</span> Data Profiling</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(BostonHousing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(BostonHousing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -2601,10 +2753,11 @@ Prediction above below
 </table>
 </div>
 </div>
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -3025,6 +3178,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./ch7.html" class="pagination-link" aria-label="Writing Manuscript">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing Manuscript</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ch9.html" class="pagination-link" aria-label="Decision Trees and Random Forests">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Decision Trees and Random Forests</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

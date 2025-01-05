@@ -179,6 +179,8 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{caption}
+\usepackage{anyfontsize}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
@@ -1996,6 +1998,1484 @@ In class discussion with examples
 \item
   Retraction
 \end{itemize}
+
+\bookmarksetup{startatroot}
+
+\chapter{Predictive modelling: Measures of
+Accuracy}\label{predictive-modelling-measures-of-accuracy}
+
+\section{Packages}\label{packages}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidymodels)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(gt)}
+\FunctionTok{library}\NormalTok{(stringr)}
+\FunctionTok{library}\NormalTok{(visdat)}
+\FunctionTok{library}\NormalTok{(GGally)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Import Data and Check Data
+Format}\label{import-data-and-check-data-format}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{link }\OtherTok{\textless{}{-}} \StringTok{"https://raw.githubusercontent.com/kirenz/datasets/master/housing\_unclean.csv"}
+\NormalTok{hdf }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(link) }\CommentTok{\#readr}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 20640 Columns: 10
+-- Column specification --------------------------------------------------------
+Delimiter: ","
+chr (3): housing_median_age, median_house_value, ocean_proximity
+dbl (7): longitude, latitude, total_rooms, total_bedrooms, population, house...
+
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(hdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 20640    10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(hdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] "longitude"          "latitude"           "housing_median_age"
+ [4] "total_rooms"        "total_bedrooms"     "population"        
+ [7] "households"         "median_income"      "median_house_value"
+[10] "ocean_proximity"   
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#View(hdf)}
+\FunctionTok{head}\NormalTok{(hdf) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{gt}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rrlrrrrrrl}
+\toprule
+longitude & latitude & housing\_median\_age & total\_rooms & total\_bedrooms & population & households & median\_income & median\_house\_value & ocean\_proximity \\ 
+\midrule\addlinespace[2.5pt]
+-122.23 & 37.88 & 41.0years & 880 & 129 & 322 & 126 & 8.3252 & 452600.0\$ & NEAR BAY \\ 
+-122.22 & 37.86 & 21.0 & 7099 & 1106 & 2401 & 1138 & 8.3014 & 358500.0 & NEAR BAY \\ 
+-122.24 & 37.85 & 52.0 & 1467 & 190 & 496 & 177 & 7.2574 & 352100.0 & NEAR BAY \\ 
+-122.25 & 37.85 & 52.0 & 1274 & 235 & 558 & 219 & 5.6431 & 341300.0 & NEAR BAY \\ 
+-122.25 & 37.85 & 52.0 & 1627 & 280 & 565 & 259 & 3.8462 & 342200.0 & NEAR BAY \\ 
+-122.25 & 37.85 & 52.0 & 919 & 213 & 413 & 193 & 4.0368 & 269700.0 & NEAR BAY \\ 
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{slice\_head}\NormalTok{(}\AttributeTok{n=}\DecValTok{6}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{gt}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rrlrrrrrrl}
+\toprule
+longitude & latitude & housing\_median\_age & total\_rooms & total\_bedrooms & population & households & median\_income & median\_house\_value & ocean\_proximity \\ 
+\midrule\addlinespace[2.5pt]
+-122.23 & 37.88 & 41.0years & 880 & 129 & 322 & 126 & 8.3252 & 452600.0\$ & NEAR BAY \\ 
+-122.22 & 37.86 & 21.0 & 7099 & 1106 & 2401 & 1138 & 8.3014 & 358500.0 & NEAR BAY \\ 
+-122.24 & 37.85 & 52.0 & 1467 & 190 & 496 & 177 & 7.2574 & 352100.0 & NEAR BAY \\ 
+-122.25 & 37.85 & 52.0 & 1274 & 235 & 558 & 219 & 5.6431 & 341300.0 & NEAR BAY \\ 
+-122.25 & 37.85 & 52.0 & 1627 & 280 & 565 & 259 & 3.8462 & 342200.0 & NEAR BAY \\ 
+-122.25 & 37.85 & 52.0 & 919 & 213 & 413 & 193 & 4.0368 & 269700.0 & NEAR BAY \\ 
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\section{Preprocessing}\label{preprocessing}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\OtherTok{\textless{}{-}} 
+\NormalTok{  hdf }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{housing\_median\_age=}\FunctionTok{str\_remove\_all}\NormalTok{(housing\_median\_age, }\StringTok{"[years]"}\NormalTok{),}
+    \AttributeTok{median\_house\_value =} \FunctionTok{str\_remove\_all}\NormalTok{(median\_house\_value, }\StringTok{"[$]"}\NormalTok{))}
+\CommentTok{\#View(hdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Recheck the format}\label{recheck-the-format}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(hdf) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 20,640
+Columns: 10
+$ longitude          <dbl> -122.23, -122.22, -122.24, -122.25, -122.25, -122.2~
+$ latitude           <dbl> 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 37~
+$ housing_median_age <chr> "41.0", "21.0", "52.0", "52.0", "52.0", "52.0", "52~
+$ total_rooms        <dbl> 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555,~
+$ total_bedrooms     <dbl> 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707, ~
+$ population         <dbl> 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 15~
+$ households         <dbl> 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714, ~
+$ median_income      <dbl> 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.6~
+$ median_house_value <chr> "452600.0", "358500.0", "352100.0", "341300.0", "34~
+$ ocean_proximity    <chr> "NEAR BAY", "NEAR BAY", "NEAR BAY", "NEAR BAY", "NE~
+\end{verbatim}
+
+\subsection{Visualize the structure}\label{visualize-the-structure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vis\_dat}\NormalTok{(hdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ch8_files/figure-pdf/unnamed-chunk-6-1.pdf}
+
+\subsection{Observe summary
+statistics}\label{observe-summary-statistics}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{count}\NormalTok{(ocean\_proximity, }\AttributeTok{sort=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 5 x 2
+  ocean_proximity     n
+  <chr>           <int>
+1 <1H OCEAN        9136
+2 INLAND           6551
+3 NEAR OCEAN       2658
+4 NEAR BAY         2290
+5 ISLAND              5
+\end{verbatim}
+
+\subsection{Convert qualitative variables into
+factor}\label{convert-qualitative-variables-into-factor}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\OtherTok{\textless{}{-}}\NormalTok{ hdf }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.character), as.factor))}
+\FunctionTok{vis\_dat}\NormalTok{(hdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ch8_files/figure-pdf/unnamed-chunk-8-1.pdf}
+
+\subsection{Convert variables into
+numeric}\label{convert-variables-into-numeric}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\OtherTok{\textless{}{-}}\NormalTok{ hdf }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{housing\_median\_age =} \FunctionTok{as.numeric}\NormalTok{(housing\_median\_age),}
+    \AttributeTok{median\_house\_value =} \FunctionTok{as.numeric}\NormalTok{(median\_house\_value)}
+\NormalTok{  )}
+\FunctionTok{vis\_dat}\NormalTok{(hdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ch8_files/figure-pdf/unnamed-chunk-9-1.pdf}
+
+\subsection{Observe missing value}\label{observe-missing-value}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vis\_miss}\NormalTok{(hdf, }\AttributeTok{sort\_miss=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ch8_files/figure-pdf/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.na}\NormalTok{(hdf) }\SpecialCharTok{|\textgreater{}} \FunctionTok{colSums}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+         longitude           latitude housing_median_age        total_rooms 
+                 0                  0                  0                  0 
+    total_bedrooms         population         households      median_income 
+               207                  0                  0                  0 
+median_house_value    ocean_proximity 
+                 0                  0 
+\end{verbatim}
+
+\section{Create new variables}\label{create-new-variables}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\OtherTok{\textless{}{-}}\NormalTok{ hdf }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{rooms\_per\_household =}\NormalTok{ total\_rooms}\SpecialCharTok{/}\NormalTok{households,}
+         \AttributeTok{bedrooms\_per\_room =}\NormalTok{ total\_bedrooms}\SpecialCharTok{/}\NormalTok{total\_rooms,}
+         \AttributeTok{population\_per\_household =}\NormalTok{ population}\SpecialCharTok{/}\NormalTok{households)}
+
+\CommentTok{\#View(hdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Categorize the dependent
+variable}\label{categorize-the-dependent-variable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\OtherTok{\textless{}{-}}\NormalTok{ hdf }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{price\_category =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{    median\_house\_value }\SpecialCharTok{\textless{}} \DecValTok{1500} \SpecialCharTok{\textasciitilde{}} \StringTok{"below"}\NormalTok{,}
+\NormalTok{    median\_house\_value }\SpecialCharTok{\textgreater{}=} \DecValTok{1500} \SpecialCharTok{\textasciitilde{}} \StringTok{"above"}\NormalTok{,}
+\NormalTok{  )) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{price\_category =} \FunctionTok{as.factor}\NormalTok{(price\_category)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{median\_house\_value)}
+\CommentTok{\#View(hdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Distribution of the dependent
+variable}\label{distribution-of-the-dependent-variable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{count}\NormalTok{(price\_category, }\AttributeTok{name=}\StringTok{"count"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{percent =}\NormalTok{ count}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(count)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{gt}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}crr}
+\toprule
+price\_category & count & percent \\ 
+\midrule\addlinespace[2.5pt]
+above & 9364 & 0.4536822 \\ 
+below & 11276 & 0.5463178 \\ 
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\section{Check the structure again}\label{check-the-structure-again}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{skimr}\SpecialCharTok{::}\FunctionTok{skim}\NormalTok{(hdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Data summary}\tabularnewline
+\toprule\noalign{}
+\endfirsthead
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Name & hdf \\
+Number of rows & 20640 \\
+Number of columns & 13 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Column type frequency: & \\
+factor & 2 \\
+numeric & 11 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Group variables & None \\
+\end{longtable}
+
+\textbf{Variable type: factor}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1600}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0900}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.4300}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ordered
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_unique
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+top\_counts
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ocean\_proximity & 0 & 1 & FALSE & 5 & \textless1H: 9136, INL: 6551,
+NEA: 2658, NEA: 2290 \\
+price\_category & 0 & 1 & FALSE & 2 & bel: 11276, abo: 9364 \\
+\end{longtable}
+
+\textbf{Variable type: numeric}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.2232}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0893}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1250}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0804}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0536}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sd
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p75
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hist
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+longitude & 0 & 1.00 & -119.57 & 2.00 & -124.35 & -121.80 & -118.49 &
+-118.01 & -114.31 & ▂▆▃▇▁ \\
+latitude & 0 & 1.00 & 35.63 & 2.14 & 32.54 & 33.93 & 34.26 & 37.71 &
+41.95 & ▇▁▅▂▁ \\
+housing\_median\_age & 0 & 1.00 & 25.01 & 13.48 & 1.00 & 14.00 & 25.00 &
+35.00 & 52.00 & ▆▆▇▅▅ \\
+total\_rooms & 0 & 1.00 & 2635.76 & 2181.62 & 2.00 & 1447.75 & 2127.00 &
+3148.00 & 39320.00 & ▇▁▁▁▁ \\
+total\_bedrooms & 207 & 0.99 & 537.87 & 421.39 & 1.00 & 296.00 & 435.00
+& 647.00 & 6445.00 & ▇▁▁▁▁ \\
+population & 0 & 1.00 & 1425.48 & 1132.46 & 3.00 & 787.00 & 1166.00 &
+1725.00 & 35682.00 & ▇▁▁▁▁ \\
+households & 0 & 1.00 & 499.54 & 382.33 & 1.00 & 280.00 & 409.00 &
+605.00 & 6082.00 & ▇▁▁▁▁ \\
+median\_income & 0 & 1.00 & 3.87 & 1.90 & 0.50 & 2.56 & 3.53 & 4.74 &
+15.00 & ▇▇▁▁▁ \\
+rooms\_per\_household & 0 & 1.00 & 5.43 & 2.47 & 0.85 & 4.44 & 5.23 &
+6.05 & 141.91 & ▇▁▁▁▁ \\
+bedrooms\_per\_room & 207 & 0.99 & 0.21 & 0.06 & 0.10 & 0.18 & 0.20 &
+0.24 & 1.00 & ▇▁▁▁▁ \\
+population\_per\_household & 0 & 1.00 & 3.07 & 10.39 & 0.69 & 2.43 &
+2.82 & 3.28 & 1243.33 & ▇▁▁▁▁ \\
+\end{longtable}
+
+\section{EDA}\label{eda}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(housing\_median\_age,}
+\NormalTok{         median\_income,}
+\NormalTok{         bedrooms\_per\_room,}
+\NormalTok{         rooms\_per\_household,}
+\NormalTok{         population\_per\_household) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggscatmat}\NormalTok{(}\AttributeTok{alpha=}\FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ch8_files/figure-pdf/unnamed-chunk-15-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(price\_category)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ch8_files/figure-pdf/unnamed-chunk-15-2.pdf}
+
+\section{Your turn}\label{your-turn}
+
+\begin{itemize}
+\item
+  Obtain hex binning scatterplot
+\item
+  Obtain scatterplot matrix using ggpairs
+\end{itemize}
+
+\section{Split data into training and
+test}\label{split-data-into-training-and-test}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hdf\_no\_na }\OtherTok{\textless{}{-}}\NormalTok{ hdf }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{drop\_na}\NormalTok{()}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{data.split }\OtherTok{\textless{}{-}} \FunctionTok{initial\_split}\NormalTok{(hdf\_no\_na,}
+                            \AttributeTok{prop=}\DecValTok{3}\SpecialCharTok{/}\DecValTok{4}\NormalTok{,}
+                            \AttributeTok{strata =}\NormalTok{ price\_category)}
+\NormalTok{train.data }\OtherTok{\textless{}{-}} \FunctionTok{training}\NormalTok{(data.split)}
+\NormalTok{test.data }\OtherTok{\textless{}{-}} \FunctionTok{testing}\NormalTok{(data.split)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Build a randomforest model}\label{build-a-randomforest-model}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(randomForest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+randomForest 4.7-1.2
+\end{verbatim}
+
+\begin{verbatim}
+Type rfNews() to see new features/changes/bug fixes.
+\end{verbatim}
+
+\begin{verbatim}
+
+Attaching package: 'randomForest'
+\end{verbatim}
+
+\begin{verbatim}
+The following object is masked from 'package:ggplot2':
+
+    margin
+\end{verbatim}
+
+\begin{verbatim}
+The following object is masked from 'package:dplyr':
+
+    combine
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rf }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(price\_category }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .,}
+                   \AttributeTok{data=}\NormalTok{train.data, }
+                   \AttributeTok{importance=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{test.data}\SpecialCharTok{$}\NormalTok{predict }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf, test.data)}
+
+\FunctionTok{View}\NormalTok{(test.data)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Accuracy measures}\label{accuracy-measures}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+
+Attaching package: 'caret'
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:yardstick':
+
+    precision, recall, sensitivity, specificity
+\end{verbatim}
+
+\begin{verbatim}
+The following object is masked from 'package:purrr':
+
+    lift
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{confusionMatrix}\NormalTok{(}\AttributeTok{data =}\NormalTok{ test.data}\SpecialCharTok{$}\NormalTok{predict,}
+                \AttributeTok{reference =}\NormalTok{ test.data}\SpecialCharTok{$}\NormalTok{price\_category)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Confusion Matrix and Statistics
+
+          Reference
+Prediction above below
+     above  1845   319
+     below   470  2475
+                                          
+               Accuracy : 0.8456          
+                 95% CI : (0.8354, 0.8554)
+    No Information Rate : 0.5469          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.6866          
+                                          
+ Mcnemar's Test P-Value : 9.287e-08       
+                                          
+            Sensitivity : 0.7970          
+            Specificity : 0.8858          
+         Pos Pred Value : 0.8526          
+         Neg Pred Value : 0.8404          
+             Prevalence : 0.4531          
+         Detection Rate : 0.3611          
+   Detection Prevalence : 0.4236          
+      Balanced Accuracy : 0.8414          
+                                          
+       'Positive' Class : above           
+                                          
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sensitivity:\ldots\ldots\ldots\ldots\ldots\ldots\ldots{}
+\item
+  Specificity:\ldots\ldots\ldots\ldots\ldots\ldots\ldots{}
+\item
+  Prevalence:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Positive Predictive Value:\ldots\ldots\ldots\ldots\ldots\ldots\ldots{}
+\item
+  Negative Predictive Value:\ldots\ldots\ldots\ldots\ldots\ldots\ldots{}
+\item
+  Detection rate:\ldots\ldots\ldots\ldots\ldots.
+\item
+  Detection prevalence:\ldots\ldots\ldots\ldots\ldots\ldots..
+\item
+  Balanced accuracy:\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots{}
+\item
+  Precision:\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Recall:\ldots\ldots\ldots\ldots\ldots\ldots\ldots{}
+\item
+  F1 score:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\end{enumerate}
+
+\section{Exercise}\label{exercise-4}
+
+Prepare a model to predict \texttt{medv} - Median value of
+owner-occupied homes in \$1000s
+
+R code to load data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(mlbench)}
+\FunctionTok{data}\NormalTok{(BostonHousing)}
+\FunctionTok{head}\NormalTok{(BostonHousing)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     crim zn indus chas   nox    rm  age    dis rad tax ptratio      b lstat
+1 0.00632 18  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90  4.98
+2 0.02731  0  7.07    0 0.469 6.421 78.9 4.9671   2 242    17.8 396.90  9.14
+3 0.02729  0  7.07    0 0.469 7.185 61.1 4.9671   2 242    17.8 392.83  4.03
+4 0.03237  0  2.18    0 0.458 6.998 45.8 6.0622   3 222    18.7 394.63  2.94
+5 0.06905  0  2.18    0 0.458 7.147 54.2 6.0622   3 222    18.7 396.90  5.33
+6 0.02985  0  2.18    0 0.458 6.430 58.7 6.0622   3 222    18.7 394.12  5.21
+  medv
+1 24.0
+2 21.6
+3 34.7
+4 33.4
+5 36.2
+6 28.7
+\end{verbatim}
+
+\section{Data Profiling}\label{data-profiling-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{skimr}\SpecialCharTok{::}\FunctionTok{skim}\NormalTok{(BostonHousing)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Data summary}\tabularnewline
+\toprule\noalign{}
+\endfirsthead
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Name & BostonHousing \\
+Number of rows & 506 \\
+Number of columns & 14 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Column type frequency: & \\
+factor & 1 \\
+numeric & 13 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Group variables & None \\
+\end{longtable}
+
+\textbf{Variable type: factor}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2029}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1449}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2029}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1159}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1304}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2029}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ordered
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_unique
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+top\_counts
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+chas & 0 & 1 & FALSE & 2 & 0: 471, 1: 35 \\
+\end{longtable}
+
+\textbf{Variable type: numeric}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1505}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1075}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1505}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0753}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0753}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0753}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0753}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0753}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0753}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0753}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0645}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sd
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p75
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hist
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+crim & 0 & 1 & 3.61 & 8.60 & 0.01 & 0.08 & 0.26 & 3.68 & 88.98 &
+▇▁▁▁▁ \\
+zn & 0 & 1 & 11.36 & 23.32 & 0.00 & 0.00 & 0.00 & 12.50 & 100.00 &
+▇▁▁▁▁ \\
+indus & 0 & 1 & 11.14 & 6.86 & 0.46 & 5.19 & 9.69 & 18.10 & 27.74 &
+▇▆▁▇▁ \\
+nox & 0 & 1 & 0.55 & 0.12 & 0.38 & 0.45 & 0.54 & 0.62 & 0.87 & ▇▇▆▅▁ \\
+rm & 0 & 1 & 6.28 & 0.70 & 3.56 & 5.89 & 6.21 & 6.62 & 8.78 & ▁▂▇▂▁ \\
+age & 0 & 1 & 68.57 & 28.15 & 2.90 & 45.02 & 77.50 & 94.07 & 100.00 &
+▂▂▂▃▇ \\
+dis & 0 & 1 & 3.80 & 2.11 & 1.13 & 2.10 & 3.21 & 5.19 & 12.13 & ▇▅▂▁▁ \\
+rad & 0 & 1 & 9.55 & 8.71 & 1.00 & 4.00 & 5.00 & 24.00 & 24.00 &
+▇▂▁▁▃ \\
+tax & 0 & 1 & 408.24 & 168.54 & 187.00 & 279.00 & 330.00 & 666.00 &
+711.00 & ▇▇▃▁▇ \\
+ptratio & 0 & 1 & 18.46 & 2.16 & 12.60 & 17.40 & 19.05 & 20.20 & 22.00 &
+▁▃▅▅▇ \\
+b & 0 & 1 & 356.67 & 91.29 & 0.32 & 375.38 & 391.44 & 396.22 & 396.90 &
+▁▁▁▁▇ \\
+lstat & 0 & 1 & 12.65 & 7.14 & 1.73 & 6.95 & 11.36 & 16.96 & 37.97 &
+▇▇▅▂▁ \\
+medv & 0 & 1 & 22.53 & 9.20 & 5.00 & 17.02 & 21.20 & 25.00 & 50.00 &
+▂▇▅▁▁ \\
+\end{longtable}
+
+\bookmarksetup{startatroot}
+
+\chapter{Decision Trees and Random
+Forests}\label{decision-trees-and-random-forests}
+
+\section{Classification and Regression
+Trees}\label{classification-and-regression-trees}
+
+\href{https://thiyangt.github.io/Data.Mining/week2/\#/title-slide}{Slides}
+
+\subsection{Construct a decision tree using
+R}\label{construct-a-decision-tree-using-r}
+
+\subsection{Packages}\label{packages-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidymodels)}
+\FunctionTok{library}\NormalTok{(palmerpenguins)}
+\FunctionTok{library}\NormalTok{(rpart)}
+\FunctionTok{library}\NormalTok{(skimr)}
+\FunctionTok{library}\NormalTok{(rpart.plot)}
+\FunctionTok{library}\NormalTok{(GGally)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Data}\label{data}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(penguins)}
+\FunctionTok{skim}\NormalTok{(penguins)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Data summary}\tabularnewline
+\toprule\noalign{}
+\endfirsthead
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Name & penguins \\
+Number of rows & 344 \\
+Number of columns & 8 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Column type frequency: & \\
+factor & 3 \\
+numeric & 5 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Group variables & None \\
+\end{longtable}
+
+\textbf{Variable type: factor}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1687}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1205}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1687}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0964}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1084}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.3373}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ordered
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_unique
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+top\_counts
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+species & 0 & 1.00 & FALSE & 3 & Ade: 152, Gen: 124, Chi: 68 \\
+island & 0 & 1.00 & FALSE & 3 & Bis: 168, Dre: 124, Tor: 52 \\
+sex & 11 & 0.97 & FALSE & 2 & mal: 168, fem: 165 \\
+\end{longtable}
+
+\textbf{Variable type: numeric}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1400}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0700}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0700}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0700}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0700}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0600}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sd
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p75
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hist
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+bill\_length\_mm & 2 & 0.99 & 43.92 & 5.46 & 32.1 & 39.23 & 44.45 & 48.5
+& 59.6 & ▃▇▇▆▁ \\
+bill\_depth\_mm & 2 & 0.99 & 17.15 & 1.97 & 13.1 & 15.60 & 17.30 & 18.7
+& 21.5 & ▅▅▇▇▂ \\
+flipper\_length\_mm & 2 & 0.99 & 200.92 & 14.06 & 172.0 & 190.00 &
+197.00 & 213.0 & 231.0 & ▂▇▃▅▂ \\
+body\_mass\_g & 2 & 0.99 & 4201.75 & 801.95 & 2700.0 & 3550.00 & 4050.00
+& 4750.0 & 6300.0 & ▃▇▆▃▂ \\
+year & 0 & 1.00 & 2008.03 & 0.82 & 2007.0 & 2007.00 & 2008.00 & 2009.0 &
+2009.0 & ▇▁▇▁▇ \\
+\end{longtable}
+
+\subsection{Exploratory Data Analysis}\label{exploratory-data-analysis}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Your turn: Perform an exploratory data analysis
+\item
+  What are the limitations of the following chart? Could you suggest
+  ways to reduce clutter and enhance its clarity?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggpairs}\NormalTok{(penguins, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ species), }\AttributeTok{progress =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ch9_files/figure-pdf/unnamed-chunk-3-1.pdf}
+
+\subsection{Remove missing values}\label{remove-missing-values}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{penguins }\OtherTok{\textless{}{-}} \FunctionTok{drop\_na}\NormalTok{(penguins)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Split data}\label{split-data}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rsample)}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{penguin\_split }\OtherTok{\textless{}{-}} \FunctionTok{initial\_split}\NormalTok{(penguins, }\AttributeTok{strata =}\NormalTok{ species)}
+\NormalTok{penguin\_train }\OtherTok{\textless{}{-}} \FunctionTok{training}\NormalTok{(penguin\_split)}
+\NormalTok{penguin\_test }\OtherTok{\textless{}{-}} \FunctionTok{testing}\NormalTok{(penguin\_split)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Display the dimensions of the training
+dataset}\label{display-the-dimensions-of-the-training-dataset}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(penguin\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 84  8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(penguin\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 249   8
+\end{verbatim}
+
+\subsection{Build Decision Tree}\label{build-decision-tree}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tree1 }\OtherTok{\textless{}{-}} \FunctionTok{rpart}\NormalTok{(species }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., penguin\_train,  }\AttributeTok{cp =} \FloatTok{0.1}\NormalTok{)}
+\FunctionTok{rpart.plot}\NormalTok{(tree1, }\AttributeTok{box.palette=}\StringTok{"RdBu"}\NormalTok{, }\AttributeTok{shadow.col=}\StringTok{"gray"}\NormalTok{, }\AttributeTok{nn=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ch9_files/figure-pdf/unnamed-chunk-7-1.pdf}
+
+\subsection{Make predictions}\label{make-predictions}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(}\FunctionTok{predict}\NormalTok{(tree1, penguin\_test))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     Adelie  Chinstrap Gentoo
+1 0.9626168 0.03738318      0
+2 0.9626168 0.03738318      0
+3 0.9626168 0.03738318      0
+4 0.9626168 0.03738318      0
+5 0.9626168 0.03738318      0
+6 0.9626168 0.03738318      0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(}\FunctionTok{predict}\NormalTok{(tree1, penguin\_test,  }\AttributeTok{type =} \StringTok{"class"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     1      2      3      4      5      6 
+Adelie Adelie Adelie Adelie Adelie Adelie 
+Levels: Adelie Chinstrap Gentoo
+\end{verbatim}
+
+\subsection{Evaluate accuracy over the test
+set}\label{evaluate-accuracy-over-the-test-set}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+
+Attaching package: 'caret'
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:yardstick':
+
+    precision, recall, sensitivity, specificity
+\end{verbatim}
+
+\begin{verbatim}
+The following object is masked from 'package:purrr':
+
+    lift
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{penguin\_test}\SpecialCharTok{$}\NormalTok{predict }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(tree1, penguin\_test,  }\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\FunctionTok{confusionMatrix}\NormalTok{(}\AttributeTok{data =}\NormalTok{ penguin\_test}\SpecialCharTok{$}\NormalTok{predict,}
+                \AttributeTok{reference =}\NormalTok{ penguin\_test}\SpecialCharTok{$}\NormalTok{species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Confusion Matrix and Statistics
+
+           Reference
+Prediction  Adelie Chinstrap Gentoo
+  Adelie        35         0      0
+  Chinstrap      2        14      0
+  Gentoo         0         3     30
+
+Overall Statistics
+                                          
+               Accuracy : 0.9405          
+                 95% CI : (0.8665, 0.9804)
+    No Information Rate : 0.4405          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.9066          
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: Adelie Class: Chinstrap Class: Gentoo
+Sensitivity                 0.9459           0.8235        1.0000
+Specificity                 1.0000           0.9701        0.9444
+Pos Pred Value              1.0000           0.8750        0.9091
+Neg Pred Value              0.9592           0.9559        1.0000
+Prevalence                  0.4405           0.2024        0.3571
+Detection Rate              0.4167           0.1667        0.3571
+Detection Prevalence        0.4167           0.1905        0.3929
+Balanced Accuracy           0.9730           0.8968        0.9722
+\end{verbatim}
+
+\section{Random forests}\label{random-forests}
+
+\begin{itemize}
+\item
+  Bagging ensemble method
+\item
+  Gives final prediction by aggregating the predictions of bootstrapped
+  decision tree samples.
+\item
+  Trees in a random forest are independent of each other.
+\item
+  With ensemble methods, we get a new metric for assessing the
+  predictive performance of the model, the out-of-bag error
+\end{itemize}
+
+\section{Illustration of how random forests algorithm
+works}\label{illustration-of-how-random-forests-algorithm-works}
+
+\subsection{Boostrap Sample for the first
+tree}\label{boostrap-sample-for-the-first-tree}
+
+\includegraphics{r1.png}
+
+\includegraphics{r2.png}
+
+\subsection{Out-of-bag sample for the first
+tree}\label{out-of-bag-sample-for-the-first-tree}
+
+\includegraphics{r3.png}
+
+\includegraphics{r4.png}
+
+\subsection{Out-of-bag sample
+predictions}\label{out-of-bag-sample-predictions}
+
+\includegraphics{r5.png}
+
+\includegraphics{r6.png}
+
+\includegraphics{r7.png}
+
+\includegraphics{r8.png}
+
+\includegraphics{r9.png}
+
+\subsection{Variable importance measures in random
+forest}\label{variable-importance-measures-in-random-forest}
+
+\begin{itemize}
+\item
+  Permutation-based variable importance
+\item
+  Mean decrease in Gini coefficient
+\end{itemize}
+
+\subsection{Random forest using R}\label{random-forest-using-r}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(randomForest)}
+\NormalTok{rf }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(species }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., penguin\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Make predictions and evaluate accuracy over the test
+set}\label{make-predictions-and-evaluate-accuracy-over-the-test-set}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{penguin\_test}\SpecialCharTok{$}\NormalTok{predictrf }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf, penguin\_test,  }\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\FunctionTok{confusionMatrix}\NormalTok{(}\AttributeTok{data =}\NormalTok{ penguin\_test}\SpecialCharTok{$}\NormalTok{predictrf,}
+                \AttributeTok{reference =}\NormalTok{ penguin\_test}\SpecialCharTok{$}\NormalTok{species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Confusion Matrix and Statistics
+
+           Reference
+Prediction  Adelie Chinstrap Gentoo
+  Adelie        37         0      0
+  Chinstrap      0        17      0
+  Gentoo         0         0     30
+
+Overall Statistics
+                                    
+               Accuracy : 1         
+                 95% CI : (0.957, 1)
+    No Information Rate : 0.4405    
+    P-Value [Acc > NIR] : < 2.2e-16 
+                                    
+                  Kappa : 1         
+                                    
+ Mcnemar's Test P-Value : NA        
+
+Statistics by Class:
+
+                     Class: Adelie Class: Chinstrap Class: Gentoo
+Sensitivity                 1.0000           1.0000        1.0000
+Specificity                 1.0000           1.0000        1.0000
+Pos Pred Value              1.0000           1.0000        1.0000
+Neg Pred Value              1.0000           1.0000        1.0000
+Prevalence                  0.4405           0.2024        0.3571
+Detection Rate              0.4405           0.2024        0.3571
+Detection Prevalence        0.4405           0.2024        0.3571
+Balanced Accuracy           1.0000           1.0000        1.0000
+\end{verbatim}
+
+\subsection{Receiver Operating Characteristic (ROC)
+curves}\label{receiver-operating-characteristic-roc-curves}
+
+\begin{itemize}
+\tightlist
+\item
+  Graphical plot that illustrates the performance of a binary classifier
+  model.
+\end{itemize}
+
+\subsection{When to Use an ROC Curve?}\label{when-to-use-an-roc-curve}
+
+\begin{itemize}
+\item
+  Binary Classification: It is particularly useful when you have two
+  classes (e.g., yes/no, positive/negative).
+\item
+  Imbalanced Datasets: It's beneficial for imbalanced classes since it
+  doesn't rely on accuracy, which can be biased when one class is
+  significantly more frequent than the other.
+\item
+  Comparing Models: It's a great tool for comparing multiple classifiers
+  on the same dataset to see which performs better across thresholds.
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\chapter{Writing Grant Proposals}\label{writing-grant-proposals}
+
+Please complete the blanks and include additional notes during the
+in-class teaching and discussion sessions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Understand the Grant's Purpose
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Read the Guidelines:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Target Audience: Consider the funding organization's priorities. Does
+  your project align with their mission or vision?
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Clear and Specific Objectives
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Clear Problem Statement:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Project Goals and Outcomes:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Alignment with Funding
+  Priorities:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Research Background and Literature Review
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Justify the Need:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Use Evidence:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Methodology and Approach
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Detailed Plan:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Methodology:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Feasibility:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Project Timeline and Milestones
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Realistic Timeline:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Trackable Milestones:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Budget Justification
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Detailed Budget:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Justify Expenses:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Evaluation and Impact
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Evaluation Plan:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\item
+  Sustainability:\ldots\ldots\ldots\ldots\ldots\ldots\ldots.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Team Qualifications and Partnerships
+\end{enumerate}
+
+\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  Communication and Dissemination
+\end{enumerate}
+
+\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  Review and Feedback
+\end{enumerate}
+
+\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots{}
+
+Proofreading
+
+Feedback
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  Additional Tips
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Be Concise and Clear
+\item
+  Tailor the Proposal
+\item
+  Follow the Format
+\item
+  Demonstrate Need and Innovation
+\end{itemize}
+
+\section{Reading}\label{reading}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \url{https://www.indeed.com/career-advice/career-development/how-to-write-grant}
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\chapter{Anatomy of a Statistical
+Study}\label{anatomy-of-a-statistical-study}
+
+Please complete the blanks and include additional notes during the
+in-class teaching and discussion sessions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction and Objectives
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Study Design
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Types of studies
+\item
+  Selection of variables
+\item
+  Ethical considerations in study design.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Data Collection
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Methods of data collection (e.g., surveys, experiments, secondary
+  data).
+\item
+  Tools and instruments for measurement. Ensuring data quality and
+  integrity.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Data Preparation
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Statistical Analysis
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Conclusions and Discussion
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Reproducibility and Documentation
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Translating findings into actionable insights
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \bookmarksetup{startatroot}
 
