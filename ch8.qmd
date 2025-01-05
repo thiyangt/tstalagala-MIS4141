@@ -192,9 +192,35 @@ confusionMatrix(data = test.data$predict,
 ```
 
 
+1. Sensitivity:.....................
+
+2. Specificity:.....................
+
+3. Prevalence:......................
+
+4. Positive Predictive Value:.....................
+
+5. Negative Predictive Value:.....................
+
+6. Detection rate:................
+
+7. Detection prevalence:....................
+
+8. Balanced accuracy:........................
+
+9. Precision:...................
+
+10. Recall:.....................
+
+11. F1 score:......................
+
+
+
 ## Exercise
 
-R code:
+Prepare a model to predict `medv` - Median value of owner-occupied homes in $1000s
+
+R code to load data:
 
 ```{r, echo=TRUE, warning=FALSE}
 library(mlbench)
