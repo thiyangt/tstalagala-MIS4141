@@ -112,6 +112,8 @@ freq(srilanka_weekly_data)
 R Code:..................................
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
+#install.packages(c("DBI", "RSQLite"))
+#devtools::install_github("choonghyunryu/dlookr", build_vignettes = TRUE)
 library(dlookr)
 diagnose(flights, year, month, day)
 ```

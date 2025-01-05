@@ -2,23 +2,23 @@
 
 ## Common Types of Consultancy Projects
 
-1. Client-Provided Data Analysis
+1.  Client-Provided Data Analysis
 
-2. Data Collection and Analysis (designs a data collection strategy, gathers data)
+2.  Data Collection and Analysis (designs a data collection strategy, gathers data)
 
-3. Experimental Design and Analysis
+3.  Experimental Design and Analysis
 
-4. Model Development and Validation
+4.  Model Development and Validation
 
-5. Quality Control and Process Improvement
+5.  Quality Control and Process Improvement
 
-6. Survey Design and Analysis
+6.  Survey Design and Analysis
 
-7. Data Visualization and Reporting
+7.  Data Visualization and Reporting
 
-8. Predictive Analytics and Forecasting
+8.  Predictive Analytics and Forecasting
 
-9. Statistical Software Implementation and Training
+9.  Statistical Software Implementation and Training
 
 10. Training and workshops
 
