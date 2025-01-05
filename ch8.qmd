@@ -25,14 +25,11 @@ head(hdf) |>
   gt()
 ```
 
-
 ```{r, echo=TRUE, warning=FALSE}
 hdf |> 
   slice_head(n=6) |>
   gt()
 ```
-
-
 
 ## Preprocessing
 
@@ -44,7 +41,6 @@ hdf <-
     median_house_value = str_remove_all(median_house_value, "[$]"))
 #View(hdf)
 ```
-
 
 ### Recheck the format
 
@@ -64,7 +60,6 @@ vis_dat(hdf)
 hdf |>
   count(ocean_proximity, sort=TRUE)
 ```
-
 
 ### Convert qualitative variables into factor
 
@@ -103,7 +98,6 @@ hdf <- hdf |>
 #View(hdf)
 ```
 
-
 ## Categorize the dependent variable
 
 ```{r, echo=TRUE, warning=FALSE}
@@ -126,7 +120,6 @@ hdf |>
   gt()
 ```
 
-
 ## Check the structure again
 
 ```{r, echo=TRUE, warning=FALSE}
@@ -148,14 +141,11 @@ hdf |>
   ggplot(aes(price_category)) + geom_bar()
 ```
 
-
 ## Your turn
 
-- Obtain hex binning scatterplot 
+-   Obtain hex binning scatterplot
 
-- Obtain scatterplot matrix using ggpairs
-
-
+-   Obtain scatterplot matrix using ggpairs
 
 ## Split data into training and test
 
@@ -191,34 +181,31 @@ confusionMatrix(data = test.data$predict,
                 reference = test.data$price_category)
 ```
 
+1.  Sensitivity:.....................
 
-1. Sensitivity:.....................
+2.  Specificity:.....................
 
-2. Specificity:.....................
+3.  Prevalence:......................
 
-3. Prevalence:......................
+4.  Positive Predictive Value:.....................
 
-4. Positive Predictive Value:.....................
+5.  Negative Predictive Value:.....................
 
-5. Negative Predictive Value:.....................
+6.  Detection rate:................
 
-6. Detection rate:................
+7.  Detection prevalence:....................
 
-7. Detection prevalence:....................
+8.  Balanced accuracy:........................
 
-8. Balanced accuracy:........................
-
-9. Precision:...................
+9.  Precision:...................
 
 10. Recall:.....................
 
 11. F1 score:......................
 
-
-
 ## Exercise
 
-Prepare a model to predict `medv` - Median value of owner-occupied homes in $1000s
+Prepare a model to predict `medv` - Median value of owner-occupied homes in \$1000s
 
 R code to load data:
 
